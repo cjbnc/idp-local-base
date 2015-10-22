@@ -1,0 +1,5 @@
+ncsu/idp3dev:1510221057
+	- modified base image to pull new Java 1.8.0_65
+	- modified this build to use our base build
+
+
