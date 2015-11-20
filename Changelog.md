@@ -1,6 +1,6 @@
 # Changelog
 
-## 2015/Nov/20-15:55 - bld1511201555
+## 2015/Nov/20-15:59 - bld1511201559
     - refactor unicon/shibboleth-idp base into this Dockerfile
     - move package downloads out of the Dockerfile
     - modified installs commands to use downloads
