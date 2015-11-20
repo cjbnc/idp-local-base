@@ -12,6 +12,7 @@ help:
 	@echo
 
 latest: Dockerfile
+	(cd downloads; make all)
 	docker build -t $(IMAGE):bld$(DATE) .
 	docker tag -f $(IMAGE):bld$(DATE) $(IMAGE):latest
 

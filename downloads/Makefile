@@ -5,6 +5,11 @@ JAVA_VER  := 8u65
 JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
 JAVA_SUM  := f8eae8d294e5856403f9ff0e306074f4f83d26c91c4c902f6c23c3d018ffc23f
 
+# JCE Policy 
+POLICY_VER  := 8
+POLICY_FILE := jce_policy-$(POLICY_VER).zip
+POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
+
 # Jetty
 JETTY_VER  := 9.3.3.v20150827
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
@@ -32,11 +37,13 @@ NCSUAD_SUM  := 89096c30a79750173d2e15a721ed19676d2d68e9
 
 .PHONY: all clean
 
-all: $(JAVA_FILE) $(JETTY_FILE) $(LIBSETUID_FILE) \
+all: $(JAVA_FILE) $(POLICY_FILE) \
+	 $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE)
 
 clean:
-	rm -f $(JAVA_FILE) $(JETTY_FILE) $(LIBSETUID_FILE) \
+	rm -f $(JAVA_FILE) $(POLICY_FILE) \
+		  $(JETTY_FILE) $(LIBSETUID_FILE) \
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE)
 
 $(JAVA_FILE):
@@ -45,6 +52,13 @@ $(JAVA_FILE):
 		--header "Cookie: oraclelicense=accept-securebackup-cookie" \
 		http://download.oracle.com/otn-pub/java/jdk/$(JAVA_VER)-b17/$(JAVA_FILE)
 	echo "$(JAVA_SUM)  $(JAVA_FILE)" | sha256sum -c -
+
+$(POLICY_FILE):
+	wget -O $(POLICY_FILE) \
+		--no-check-certificate --no-cookies \
+		--header "Cookie: oraclelicense=accept-securebackup-cookie" \
+		http://download.oracle.com/otn-pub/java/jce/$(POLICY_VER)/$(POLICY_FILE)
+	echo "$(POLICY_SUM)  $(POLICY_FILE)" | sha256sum -c -
 
 $(JETTY_FILE):
 	wget -O $(JETTY_FILE) \

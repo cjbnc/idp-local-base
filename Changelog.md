@@ -1,5 +1,11 @@
 # Changelog
 
+    - refactor unicon/shibboleth-idp base into this Dockerfile
+    - move package downloads out of the Dockerfile
+    - modified installs commands to use downloads
+    - added our ncsuadlogin jar
+    - added other-idp install and logs volume
+
 ## 2015/Nov/19-15:04 - bld1511191504
     - fix Makefile to tag images better
 
