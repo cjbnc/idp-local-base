@@ -59,18 +59,6 @@ RUN set -x; \
     && sed -i 's/ password/CHANGEME/g' /opt/shibboleth-idp/conf/idp.properties \
     && rm -r /opt/shibboleth-identity-provider-$shibidp_version/
 
-# Install Shibboleth Other IdP - for parents
-RUN set -x; \
-    shibidp_version=3.2.0; \
-    otheridp_dir=/opt/other-idp; \
-    unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
-    && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
-    && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain -Didp.target.default=$otheridp_dir \
-    && cd / \
-    && chmod -R +r $otheridp_dir \
-    && sed -i 's/ password/CHANGEME/g' $otheridp_dir/conf/idp.properties \
-    && rm -r /opt/shibboleth-identity-provider-$shibidp_version/
-
 # Place the library to allow SOAP Endpoints
 RUN set -x; \
     cp /tmp/jetty9-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/
@@ -91,8 +79,7 @@ RUN yum -y remove tar unzip; \
 RUN useradd jetty -U -s /bin/false \
     && chown -R jetty:root /opt/jetty \
     && chown -R jetty:root /opt/iam-jetty-base \
-    && chown -R jetty:root /opt/shibboleth-idp/logs \
-    && chown -R jetty:root /opt/other-idp/logs
+    && chown -R jetty:root /opt/shibboleth-idp/logs
 
 # startup script and friends
 ADD container-scripts/ /opt/container-scripts/
@@ -106,9 +93,8 @@ ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # want external logs
-VOLUME ["/opt/iam-jetty-base/logs", \
-        "/opt/shibboleth-idp/logs", \
-        "/opt/other-idp/logs"]
+VOLUME [ "/opt/iam-jetty-base/logs", \
+         "/opt/shibboleth-idp/logs" ]
 
 ## Opening 443 (browser TLS), 8443 (SOAP/mutual TLS auth)... 80 specifically not included.
 EXPOSE 443 8443
