@@ -30,7 +30,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.3.3.v20150827; \
+    jetty_version=9.3.6.v20151106; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -65,11 +65,12 @@ RUN set -x; \
 
 # Place the NCSU AD login module
 RUN set -x; \
-    cp /tmp/jaas-ncsuadloginmodule-1.0.7-1.0.jar \
+    cp /tmp/jaas-ncsuadloginmodule-1.0.7-1.1.jar \
        /opt/shibboleth-idp/webapp/WEB-INF/lib/
 
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/
+ADD shibboleth-idp/ /opt/shibboleth-idp/
 
 # Clean up the install
 RUN yum -y remove tar unzip; \

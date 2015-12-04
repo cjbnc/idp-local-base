@@ -1,0 +1,140 @@
+##
+## Velocity Template for logout flow's starting view-state
+##
+## Velocity context will contain the following properties
+## flowExecutionUrl - the form action location
+## flowRequestContext - the Spring Web Flow RequestContext
+## flowExecutionKey - the SWF execution key (this is built into the flowExecutionUrl)
+## profileRequestContext - root of context tree
+## logoutContext - context with SPSession details for logout operation
+## multiRPContext - context with RelyingPartyContexts and possibly SP UI information from the metadata
+## encoder - HTMLEncoder class
+## request - HttpServletRequest
+## response - HttpServletResponse
+## environment - Spring Environment object for property resolution
+## custom - arbitrary object injected by deployer
+##
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        #if ( $logoutContext and !$logoutContext.getSessionMap().isEmpty() )
+            <meta http-equiv="refresh" content="10;url=$flowExecutionUrl&_eventId=propagate">
+        #end
+        <title>#springMessageText("idp.title", "Web Login Service")</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/bs-tweaks.css">
+        <link rel="shortcut icon" href="$request.getContextPath()/images/favicon.ico" />
+    </head>
+    <body>
+    <a class="sr-only" href="#content">Skip to main content</a>
+
+    <div class="bs-header">
+      <div class="container">
+        <div class="col-sm-4">
+          <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="content">
+      <div class="col-sm-4">
+
+            <p>You have successfully logged out.</p>
+            <br>
+    
+            #if ( $logoutContext and !$logoutContext.getSessionMap().isEmpty() )
+                <p>#springMessageText("idp.logout.ask", "Would you like to attempt to log out of all services accessed during your session? Please select <strong>Yes</strong> or <strong>No</strong> to ensure the logout operation completes, or wait a few seconds for Yes.")</p>
+                <br>
+
+                <form id="propagate_form" method="POST" action="$flowExecutionUrl">
+                    <button id="propagate_yes" type="submit" name="_eventId" value="propagate">Yes</button>
+                    <button id="propagate_no" type="submit" name="_eventId" value="end">No</button>
+                </form>
+
+                <br>
+                <p>#springMessageText("idp.logout.contactServices", "If you proceed, the system will attempt to contact the following services:")</p>
+                <ol>
+                #foreach ($sp in $logoutContext.getSessionMap().keySet())
+                    #set ($rpCtx = $multiRPContext.getRelyingPartyContextById($sp))
+                    #if ($rpCtx)
+                      #set ($rpUIContext = $rpCtx.getSubcontext("net.shibboleth.idp.ui.context.RelyingPartyUIContext"))
+                    #end
+                    #if ($rpUIContext and $rpUIContext.getServiceName())
+                      <li>$encoder.encodeForHTML($rpUIContext.getServiceName())</li>
+                    #else
+                      <li>$encoder.encodeForHTML($sp)</li>
+                    #end
+                #end
+                </ol>
+            #else
+                <p><strong>#springMessageText("idp.logout.complete", "The logout operation is complete, and no other services appear to have been accessed during this session.")</strong></p>
+                <!-- If SAML logout with no extra work to do, complete the flow by adding a hidden iframe. -->
+                #if ( $profileRequestContext.getProfileId().contains("saml2/logout") )
+                    <iframe style="display:none" src="$flowExecutionUrl&_eventId=proceed">
+                #end
+            #end
+      </div>
+      <div class="col-sm-8">
+
+        <div class="alert brand-gray25 bordered">
+           <p>
+             <b>ATTENTION</b>: Welcome to the new look of the Shibboleth
+             login service!  For more information about this change,
+             <a href="#">click here</a>.
+           </p>
+           <p>
+             To protect your privacy, <b>completely exit your web browser</b>
+             when finished.
+           </p>
+           <p>
+             Remember that NC State personnel will NEVER ask you to
+             reveal personal information, such as passwords or other
+             restricted data, by email, phone, text, or other means of
+             communication. If you receive such a message or have replied
+             to one, please report it to
+             <a href="mailto:phishing@ncsu.edu">phishing@ncsu.edu</a>.
+           </p>
+        </div>
+
+        <h3>Need help?</h3>
+        <ul>
+        #if ($passwordEnabled)
+        <li>
+          Forgot your <a href="https://oit.ncsu.edu/unityid/">Unity ID
+              or Password?</a>
+        </li>
+        <!-- For OIM Later...
+        <li>
+          Need to <a href="#">Reset your password?</a>
+        </li>
+        -->
+        #end
+        <li>
+          For help with password resets or login issues, contact the
+          NC State Help Desk at 919-515-HELP or
+          <a href="mailto:help@ncsu.edu">help@ncsu.edu</a>.
+        </li>
+        </ul>
+
+      </div>
+    </div>
+
+      <footer>
+      <div class="group page-footer">
+        <div class="col-sm-9">
+          <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>
+        </div>
+        <div class="col-sm-3">
+          #springMessageText("idp.footer.logolink", "footer logo")
+        </div>
+      </div>
+      </footer>
+
+ 	</body>
+</html>

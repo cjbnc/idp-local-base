@@ -1,0 +1,47 @@
+/* local style adjustments */
+/* brand colors as backgrounds */
+.brand-red      { background-color: #cc0000; color: #ffffff; }
+.brand-gray25   { background-color: #cccccc; }
+.brand-reynolds { background-color: #990000; color: #ffffff; }
+
+/* for links on red boxes */
+.brand-reynolds a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.brand-reynolds a:hover,
+.brand-reynolds a:focus {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+/* page tweaks */
+.bordered { border: 1px solid #000; }
+.margin-after { margin-bottom: 15px; }
+.form-signin-heading { margin-top: 0; }
+.page-footer {
+    margin-top: 15px;
+    border-top: 1px solid #000000;
+    padding-top: 5px;
+}
+
+/* ncsu bootstrap missing a dark gray button */
+.btn-gray60 {
+  color: #ffffff;
+  background-color: #666666;
+  border: none;
+}
+.btn-gray60:hover,
+.btn-gray60:focus,
+.btn-gray60:active,
+.btn-gray60.active,
+.open .dropdown-toggle.btn-gray60 {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+/* consent page tweaks */
+#attributeRelease th {
+  background-color: #990000;
+}

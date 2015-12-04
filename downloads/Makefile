@@ -11,9 +11,9 @@ POLICY_FILE := jce_policy-$(POLICY_VER).zip
 POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 
 # Jetty
-JETTY_VER  := 9.3.3.v20150827
+JETTY_VER  := 9.3.6.v20151106
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 2972a728bdfba8b1f32d2b4a109abcd7f0c00263
+JETTY_SUM  := 9dfe91cb306b67d58857bfa1aace0bd303e4e3d1
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -31,7 +31,7 @@ DTA_FILE := jetty9-dta-ssl-$(DTA_VER).jar
 DTA_SUM  := 2f547074b06952b94c35631398f36746820a7697
 
 # NCSU custom LoginHandler
-NCSUAD_VER  := 1.0.7-1.0
+NCSUAD_VER  := 1.0.7-1.1
 NCSUAD_FILE := jaas-ncsuadloginmodule-$(NCSUAD_VER).jar 
 NCSUAD_SUM  := 89096c30a79750173d2e15a721ed19676d2d68e9
 
@@ -80,7 +80,7 @@ $(DTA_FILE):
 		https://build.shibboleth.net/nexus/content/repositories/releases/net/shibboleth/utilities/jetty9/jetty9-dta-ssl/$(DTA_VER)/$(DTA_FILE)
 	echo "$(DTA_SUM)  $(DTA_FILE)" | sha1sum -c -
 
-$(NCSUAD_FILE):
+$(NCSUAD_FILE): /afs/unity/web/s/shib/src/$(NCSUAD_FILE)
 	cp -f /afs/unity/web/s/shib/src/$(NCSUAD_FILE) $(NCSUAD_FILE)
 	# echo "$(NCSUAD_SUM)  $(NCSUAD_FILE)" | sha1sum -c -
 

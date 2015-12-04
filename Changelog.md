@@ -1,5 +1,14 @@
 # Changelog
 
+## 2015/Dec/03-16:43 - bld1512031643
+    - enable rewrites in idp-rewrite configs
+    - update Jetty to 9.3.6.v20151106
+    - added ncsu-themed template files and images
+    - removed remember my userid box from login
+    - added message/handler for disabled accounts
+    - update to jaas-ncsuadloginmodule-1.0.7-1.1
+    - PasswordExpiring flow is not working due to IdP bug
+
 ## 2015/Nov/20-15:59 - bld1511201559
     - refactor unicon/shibboleth-idp base into this Dockerfile
     - move package downloads out of the Dockerfile
