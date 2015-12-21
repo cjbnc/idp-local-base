@@ -21,9 +21,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 3.2.0
+IDP_VER  := 3.2.1
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 5d17a0626a83791830e5842357f30369142efe322a1fdcf7b24c832924dbb98b
+IDP_SUM  := 9d509e4c54cba5de8b63fba9a59c90138f289f8126ab7849f8a42392432a1317
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0

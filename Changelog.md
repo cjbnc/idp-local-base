@@ -1,5 +1,8 @@
 # Changelog
 
+## 2015/Dec/21-09:55 - bld1512210955
+    - rebuild with IdP 3.2.1
+
 ## 2015/Dec/03-16:43 - bld1512031643
     - enable rewrites in idp-rewrite configs
     - update Jetty to 9.3.6.v20151106

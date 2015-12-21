@@ -50,7 +50,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=3.2.0; \
+    shibidp_version=3.2.1; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain \
