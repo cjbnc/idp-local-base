@@ -1,7 +1,8 @@
 # Changelog
 
-## 2015/Dec/21-09:55 - bld1512210955
+## 2015/Dec/21-10:58 - bld1512211058
     - rebuild with IdP 3.2.1
+    - re-added "which" package removed from latest centos7 base
 
 ## 2015/Dec/03-16:43 - bld1512031643
     - enable rewrites in idp-rewrite configs

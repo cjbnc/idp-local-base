@@ -9,8 +9,10 @@ ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
 ENV PATH $PATH:$JRE_HOME/bin:/opt/container-scripts
 
+# build tools: tar unzip
+# standard tools missing from base: which
 RUN yum -y update \
-    && yum -y install tar unzip
+    && yum -y install tar unzip which
 
 # preloaded install files go to /tmp
 ADD downloads/ /tmp/
