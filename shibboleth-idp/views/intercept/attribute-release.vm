@@ -46,7 +46,7 @@
         <div class="col-sm-6">
           <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
           #if ($rpOrganizationLogo)
-          <img src="$encoder.encodeForHTMLAttribute($rpOrganizationLogo)" alt="logo for $encoder.encodeForHTMLAttribute($serviceName)" class="organization_logo">
+          <img src="$encoder.encodeForHTMLAttribute($rpOrganizationLogo)" alt="logo for $encoder.encodeForHTMLAttribute($serviceName)">
           #end
         </div>
         <div class="col-sm-6">

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Jan/07-10:13 - bld1601071013
+    - clean up the SP info bits on the velocity templates
+
 ## 2015/Dec/21-10:58 - bld1512211058
     - rebuild with IdP 3.2.1
     - re-added "which" package removed from latest centos7 base
