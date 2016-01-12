@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016/Jan/12-15:06 - bld1601121506
+    - add http://tuckey.org/urlrewrite/ lib for robust rewrite rules
+    - removed jetty-rewrite configs
+
 ## 2016/Jan/07-10:13 - bld1601071013
     - clean up the SP info bits on the velocity templates
 

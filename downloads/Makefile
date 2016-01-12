@@ -35,16 +35,23 @@ NCSUAD_VER  := 1.0.7-1.1
 NCSUAD_FILE := jaas-ncsuadloginmodule-$(NCSUAD_VER).jar 
 NCSUAD_SUM  := 89096c30a79750173d2e15a721ed19676d2d68e9
 
+# URL Rewrite Lib
+REWRITE_VER  := 4.0.3
+REWRITE_FILE := urlrewritefilter-$(REWRITE_VER).jar
+REWRITE_SUM  := 1a4b56629cacf3ec8d530405af2db018a679575e
+
 .PHONY: all clean
 
 all: $(JAVA_FILE) $(POLICY_FILE) \
 	 $(JETTY_FILE) $(LIBSETUID_FILE) \
-	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE)
+	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
+	 $(REWRITE_FILE)
 
 clean:
 	rm -f $(JAVA_FILE) $(POLICY_FILE) \
 		  $(JETTY_FILE) $(LIBSETUID_FILE) \
-		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE)
+		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
+		  $(REWRITE_FILE)
 
 $(JAVA_FILE):
 	wget -O $(JAVA_FILE) \
@@ -83,4 +90,9 @@ $(DTA_FILE):
 $(NCSUAD_FILE): /afs/unity/web/s/shib/src/$(NCSUAD_FILE)
 	cp -f /afs/unity/web/s/shib/src/$(NCSUAD_FILE) $(NCSUAD_FILE)
 	# echo "$(NCSUAD_SUM)  $(NCSUAD_FILE)" | sha1sum -c -
+
+$(REWRITE_FILE):
+	wget -O $(REWRITE_FILE) \
+	    http://urlrewritefilter.googlecode.com/files/$(REWRITE_FILE)
+	echo "$(REWRITE_SUM)  $(REWRITE_FILE)" | sha1sum -c -
 
