@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016/Jan/13-14:33 - bld1601131433
+
+    - split sidebar content out of login and logout templates
+
 ## 2016/Jan/12-15:06 - bld1601121506
     - add http://tuckey.org/urlrewrite/ lib for robust rewrite rules
     - removed jetty-rewrite configs
