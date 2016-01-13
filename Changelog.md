@@ -1,8 +1,8 @@
 # Changelog
 
 ## 2016/Jan/13-14:33 - bld1601131433
-
     - split sidebar content out of login and logout templates
+    - changed logout default message, for pre-SLO
 
 ## 2016/Jan/12-15:06 - bld1601121506
     - add http://tuckey.org/urlrewrite/ lib for robust rewrite rules
