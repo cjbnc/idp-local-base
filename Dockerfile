@@ -11,8 +11,9 @@ ENV PATH $PATH:$JRE_HOME/bin:/opt/container-scripts
 
 # build tools: tar unzip
 # standard tools missing from base: which
+# wants cron: cronie
 RUN yum -y update \
-    && yum -y install tar unzip which
+    && yum -y install tar unzip which cronie
 
 # preloaded install files go to /tmp
 ADD downloads/ /tmp/
@@ -83,21 +84,24 @@ RUN yum -y remove tar unzip; \
     yum clean all; \
     rm -rf /tmp/*
 
+# set container to log in our timezone
+ENV TZ=America/New_York
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# set perms, making sure metadata and logs are writable
 RUN useradd jetty -U -s /bin/false \
     && chown -R jetty:root /opt/jetty \
     && chown -R jetty:root /opt/iam-jetty-base \
-    && chown -R jetty:root /opt/shibboleth-idp/logs
+    && chown -R jetty:root /opt/shibboleth-idp/logs \
+    && chown -R jetty:root /opt/shibboleth-idp/metadata
 
 # startup script and friends
 ADD container-scripts/ /opt/container-scripts/
 RUN chmod -R +x /opt/container-scripts/
 
-# we store backing files in metadata dir, so it must be writable
-RUN chown -R jetty:root /opt/shibboleth-idp/metadata
-
-# set container to log in our timezone
-ENV TZ=America/New_York
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# setup the cron updates
+ADD cron-scripts/ /opt/cron-scripts/
+RUN crontab /opt/cron-scripts/crontab
 
 # want external logs
 VOLUME [ "/opt/iam-jetty-base/logs", \

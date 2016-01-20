@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016/Jan/19-13:57 - bld1601191357
+    - added container-scripts/update-configs.sh
+    - add cron pieces to run update-configs.sh periodically
+
 ## 2016/Jan/13-14:33 - bld1601131433
     - split sidebar content out of login and logout templates
     - changed logout default message, for pre-SLO
