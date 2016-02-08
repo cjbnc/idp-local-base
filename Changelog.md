@@ -1,5 +1,14 @@
 # Changelog
 
+## 2016/Feb/08-13:14 - bld1602081314
+    - fixed https urls in footer
+    - added a placeholder "click here" to sidebar
+    - removed OIT logo from footers
+    - reformed HTML+CSS for info release options
+    - removed info release options, reformatted info page
+    - update Java to 8u74
+    - update Jetty to 9.3.7.v20160115
+
 ## 2016/Jan/19-13:57 - bld1601191357
     - added container-scripts/update-configs.sh
     - add cron pieces to run update-configs.sh periodically

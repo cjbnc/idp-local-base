@@ -84,10 +84,10 @@
               ##</label>
             #end
 
-              <label class="checkbox">
-                <input id="_shib_idp_revokeConsent" type="checkbox" name="_shib_idp_revokeConsent" value="true">
-                #springMessageText("idp.attribute-release.revoke", "Clear prior granting of permission for release of your information to this service.")
-              </label>
+              ##<label class="checkbox">
+              ##  <input id="_shib_idp_revokeConsent" type="checkbox" name="_shib_idp_revokeConsent" value="true">
+              ##  #springMessageText("idp.attribute-release.revoke", "Clear prior granting of permission for release of your information to this service.")
+              ##</label>
 
             #if ($passwordEnabled)
                 <button id="formSubmit" class="btn btn-gray60 btn-block" 
@@ -129,11 +129,11 @@
           //    added SP information.
           //
         *#
-        #set ($logo = $rpUIContext.getLogo())
-        #if ($logo)
-          <img src= "$encoder.encodeForHTMLAttribute($logo)"
-              alt="$encoder.encodeForHTMLAttribute($serviceName)">
-        #end
+##        #set ($logo = $rpUIContext.getLogo())
+##        #if ($logo)
+##          <img src= "$encoder.encodeForHTMLAttribute($logo)"
+##              alt="$encoder.encodeForHTMLAttribute($serviceName)">
+##        #end
         #set ($desc = $rpUIContext.getServiceDescription())
         #if ($desc)
           $encoder.encodeForHTML($desc)
@@ -150,7 +150,7 @@
           <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>
         </div>
         <div class="col-sm-3">
-          #springMessageText("idp.footer.logolink", "footer logo")
+          ## #springMessageText("idp.footer.logolink", "footer logo")
         </div>
       </div>
       </footer>

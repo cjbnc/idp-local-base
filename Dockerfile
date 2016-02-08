@@ -2,12 +2,13 @@ FROM centos:centos7
 
 MAINTAINER Charles Brabec <brabec@ncsu.edu>
 
-ENV JRE_HOME /opt/jre1.8.0_65
-ENV JAVA_HOME /opt/jre1.8.0_65
+ENV JRE_HOME /opt/jre1.8.0_74
+ENV JAVA_HOME /opt/jre1.8.0_74
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
 ENV PATH $PATH:$JRE_HOME/bin:/opt/container-scripts
+ENV TZ   America/New_York
 
 # build tools: tar unzip
 # standard tools missing from base: which
@@ -20,7 +21,7 @@ ADD downloads/ /tmp/
 
 # Install Java
 RUN set -x; \
-    java_version=8u65; \
+    java_version=8u74; \
     tar -zxvf /tmp/jre-$java_version-linux-x64.tar.gz -C /opt
 
 # Base image does not have the JCE Unlimited rules
@@ -33,7 +34,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.3.6.v20151106; \
+    jetty_version=9.3.7.v20160115; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -45,7 +46,7 @@ RUN set -x; \
     && $JRE_HOME/bin/java -jar ../jetty/start.jar --add-to-startd=http,https,deploy,ext,annotations,jstl,logging,setuid \
     && sed -i 's/# jetty.http.port=8080/jetty.http.port=80/g' /opt/iam-jetty-base/start.d/http.ini \
     && sed -i 's/# jetty.ssl.port=8443/jetty.ssl.port=443/g' /opt/iam-jetty-base/start.d/ssl.ini \
-    && sed -i 's/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"\/>/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"><Set name="showContexts">false<\/Set><\/New>/g' /opt/jetty/etc/jetty.xml
+    && sed -i 's/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"\/>/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"><Set name="showContexts">false<\/Set><\/New>/g' /opt/jetty/etc/jetty.xml 
 
 # Place libsetuid
 RUN set -x; \
@@ -85,7 +86,6 @@ RUN yum -y remove tar unzip; \
     rm -rf /tmp/*
 
 # set container to log in our timezone
-ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # set perms, making sure metadata and logs are writable
