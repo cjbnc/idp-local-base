@@ -1,5 +1,11 @@
 # Changelog
 
+## 2016/Feb/22-14:52 - bld1602221452
+    - sidebar and stale page messages changed
+    - added script to copy/update sealer key
+    - consolidated cron-scripts
+    - add call to update_configs.sh at startup
+
 ## 2016/Feb/08-13:14 - bld1602081314
     - fixed https urls in footer
     - added a placeholder "click here" to sidebar

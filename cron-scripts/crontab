@@ -1,2 +1,2 @@
 # look for idp config changes twice per hour
-7,37 * * * * /opt/container-scripts/update-configs.sh
+7,37 * * * * /opt/cron-scripts/update_configs.sh
