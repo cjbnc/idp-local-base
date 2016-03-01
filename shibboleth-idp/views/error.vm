@@ -40,8 +40,8 @@
 #end
 ##
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="en-US">
+  <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     	<title>$title - $titleSuffix</title>
@@ -52,26 +52,30 @@
         <![endif]-->
         <link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/bs-tweaks.css">
         <link rel="shortcut icon" href="$request.getContextPath()/images/favicon.ico" />
-    </head>
-    <body>
+  </head>
+  <body>
     <a class="sr-only" href="#content">Skip to main content</a>
 
     <div class="bs-header">
       <div class="container">
+       <header role="banner">
         <div class="col-sm-8">
           <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
-          <h3>$title - $titleSuffix</h3>
         </div>
+       </header>
       </div>
     </div>
 
     <div class="container" id="content">
-      <div class="col-sm-8">
-            #evaluate($message)
-      </div>
+      <main role="main">
+        <div class="col-sm-8">
+          <h1>$title - $titleSuffix</h1>
+          #evaluate($message)
+        </div>
+      </main>
   	</div>
 
-      <footer>
+    <footer role="contentinfo">
       <div class="group page-footer">
         <div class="col-sm-9">
           <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>
@@ -80,7 +84,7 @@
           ## #springMessageText("idp.footer.logolink", "footer logo")
         </div>
       </div>
-      </footer>
+    </footer>
       	
-    </body>
+  </body>
 </html>

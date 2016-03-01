@@ -4,6 +4,11 @@
 .brand-gray25   { background-color: #cccccc; }
 .brand-reynolds { background-color: #990000; color: #ffffff; }
 
+/* on gray25, all links use reynolds red for more contrast */
+.brand-gray25 a {
+  color: #990000;
+}
+
 /* for links on red boxes */
 .brand-reynolds a {
   color: #ffffff;
@@ -21,9 +26,9 @@
 .margin-after { margin-bottom: 15px; }
 .form-signin-heading { margin-top: 0; }
 .page-footer {
-    margin-top: 15px;
-    border-top: 1px solid #000000;
-    padding-top: 5px;
+  margin-top: 15px;
+  border-top: 1px solid #000000;
+  padding-top: 5px;
 }
 
 /* ncsu bootstrap missing a dark gray button */
@@ -39,5 +44,12 @@
 .open .dropdown-toggle.btn-gray60 {
   color: #ffffff;
   background-color: #000000;
+}
+
+/* stylize h1,h2 same as h3 in shib forms */
+h1, .h1, h2, .h2 {
+  font-size: 21px;
+  font-family: UniversCondensed,Arial,sans-serif;
+  font-weight: 700;
 }
 

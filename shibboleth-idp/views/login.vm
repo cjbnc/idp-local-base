@@ -27,7 +27,7 @@
 #end
 ##
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   	<head>
     	<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,19 +45,23 @@
 
     <div class="bs-header">
       <div class="container">
+       <header role="banner">
         <div class="col-sm-4">
           <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
         </div>
+       </header>
       </div>
     </div>
 
     <div class="container" id="content">
+     <main role="main">
       <div class="col-sm-4">
+        <h1 class="sr-only">NC State Shibboleth Login</h1>
 
         ## places errors in separate box
         #parse("login-error.vm")
 
-        <div class="alert brand-reynolds bordered">
+        <div class="alert brand-reynolds bordered" role="form" aria-label="login form">
 
             <form name="loginform" action="$flowExecutionUrl" 
                   method="post" class="form-signin" role="form">
@@ -71,7 +75,7 @@
                     id="username" name="j_username" type="text" 
                     placeholder="#springMessageText("idp.login.username", "Username")"
                 	value="#if($username)$encoder.encodeForHTML($username)#end"
-                    required autofocus>
+                    required>
 
                 <label for="password">#springMessageText("idp.login.password", "Password")</label>
                 <input class="form-control" 
@@ -109,6 +113,8 @@
 
         </div>
       </div>
+     </main>
+     <aside role="complementary">
       <div class="col-sm-8">
 
         #set ($serviceName = $rpUIContext.serviceName)
@@ -142,9 +148,10 @@
         #include( "sidebar.html" )
 
       </div>
+     </aside>
     </div>
 
-      <footer>
+      <footer role="contentinfo">
       <div class="group page-footer">
         <div class="col-sm-9">
           <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>

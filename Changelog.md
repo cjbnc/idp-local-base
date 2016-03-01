@@ -1,5 +1,16 @@
 # Changelog
 
+## 2016/Mar/01-11:44 - bld1603011144
+    - moved webapp/* to edit-webapp/ as recommended
+    - fixing accesibility issues:
+        - set lang="en-US" on all templates
+        - tweak CSS to use darker red links on gray background
+        - label bare-URL link in sidebar text
+        - removed autofocus from forms
+        - remove 3rd column of hidden data from IR page table
+        - adds ARIA landmarks to pages
+        - ensure content section exists to match all jump links
+
 ## 2016/Feb/22-14:52 - bld1602221452
     - sidebar and stale page messages changed
     - added script to copy/update sealer key

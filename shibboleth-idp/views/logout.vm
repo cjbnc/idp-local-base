@@ -15,7 +15,7 @@
 ## custom - arbitrary object injected by deployer
 ##
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,16 +36,19 @@
 
     <div class="bs-header">
       <div class="container">
+       <header role="banner">
         <div class="col-sm-4">
           <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
         </div>
+       </header>
       </div>
     </div>
 
     <div class="container" id="content">
+     <main role="main">
       <div class="col-sm-4">
 
-            <p>You have successfully logged out.</p>
+            <h1>You have successfully logged out.</h1>
             <br>
     
             #if ( $logoutContext and !$logoutContext.getSessionMap().isEmpty() )
@@ -80,12 +83,15 @@
                 #end
             #end
       </div>
+    </main>
+    <aside role="complementary">
       <div class="col-sm-8">
       #include( "sidebar.html")
       </div>
+    </aside>
     </div>
 
-      <footer>
+      <footer role="contentinfo">
       <div class="group page-footer">
         <div class="col-sm-9">
           <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>

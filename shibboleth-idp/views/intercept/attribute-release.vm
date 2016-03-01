@@ -24,7 +24,7 @@
 #set ($rpOrganizationName = $rpUIContext.organizationName)
 ##
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,13 +44,16 @@
     <div class="bs-header">
       <div class="container">
         <div class="col-sm-6">
+         <header role="banner">
           <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
 ##          #if ($rpOrganizationLogo)
 ##          <img src="$encoder.encodeForHTMLAttribute($rpOrganizationLogo)" alt="logo for $encoder.encodeForHTMLAttribute($serviceName)">
 ##          #end
+         </header>
         </div>
         <div class="col-sm-6">
                 #if ($serviceName)
+                    <h3 class="sr-only">Service Information</h3>
                     <p style="margin-top: 10px;">
                         #springMessageText("idp.attribute-release.serviceNameLabel", "You are about to access the service:")<br>
                         <span class="service_name">$serviceName</span>
@@ -76,7 +79,10 @@
     </div>
 
     <div class="container" id="content">
-        <form action="$flowExecutionUrl" method="post" style="padding:10px" >
+      <main role="main">
+        <h1 class="sr-only">#springMessageText("idp.attribute-release.title", "Information Release")</h1>
+        <form action="$flowExecutionUrl" method="post" style="padding:10px" 
+              role="form" aria-label="information release form">
             <div class="col-sm-2">
             </div>
             <div class="col-sm-8">
@@ -86,14 +92,15 @@
                     </p>
                     <p style="text-align: center; margin-top: 10px;">
                         <input type="submit" name="_eventId_AttributeReleaseRejected" value="#springMessageText("idp.attribute-release.reject", "Reject")" style="margin-right: 30px;">
-                        <input type="submit" name="_eventId_proceed" value="#springMessageText("idp.attribute-release.accept", "Accept")" autofocus="true">
+                        <input type="submit" name="_eventId_proceed" value="#springMessageText("idp.attribute-release.accept", "Accept")">
                     </p>
                 </div>
                 <div id="attributeRelease">
                     <table>
                         <thead>
                             <tr>
-                                <th colspan="3">
+## changed this from 3 to 2, see hidden attributes below
+                                <th colspan="2">
                                     #springMessageText("idp.attribute-release.attributesHeader", "Information to be Provided to Service")
                                 </th>
                             </tr>
@@ -107,13 +114,15 @@
                                             <strong>$encoder.encodeForHTML($value.getDisplayValue())</strong>
                                             <br>
                                         #end
-                                    </td>
-                                    <td style="vertical-align: top">
-                                        #if ($attributeReleaseFlowDescriptor.perAttributeConsentEnabled)
-                                            #set ($inputType = "checkbox")
-                                        #else
+## removing third column of hidden attributes, 
+## placing those into second column
+##                                    </td>
+##                                    <td style="vertical-align: top">
+##                                        #if ($attributeReleaseFlowDescriptor.perAttributeConsentEnabled)
+##                                            #set ($inputType = "checkbox")
+##                                        #else
                                             #set ($inputType = "hidden")
-                                        #end
+##                                        #end
                                         <input id="$attribute.id" type="$inputType" name="_shib_idp_consentIds" value="$encoder.encodeForHTML($attribute.id)" checked>
                                     </td>
                                 </tr>
@@ -187,9 +196,10 @@
             <div class="col-sm-2">
             </div>
         </form>
+       </main>
       </div>
 
-      <footer>
+      <footer role="contentinfo">
       <div class="group page-footer">
         <div class="col-sm-9">
           <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>
