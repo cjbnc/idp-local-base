@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Mar/02-14:53 - bld1603021453
+    - configured view/messages for expiring password flow
+
 ## 2016/Mar/01-11:44 - bld1603011144
     - moved webapp/* to edit-webapp/ as recommended
     - fixing accesibility issues:
