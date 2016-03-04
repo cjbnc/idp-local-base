@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Mar/04-13:00 - bld1603041300
+    - rewrite password expiring text for better flow
+
 ## 2016/Mar/02-14:53 - bld1603021453
     - configured view/messages for expiring password flow
 
