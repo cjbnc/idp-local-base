@@ -5,6 +5,7 @@
 #   to /opt/shibboleth-idp
 # with chown and taking care to check for empty source files
 
+TOUCHFILE=/tmp/idp-config-update.log
 VERBOSE=0
 while [[ $# > 0 ]]; do
   key="$1"
@@ -25,6 +26,7 @@ for src in $files; do
       [ $VERBOSE == 1 ] && echo "    copy to $dst"
       /bin/cp -f "$src" "$dst"
       /bin/chown root.root "$dst"
+      /bin/date +%s > $TOUCHFILE
     fi
   else
     echo "WARN: unreadable or empty file: $src"

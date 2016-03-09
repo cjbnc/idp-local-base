@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Mar/09-15:52 - bld1603091552
+    - adds touchfile to monitor config updates
+
 ## 2016/Mar/04-13:00 - bld1603041300
     - rewrite password expiring text for better flow
 
