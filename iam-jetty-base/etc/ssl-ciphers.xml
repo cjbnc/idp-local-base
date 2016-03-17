@@ -1,0 +1,13 @@
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" 
+          "http://www.eclipse.org/jetty/configure_9_3.dtd">
+<!-- Tweak SsslContextFactory Includes / Excludes -->
+<Configure id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
+  <Call name="addExcludeCipherSuites">
+    <Arg>
+      <Array type="String">
+        <!-- Qualys says: no DHE with 1024bit keys -->
+        <Item>.*_DHE_RSA_.*</Item>
+      </Array>
+    </Arg>
+  </Call>
+</Configure>

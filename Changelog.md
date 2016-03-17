@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Mar/17-12:21 - bld1603171221
+    - adjust SSL settings for better https security
+
 ## 2016/Mar/09-15:52 - bld1603091552
     - adds touchfile to monitor config updates
 
