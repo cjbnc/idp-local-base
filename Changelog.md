@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/May/02-10:23 - bld1605021023
+    - minor changes to text on password reminder page
+
 ## 2016/Mar/17-12:21 - bld1603171221
     - adjust SSL settings for better https security
 
