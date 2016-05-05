@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/May/05-11:54 - bld1605051154
+    - change sealer keep policy to 90 days
+
 ## 2016/May/02-10:23 - bld1605021023
     - minor changes to text on password reminder page
     - add correct sysnews link to sidebar

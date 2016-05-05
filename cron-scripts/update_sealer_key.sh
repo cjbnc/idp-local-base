@@ -24,4 +24,5 @@ java -cp "$IDPHOME/webapp/WEB-INF/lib/*" \
   --storefile $KEYDIR/sealer.jks \
   --versionfile $KEYDIR/sealer.kver \
   --alias secret \
+  --count 90 \
   --storepass $KEYPASS
