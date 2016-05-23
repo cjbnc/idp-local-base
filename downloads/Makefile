@@ -1,9 +1,9 @@
 # pre-download all of the packages needed to build the docker image
 
 # Oracle Java 1.8
-JAVA_VER  := 8u74
+JAVA_VER  := 8u92
 JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
-JAVA_SUM  := 9c8663a5a67429d423ed1da554a7f93d1c7e50f6bb4bc5e0bbde1f512cf36d95
+JAVA_SUM  := e8469bcf55e388770cd6b6a51b082ce7a5a3149b4039a71b1edeed2796dcefe4
 
 # JCE Policy 
 POLICY_VER  := 8
@@ -11,9 +11,9 @@ POLICY_FILE := jce_policy-$(POLICY_VER).zip
 POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 
 # Jetty
-JETTY_VER  := 9.3.7.v20160115
+JETTY_VER  := 9.3.9.v20160517
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 027f82087526261bdca768a2e86e43f25723bf06
+JETTY_SUM  := 8c800198445720a64301ebdf23493e530e7c528c
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -57,7 +57,7 @@ $(JAVA_FILE):
 	wget -O $(JAVA_FILE) \
 		--no-check-certificate --no-cookies \
 		--header "Cookie: oraclelicense=accept-securebackup-cookie" \
-		http://download.oracle.com/otn-pub/java/jdk/$(JAVA_VER)-b02/$(JAVA_FILE)
+		http://download.oracle.com/otn-pub/java/jdk/$(JAVA_VER)-b14/$(JAVA_FILE)
 	echo "$(JAVA_SUM)  $(JAVA_FILE)" | sha256sum -c -
 
 $(POLICY_FILE):

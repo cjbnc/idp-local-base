@@ -18,7 +18,7 @@ latest: Dockerfile
 
 cleanall: 
 	for id in `docker images | grep $(IMAGE) | awk '{ print $$3 }' | sort | uniq`; do \
-	  docker rmi $$id; \
+	  docker rmi -f $$id; \
 	done
 
 status:

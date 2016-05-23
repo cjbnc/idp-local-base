@@ -2,8 +2,8 @@ FROM centos:centos7
 
 MAINTAINER Charles Brabec <brabec@ncsu.edu>
 
-ENV JRE_HOME /opt/jre1.8.0_74
-ENV JAVA_HOME /opt/jre1.8.0_74
+ENV JRE_HOME /opt/jre1.8.0_92
+ENV JAVA_HOME /opt/jre1.8.0_92
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
@@ -21,7 +21,7 @@ ADD downloads/ /tmp/
 
 # Install Java
 RUN set -x; \
-    java_version=8u74; \
+    java_version=8u92; \
     tar -zxvf /tmp/jre-$java_version-linux-x64.tar.gz -C /opt
 
 # Base image does not have the JCE Unlimited rules
@@ -34,7 +34,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.3.7.v20160115; \
+    jetty_version=9.3.9.v20160517; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -107,8 +107,8 @@ RUN crontab /opt/cron-scripts/crontab
 VOLUME [ "/opt/iam-jetty-base/logs", \
          "/opt/shibboleth-idp/logs" ]
 
-## Opening 443 (browser TLS), 8443 (SOAP/mutual TLS auth)... 80 specifically not included.
-EXPOSE 443 8443
+## Opening 80 (for local checks only), 443 (browser TLS), 8443 (SOAP/mutual TLS auth)
+EXPOSE 80 443 8443
 
 CMD ["run-shibboleth.sh"]
 

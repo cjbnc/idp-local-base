@@ -1,5 +1,11 @@
 # Changelog
 
+## 2016/May/23-11:58 - bld1605231158
+    - added port 80 to EXPOSE list
+    - rebuild with latest centos7 distro
+    - update Java to 8u92
+    - update Jetty to 9.3.9.v20160517
+
 ## 2016/May/05-11:54 - bld1605051154
     - change sealer keep policy to 90 days
 
