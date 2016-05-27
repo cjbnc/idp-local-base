@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016/May/27-09:10 - bld1605270910
+    - adds duo_shibboleth.zip to downloads
+    - unpacks duo_shibboleth for use by other installs
+
 ## 2016/May/23-11:58 - bld1605231158
     - added port 80 to EXPOSE list
     - rebuild with latest centos7 distro

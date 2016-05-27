@@ -7,6 +7,7 @@ ENV JAVA_HOME /opt/jre1.8.0_92
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
+ENV DUO_BASE /opt/duo_shibboleth
 ENV PATH $PATH:$JRE_HOME/bin:/opt/container-scripts
 ENV TZ   America/New_York
 
@@ -75,6 +76,12 @@ RUN set -x; \
 RUN set -x; \
     cp /tmp/jaas-ncsuadloginmodule-1.0.7-1.1.jar \
        /opt/shibboleth-idp/webapp/WEB-INF/lib/
+
+# Unpack Duo plugin but do not configure
+RUN set -x; \
+    cd /tmp; \
+    unzip -o duo_shibboleth.zip \
+    && mv -f duo_shibboleth-master $DUO_BASE 
 
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/

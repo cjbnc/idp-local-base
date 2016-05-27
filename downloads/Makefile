@@ -40,18 +40,24 @@ REWRITE_VER  := 4.0.3
 REWRITE_FILE := urlrewritefilter-$(REWRITE_VER).jar
 REWRITE_SUM  := 1a4b56629cacf3ec8d530405af2db018a679575e
 
+# Duo Plugin
+DUO_VER  := unused
+DUO_FILE := duo_shibboleth.zip
+DUO_SUM  := 08f911b38c711e7e3c41e96116c599067166f18a
+
+
 .PHONY: all clean
 
 all: $(JAVA_FILE) $(POLICY_FILE) \
 	 $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-	 $(REWRITE_FILE)
+	 $(REWRITE_FILE) $(DUO_FILE)
 
 clean:
 	rm -f $(JAVA_FILE) $(POLICY_FILE) \
 		  $(JETTY_FILE) $(LIBSETUID_FILE) \
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-		  $(REWRITE_FILE)
+		  $(REWRITE_FILE) $(DUO_FILE)
 
 $(JAVA_FILE):
 	wget -O $(JAVA_FILE) \
@@ -95,4 +101,9 @@ $(REWRITE_FILE):
 	wget -O $(REWRITE_FILE) \
 	    http://urlrewritefilter.googlecode.com/files/$(REWRITE_FILE)
 	echo "$(REWRITE_SUM)  $(REWRITE_FILE)" | sha1sum -c -
+
+$(DUO_FILE):
+	wget -O $(DUO_FILE) \
+		https://github.com/duosecurity/duo_shibboleth/archive/master.zip
+	# echo "$(DUO_SUM)  $(DUO_FILE)" | sha1sum -c -
 
