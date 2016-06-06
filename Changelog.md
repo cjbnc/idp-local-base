@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Jun/06-10:06 - bld1606061006
+    - monthly rebuild for os updates
+
 ## 2016/May/27-09:10 - bld1605270910
     - adds duo_shibboleth.zip to downloads
     - unpacks duo_shibboleth for use by other installs
