@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016/Jun/09-14:00 - bld1606091400
+    - reconfigure SSL cipher rules to override new Jetty defaults
+      Jetty 9.3.8+ disables ALL ciphers for TLS < 1.2
+
 ## 2016/Jun/06-10:06 - bld1606061006
     - monthly rebuild for os updates
 

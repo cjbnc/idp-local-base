@@ -2,11 +2,27 @@
           "http://www.eclipse.org/jetty/configure_9_3.dtd">
 <!-- Tweak SsslContextFactory Includes / Excludes -->
 <Configure id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
+  <Set name="IncludeCipherSuites">
+    <Array type="String">
+      <!-- this enforces the preferred order -->
+      <Item>TLS_ECDHE.*</Item>
+      <Item>TLS_RSA_WITH_AES.*</Item>
+      <Item>TLS_RSA_WITH_3DES_EDE_CBC_SHA</Item>
+    </Array>
+  </Set>
+  <Call name="setExcludeCipherSuites">
+    <Arg>
+      <Array type="String">
+        <!-- empty list, removes Jetty defaults -->
+      </Array>
+    </Arg>
+  </Call>
   <Call name="addExcludeCipherSuites">
     <Arg>
       <Array type="String">
         <!-- Qualys says: no DHE with 1024bit keys -->
         <Item>.*_DHE_RSA_.*</Item>
+        <Item>.*_NULL_.*</Item>
       </Array>
     </Arg>
   </Call>
