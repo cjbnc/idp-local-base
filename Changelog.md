@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Jun/15-15:58 - bld1606151558
+    - added requestlog configs to enable extended logging and timezone
+
 ## 2016/Jun/09-14:00 - bld1606091400
     - reconfigure SSL cipher rules to override new Jetty defaults
       Jetty 9.3.8+ disables ALL ciphers for TLS < 1.2
