@@ -14,7 +14,7 @@ help:
 latest: Dockerfile
 	(cd downloads; make all)
 	docker build -t $(IMAGE):bld$(DATE) .
-	docker tag -f $(IMAGE):bld$(DATE) $(IMAGE):latest
+	docker tag $(IMAGE):bld$(DATE) $(IMAGE):latest
 
 cleanall: 
 	for id in `docker images | grep $(IMAGE) | awk '{ print $$3 }' | sort | uniq`; do \

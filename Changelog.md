@@ -1,11 +1,17 @@
 # Changelog
 
+## 2016/Jul/11-11:35 - bld1607111135
+    - monthly rebuild for os updates
+    - update Jetty to 9.3.10.v20160621
+
 ## 2016/Jun/15-15:58 - bld1606151558
     - added requestlog configs to enable extended logging and timezone
 
 ## 2016/Jun/09-14:00 - bld1606091400
     - reconfigure SSL cipher rules to override new Jetty defaults
       Jetty 9.3.8+ disables ALL ciphers for TLS < 1.2
+    - will no longer support IE8 / XP = TLSv1.0 DES-CBC3-SHA,
+      but other TLS1 and TLS1.1 browsers work with the right ciphers
 
 ## 2016/Jun/06-10:06 - bld1606061006
     - monthly rebuild for os updates
