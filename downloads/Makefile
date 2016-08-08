@@ -1,9 +1,9 @@
 # pre-download all of the packages needed to build the docker image
 
 # Oracle Java 1.8
-JAVA_VER  := 8u92
+JAVA_VER  := 8u102
 JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
-JAVA_SUM  := e8469bcf55e388770cd6b6a51b082ce7a5a3149b4039a71b1edeed2796dcefe4
+JAVA_SUM  := 214ff6b52f5b1bccfc139dca910cea25f6fa19b9b96b4e3c10e699cd3e780dfb
 
 # JCE Policy 
 POLICY_VER  := 8
@@ -11,9 +11,9 @@ POLICY_FILE := jce_policy-$(POLICY_VER).zip
 POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 
 # Jetty
-JETTY_VER  := 9.3.10.v20160621
+JETTY_VER  := 9.3.11.v20160721
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 55ba90c4b1556ef8e191b6d337f77c656f8c36b5
+JETTY_SUM  := 5d8086804f56dcdf0ad83322df2718433842b487
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131

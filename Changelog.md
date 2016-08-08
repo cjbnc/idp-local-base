@@ -1,5 +1,10 @@
 # Changelog
 
+## 2016/Aug/08-
+    - monthly rebuild for os updates
+    - update Java to 8u102
+    - update Jetty to 9.3.11.v20160721
+
 ## 2016/Jul/11-11:35 - bld1607111135
     - monthly rebuild for os updates
     - update Jetty to 9.3.10.v20160621
