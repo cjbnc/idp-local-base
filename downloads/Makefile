@@ -43,7 +43,7 @@ REWRITE_SUM  := 1a4b56629cacf3ec8d530405af2db018a679575e
 # Duo Plugin
 DUO_VER  := unused
 DUO_FILE := duo_shibboleth.zip
-DUO_SUM  := 08f911b38c711e7e3c41e96116c599067166f18a
+DUO_SUM  := 7dc75f2b9c7d0721a3d49978d436ee5f425a62e5
 
 
 .PHONY: all clean
