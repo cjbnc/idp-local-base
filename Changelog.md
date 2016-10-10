@@ -1,5 +1,13 @@
 # Changelog
 
+## 2016/Oct/10-08:29 - bld1610100829
+    - monthly rebuild for os updates
+    - update Jetty to 9.3.12.v20160915
+    - removed custom TLS exceptions, Jetty requires TLS1.2
+
+## 2016/Sep/12-09:46 - bld1609120946
+    - monthly rebuild for os updates
+
 ## 2016/Aug/08-
     - monthly rebuild for os updates
     - update Java to 8u102
