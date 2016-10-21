@@ -1,13 +1,17 @@
 IDPHOST := idp-local-base
 IMAGE   := ncsuoit/$(IDPHOST)
+HELPER  := ./dhelper.pl
 DATE    := $(shell date +'%y%m%d%H%M')
+CDATE   := $(shell $(HELPER) stamp $(IMAGE):latest)
 
 all: help
 
 help:
 	@echo "  Make Commands:"
-	@echo "    latest       - build $(IMAGE):latest"
 	@echo "    status       - list images"
+	@echo "    latest       - build $(IMAGE):bld$(DATE) and tag as latest"
+	@echo "    tagsave      - save $(IMAGE):latest to registry"
+	@echo "    tagload      - restore $(IMAGE):latest from registry"
 	@echo "    cleanall     - remove images"
 	@echo
 
@@ -24,4 +28,10 @@ cleanall:
 status:
 	@echo "  Images:"
 	@docker images $(IMAGE)
+
+tagsave: latest
+	$(HELPER) -l save $(IMAGE):latest
+
+tagload:
+	$(HELPER) -l load $(IMAGE):latest
 
