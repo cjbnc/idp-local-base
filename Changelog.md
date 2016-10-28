@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Oct/28-12:51 - bld1610281251
+    - incorporate ucomm 301 theme change
+
 ## 2016/Oct/10-08:29 - bld1610100829
     - monthly rebuild for os updates
     - update Jetty to 9.3.12.v20160915

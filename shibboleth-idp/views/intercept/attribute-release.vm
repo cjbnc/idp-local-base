@@ -26,32 +26,29 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>#springMessageText("idp.attribute-release.title", "Information Release")</title>
         <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    	<link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/style_301.css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/consent.css">
-        <link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/bs-tweaks.css">
-        <link rel="shortcut icon" href="$request.getContextPath()/images/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="https://www.ncsu.edu/favicon.ico">
     </head>
     <body>
     <a class="sr-only" href="#content">Skip to main content</a>
 
     <div class="bs-header">
-      <div class="container">
-        <div class="col-sm-6">
-         <header role="banner">
-          <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
-##          #if ($rpOrganizationLogo)
-##          <img src="$encoder.encodeForHTMLAttribute($rpOrganizationLogo)" alt="logo for $encoder.encodeForHTMLAttribute($serviceName)">
-##          #end
-         </header>
+      <div class="container heading-content">
+       <header role="banner">
+        <div class="row">
+        <div class="col-md-7">
+          <img class="logo-image" src="#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
+          <h1 class="shib-title">Shibboleth Login Service</h1>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-5">
                 #if ($serviceName)
                     <h3 class="sr-only">Service Information</h3>
                     <p style="margin-top: 10px;">
@@ -75,28 +72,27 @@
                     </p>
                 #end
         </div>
+        </div>
+       </header>
       </div>
     </div>
 
-    <div class="container" id="content">
+    <div class="container main-content" id="content">
       <main role="main">
         <h1 class="sr-only">#springMessageText("idp.attribute-release.title", "Information Release")</h1>
         <form action="$flowExecutionUrl" method="post" style="padding:10px" 
               role="form" aria-label="information release form">
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-8">
-                <div class="alert brand-gray25 bordered">
+                <div class="shib-form">
                     <p class="alert">
                         #springMessageText("idp.attribute-release.confirmationQuestion", "The information above would be shared with the service if you proceed. Do you agree to release this information to the service every time you access it?")
                     </p>
                     <p style="text-align: center; margin-top: 10px;">
-                        <input type="submit" name="_eventId_AttributeReleaseRejected" value="#springMessageText("idp.attribute-release.reject", "Reject")" style="margin-right: 30px;">
-                        <input type="submit" name="_eventId_proceed" value="#springMessageText("idp.attribute-release.accept", "Accept")">
+                        <input class="btn btn-red" type="submit" name="_eventId_AttributeReleaseRejected" value="#springMessageText("idp.attribute-release.reject", "Reject")" style="margin-right: 30px;">
+                        <input class="btn btn-red" type="submit" name="_eventId_proceed" value="#springMessageText("idp.attribute-release.accept", "Accept")">
                     </p>
                 </div>
                 <div id="attributeRelease">
-                    <table>
+                    <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
 ## changed this from 3 to 2, see hidden attributes below
@@ -117,7 +113,7 @@
 ## removing third column of hidden attributes, 
 ## placing those into second column
 ##                                    </td>
-##                                    <td style="vertical-align: top">
+##                                    <td>
 ##                                        #if ($attributeReleaseFlowDescriptor.perAttributeConsentEnabled)
 ##                                            #set ($inputType = "checkbox")
 ##                                        #else
@@ -192,23 +188,26 @@
 ##                        <input type="submit" name="_eventId_proceed" value="#springMessageText("idp.attribute-release.accept", "Accept")">
 ##                    </p>
 ##                </div>
-            </div>
-            <div class="col-sm-2">
-            </div>
+
         </form>
        </main>
-      </div>
+     </div>
 
-      <footer role="contentinfo">
+    <footer role="contentinfo">
       <div class="group page-footer">
-        <div class="col-sm-9">
-          <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>
-        </div>
-        <div class="col-sm-3">
-          ## #springMessageText("idp.footer.logolink", "footer logo")
+        <div class="col-md-12">
+          <div class="shib-footer">
+            #springMessageText("idp.footer", "Insert your footer text here.")
+          </div>
         </div>
       </div>
-      </footer>
+    </footer>
 
-    </body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <!-- Include all compiled plugins (below) -->
+	<script type='text/javascript' src='https://cdn.ncsu.edu/brand-assets/bootstrap/js/bootstrap.min.js'></script>
+
+</body>
 </html>

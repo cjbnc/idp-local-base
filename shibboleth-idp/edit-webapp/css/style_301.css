@@ -1,0 +1,208 @@
+/* Styles overwriting the default NC State Bootstrap theme */
+
+body {
+    font-family: UniversLight,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.affil {
+    color:#333 !IMPORTANT;
+}
+
+.affil-form {
+    background-color:#CCC !IMPORTANT;
+}
+
+h1, .h1 {
+    font-family: UniversCondensed,Arial,sans-serif;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+h2, .h2 {
+    font-size: 28px;
+}
+
+.heading-content {
+	padding: 1em 0;
+}
+
+h2.main-heading {
+	padding-top: 0;
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+.required-red {
+	color: #CC0000;
+}
+
+.form-control:focus {
+    border-color: #666666;
+    outline: 0;
+}
+
+ul li {
+	margin: 1.2em 0;
+}
+
+ul li:before {
+	padding-right: .5em;
+	margin-left: -2em;
+	font-size: 0.8em;
+}
+
+.btn:focus .glyphicon-bold-arrow,
+.btn:focus .glyphicon-roman-arrow,
+.btn:focus .glyphicon-thin-arrow,
+.btn:hover .glyphicon-bold-arrow,
+.btn:hover .glyphicon-roman-arrow,
+.btn:hover .glyphicon-thin-arrow,
+a:focus .glyphicon-bold-arrow,
+a:focus .glyphicon-roman-arrow,
+a:focus .glyphicon-thin-arrow,
+a:hover .glyphicon-bold-arrow,
+a:hover .glyphicon-roman-arrow,
+a:hover .glyphicon-thin-arrow {
+	left:4px
+}
+
+.main-side {
+	padding-right: 30px;
+}
+
+.main-content {
+	padding: 1em 0;
+}
+
+.shib-title {
+	float:left;
+}
+
+.form-control {
+    background-color: #FFF;
+    font-size: 16px;
+    padding: 16px;
+    border: 1px solid #999;
+    margin: 0;
+        height: 50px;
+    line-height: 50px;
+}
+
+label {
+    font-family: UniversLight,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.btn {
+    font-family: UniversRoman;
+    margin: 0 auto 1em;
+    text-transform: uppercase;
+}
+
+.btn {
+    display: inline-block;
+    height: 48px;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 24px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 1px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.glyphicon-bold-arrow, .glyphicon-roman-arrow, .glyphicon-thin-arrow {
+    font-size: 22px;
+    line-height: 1.5rem;
+    vertical-align: middle;
+    display: inline-block;
+    left: 0;
+    top: -1px;
+    transition: left .2s ease;
+}
+
+.logo-image {
+	float:left;
+	max-width: 150px;
+	margin-top: 16px;
+    margin-right: 2em;
+}
+
+p a {
+    text-decoration: none;
+}
+
+h2.shib-heading {
+	color: #CC0000;
+}
+
+.shib-error {
+	background-color: #CC0000;
+	color: #FFFFFF;
+	padding: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.shib-error a {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+.shib-error a:hover {
+	text-decoration: underline;
+	opacity: 0.85;
+}
+
+h3.shib-error-heading {
+    font-family: UniversLight,Arial,sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+	color: #FFFFFF;
+	padding: 0px;
+	margin-top: 0px;
+}
+
+h3.shib-heading {
+    font-family: UniversLight,Arial,sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+	color: #CC0000;
+}
+
+.shib-form {
+	background-color: #F2F2F2;
+	padding: 1.5em;
+	margin-bottom: 30px;
+}
+
+.form-control {
+	margin-bottom: 1.5em;
+}
+
+.shib-form h3 {
+	margin: 0 0 1em 0;
+}
+
+.shib-footer {
+	background-color: #F2F2F2;
+	padding: 1em 1.5em;
+	margin: 2em 0;
+}
+
+.service_name {
+    font-weight: bold;
+}

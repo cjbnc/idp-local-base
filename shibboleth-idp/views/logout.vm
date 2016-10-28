@@ -16,41 +16,42 @@
 ##
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        #if ( $logoutContext and !$logoutContext.getSessionMap().isEmpty() )
-            <meta http-equiv="refresh" content="10;url=$flowExecutionUrl&_eventId=propagate">
-        #end
-        <title>#springMessageText("idp.title", "Web Login Service")</title>
-        <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/bs-tweaks.css">
-        <link rel="shortcut icon" href="$request.getContextPath()/images/favicon.ico" />
-    </head>
-    <body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    #if ( $logoutContext and !$logoutContext.getSessionMap().isEmpty() )
+        <meta http-equiv="refresh" content="10;url=$flowExecutionUrl&_eventId=propagate">
+    #end
+    <title>#springMessageText("idp.title", "Web Login Service")</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/style_301.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" type="image/x-icon" href="https://www.ncsu.edu/favicon.ico">
+  </head>
+  <body>
     <a class="sr-only" href="#content">Skip to main content</a>
 
     <div class="bs-header">
-      <div class="container">
+      <div class="container heading-content">
        <header role="banner">
-        <div class="col-sm-4">
-          <img src="$request.getContextPath()#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
+        <div class="col-md-12">
+          <img class="logo-image" src="#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
+          <h1 class="shib-title">Shibboleth Login Service</h1>
         </div>
        </header>
       </div>
     </div>
 
-    <div class="container" id="content">
-     <main role="main">
-      <div class="col-sm-4">
+    <div class="container main-content" id="content">
+      <div class="row">
+        <main role="main">
+          <div class="col-sm-5 main-side">
 
-            <h1>You have successfully logged out.</h1>
-            <br>
-    
+            <h2 class="shib-heading main-heading">You have successfully logged out.</h2>
+            
             #if ( $logoutContext and !$logoutContext.getSessionMap().isEmpty() )
                 <p>#springMessageText("idp.logout.ask", "Would you like to attempt to log out of all services accessed during your session? Please select <strong>Yes</strong> or <strong>No</strong> to ensure the logout operation completes, or wait a few seconds for Yes.")</p>
                 <br>
@@ -82,25 +83,48 @@
                     <iframe style="display:none" src="$flowExecutionUrl&_eventId=proceed">
                 #end
             #end
+
+            <h2 class="shib-heading">Need Help?</h2>
+            <ul>
+              <li>
+                Forgot your <a href="https://oit.ncsu.edu/my-it/unity-credentials/">Unity ID or Password?</a>
+              </li>
+              <!-- For OIM Later...
+              <li>
+                Need to <a href="#">Reset your password?</a>
+              </li>
+              -->
+              <li>
+                For help with password resets or login issues, contact the
+                NC State Help Desk at 919-515-HELP (4357) or
+                <a href="mailto:help@ncsu.edu">help@ncsu.edu</a>.
+              </li>
+            </ul>
+
+          </div>
+        </main>
+        <aside role="complementary">
+          <div class="col-sm-7">
+            #include( "sidebar.html" )
+          </div>
+        </aside>
       </div>
-    </main>
-    <aside role="complementary">
-      <div class="col-sm-8">
-      #include( "sidebar.html")
-      </div>
-    </aside>
     </div>
 
-      <footer role="contentinfo">
+    <footer role="contentinfo">
       <div class="group page-footer">
-        <div class="col-sm-9">
-          <p class="footer-text">#springMessageText("idp.footer", "Insert your footer text here.")</p>
-        </div>
-        <div class="col-sm-3">
-          ## #springMessageText("idp.footer.logolink", "footer logo")
+        <div class="col-md-12">
+          <div class="shib-footer">
+            #springMessageText("idp.footer", "Insert your footer text here.")
+          </div>
         </div>
       </div>
-      </footer>
+    </footer>
 
- 	</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below) -->
+    <script src="https://cdn.ncsu.edu/brand-assets/bootstrap/js/bootstrap.min.js"></script>
+    
+  </body>
 </html>
