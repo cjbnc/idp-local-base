@@ -1,5 +1,14 @@
 # Changelog
 
+## 2016/Nov/10-09:40 - bld1611100940
+    - tweak to style_301.css to fix safari password box
+
+## 2016/Nov/07-13:16 - bld1611071316
+    - monthly rebuild for os updates
+    - update Java to 8u112
+    - update Jetty to 9.3.13.v20161014
+    - change sysnews link on new look announcement
+
 ## 2016/Oct/28-12:51 - bld1610281251
     - incorporate ucomm 301 theme change
 

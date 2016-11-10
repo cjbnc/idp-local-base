@@ -86,8 +86,8 @@ a:hover .glyphicon-thin-arrow {
     padding: 16px;
     border: 1px solid #999;
     margin: 0;
-        height: 50px;
-    line-height: 50px;
+    height: 50px;
+    // line-height: 50px; // breaks safari password field
 }
 
 label {
