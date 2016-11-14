@@ -46,9 +46,11 @@
     <div class="bs-header">
       <div class="container heading-content">
        <header role="banner">
-        <div class="col-md-12">
-          <img class="logo-image" src="#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
-          <h1 class="shib-title">Shibboleth Login Service</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <img class="logo-image" src="#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
+            <h1 class="shib-title">Shibboleth Login Service</h1>
+          </div>
         </div>
        </header>
       </div>
@@ -170,11 +172,13 @@
       </div>
     </div>
 
-    <footer role="contentinfo">
+    <footer class="container" role="contentinfo">
       <div class="group page-footer">
-        <div class="col-md-12">
-          <div class="shib-footer">
-            #springMessageText("idp.footer", "Insert your footer text here.")
+        <div class="row">
+          <div class="col-md-12">
+            <div class="shib-footer">
+              #springMessageText("idp.footer", "Insert your footer text here.")
+            </div>
           </div>
         </div>
       </div>

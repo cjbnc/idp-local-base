@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Nov/14-14:46 - bld1611141446
+    - tweaks to style_301 and views to fix ucomm errors
+
 ## 2016/Nov/10-09:40 - bld1611100940
     - tweak to style_301.css to fix safari password box
 

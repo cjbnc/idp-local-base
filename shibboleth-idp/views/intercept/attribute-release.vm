@@ -44,11 +44,11 @@
       <div class="container heading-content">
        <header role="banner">
         <div class="row">
-        <div class="col-md-7">
-          <img class="logo-image" src="#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
-          <h1 class="shib-title">Shibboleth Login Service</h1>
-        </div>
-        <div class="col-sm-5">
+          <div class="col-md-7">
+            <img class="logo-image" src="#springMessage("idp.logo")" alt="#springMessageText("idp.logo.alt-text", "logo")">
+            <h1 class="shib-title">Shibboleth Login Service</h1>
+          </div>
+          <div class="col-sm-5">
                 #if ($serviceName)
                     <h3 class="sr-only">Service Information</h3>
                     <p style="margin-top: 10px;">
@@ -71,7 +71,7 @@
                         <a href="$informationURL">#springMessageText("idp.attribute-release.informationURLLabel", "Additional information about the service")</a>
                     </p>
                 #end
-        </div>
+          </div>
         </div>
        </header>
       </div>
@@ -193,11 +193,13 @@
        </main>
      </div>
 
-    <footer role="contentinfo">
+    <footer class="container" role="contentinfo">
       <div class="group page-footer">
-        <div class="col-md-12">
-          <div class="shib-footer">
-            #springMessageText("idp.footer", "Insert your footer text here.")
+        <div class="row">
+          <div class="col-md-12">
+            <div class="shib-footer">
+              #springMessageText("idp.footer", "Insert your footer text here.")
+            </div>
           </div>
         </div>
       </div>
