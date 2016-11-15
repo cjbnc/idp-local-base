@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Nov/15
+    - update shib idp to 3.3.0
+
 ## 2016/Nov/14-14:46 - bld1611141446
     - tweaks to style_301 and views to fix ucomm errors
 
