@@ -1,5 +1,8 @@
 # Changelog
 
+## 2016/Dec/12-09:43 - bld1612120943
+    - update Jetty to 9.3.14.v20161028
+
 ## 2016/Nov/14-14:46 - bld1611141446
     - tweaks to style_301 and views to fix ucomm errors
 
