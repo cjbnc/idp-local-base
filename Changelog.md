@@ -1,5 +1,10 @@
 # Changelog
 
+## 2017/Jan/09-10:38 - bld1701091038
+    - monthly rebuild for os updates
+    - update Jetty to 9.3.15.v20161220 
+    - Jetty 9.4.0 is now available, but not yet used
+
 ## 2016/Dec/12-09:43 - bld1612120943
     - update Jetty to 9.3.14.v20161028
 
