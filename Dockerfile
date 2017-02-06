@@ -2,8 +2,8 @@ FROM centos:centos7
 
 MAINTAINER Charles Brabec <brabec@ncsu.edu>
 
-ENV JRE_HOME /opt/jre1.8.0_112
-ENV JAVA_HOME /opt/jre1.8.0_112
+ENV JRE_HOME /opt/jre1.8.0_121
+ENV JAVA_HOME /opt/jre1.8.0_121
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
@@ -22,7 +22,7 @@ ADD downloads/ /tmp/
 
 # Install Java
 RUN set -x; \
-    java_version=8u112; \
+    java_version=8u121; \
     tar -zxvf /tmp/jre-$java_version-linux-x64.tar.gz -C /opt
 
 # Base image does not have the JCE Unlimited rules
@@ -35,7 +35,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.3.15.v20161220; \
+    jetty_version=9.3.16.v20170120; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
