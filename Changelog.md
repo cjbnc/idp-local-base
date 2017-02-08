@@ -1,5 +1,8 @@
 # Changelog
 
+## 2017/Feb/08-16:48 - bld1702081648
+    - removed the Attention block from the sidebar
+
 ## 2017/Feb/06-11:33 - bld1702061133
     - monthly rebuild for os updates
     - update Java to 8u121
