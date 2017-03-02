@@ -1,5 +1,9 @@
 # Changelog
 
+## 2017/Mar/02-11:33 - bld1703021133
+    - reconfigured to work with Jetty 9.4.x upgrade
+    - update Jetty to 9.4.2.v20170220
+
 ## 2017/Feb/08-16:48 - bld1702081648
     - removed the Attention block from the sidebar
 

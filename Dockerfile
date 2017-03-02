@@ -35,7 +35,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.3.16.v20170120; \
+    jetty_version=9.4.2.v20170220; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -44,7 +44,7 @@ RUN set -x; \
     && mkdir -p /opt/iam-jetty-base/resources \
     && cd /opt/iam-jetty-base \
     && touch start.ini \
-    && $JRE_HOME/bin/java -jar ../jetty/start.jar --add-to-startd=http,https,deploy,ext,annotations,jstl,logging,setuid \
+    && $JRE_HOME/bin/java -jar ../jetty/start.jar --create-startd --add-to-start=http,https,ssl,deploy,ext,annotations,jstl,console-capture,setuid \
     && sed -i 's/# jetty.http.port=8080/jetty.http.port=80/g' /opt/iam-jetty-base/start.d/http.ini \
     && sed -i 's/# jetty.ssl.port=8443/jetty.ssl.port=443/g' /opt/iam-jetty-base/start.d/ssl.ini \
     && sed -i 's/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"\/>/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"><Set name="showContexts">false<\/Set><\/New>/g' /opt/jetty/etc/jetty.xml 
@@ -88,7 +88,7 @@ ADD iam-jetty-base/ /opt/iam-jetty-base/
 ADD shibboleth-idp/ /opt/shibboleth-idp/
 
 # Clean up the install
-RUN yum -y remove tar unzip; \
+RUN yum -y remove unzip; \
     yum clean all; \
     rm -rf /tmp/*
 
