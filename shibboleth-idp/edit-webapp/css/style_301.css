@@ -202,3 +202,14 @@ h2.affil {
 .service_name {
     font-weight: bold;
 }
+
+.panel-blue {
+    border-color: #47869c;
+}
+
+.panel-blue>.panel-heading {
+    color: #ffffff;
+    background-color: #47869c;
+    border-color: #47869c;
+}
+

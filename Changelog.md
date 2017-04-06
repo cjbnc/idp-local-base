@@ -1,5 +1,8 @@
 # Changelog
 
+## 2017/Apr/06-13:15 - bld1704061315
+    - add panel-blue to style_301.css for duo views
+
 ## 2017/Mar/02-11:33 - bld1703021133
     - reconfigured to work with Jetty 9.4.x upgrade
     - update Jetty to 9.4.2.v20170220
