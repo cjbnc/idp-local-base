@@ -100,7 +100,7 @@ $(NCSUAD_FILE): /afs/unity/web/s/shib/src/$(NCSUAD_FILE)
 
 $(REWRITE_FILE):
 	wget -O $(REWRITE_FILE) \
-	    http://urlrewritefilter.googlecode.com/files/$(REWRITE_FILE)
+	    http://central.maven.org/maven2/org/tuckey/urlrewritefilter/$(REWRITE_VER)/$(REWRITE_FILE)
 	echo "$(REWRITE_SUM)  $(REWRITE_FILE)" | sha1sum -c -
 
 $(DUO_FILE):
