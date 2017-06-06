@@ -1,10 +1,10 @@
 # pre-download all of the packages needed to build the docker image
 
 # Oracle Java 1.8
-JAVA_VER  := 8u121
-JAVA_PATH := 8u121-b13/e9e7ea248e2c4826b92b3f075a80e441
+JAVA_VER  := 8u131
+JAVA_PATH := 8u131-b11/d54c1d3a095b4ff2b6607d096fa80163
 JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
-JAVA_SUM  := 30bf5fbac0cfbc9201cac1d6973dbc96e5f55043ab315eda8c7aeb23df4f2644
+JAVA_SUM  := 355e5cdb066d4cada1f9f16f358b6fa6280ff5caf7470cf0d5cdd43083408d35
 
 # JCE Policy 
 POLICY_VER  := 8
@@ -12,9 +12,9 @@ POLICY_FILE := jce_policy-$(POLICY_VER).zip
 POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 
 # Jetty
-JETTY_VER  := 9.4.3.v20170317
+JETTY_VER  := 9.4.5.v20170502
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 744c3b3c91671686eeb86088fec3eb0010fafc9e
+JETTY_SUM  := 3eed7c24f7e3467ac7627aa51104531f68f86432
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -22,9 +22,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 3.3.0
+IDP_VER  := 3.3.1
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := a0dd96ad8770539b6f1249f7cea98b944cff846b4831892e8deee62b91b60277
+IDP_SUM  := 99f944c7fc8e0037385b6516b5a384b2ae3b3b5516e3843a6b2b7839c7c7182a
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
@@ -41,10 +41,14 @@ REWRITE_VER  := 4.0.3
 REWRITE_FILE := urlrewritefilter-$(REWRITE_VER).jar
 REWRITE_SUM  := 1a4b56629cacf3ec8d530405af2db018a679575e
 
-# Duo Plugin
-DUO_VER  := unused
-DUO_FILE := duo_shibboleth.zip
-DUO_SUM  := 7dc75f2b9c7d0721a3d49978d436ee5f425a62e5
+# Duo Client Plugin
+DUO_VER  := 0.2.1
+DUO_FILE := duo-client-$(DUO_VER).jar
+DUO_SUM  := 2d1b8939f3f00b1655127ec4764bd05753448bb4
+DUOS1_VER  := chargebee-1.0
+DUOS1_FILE := org.json-$(DUOS1_VER).jar
+DUOS2_VER  := 2.3.0
+DUOS2_FILE := okhttp-$(DUOS2_VER).jar
 
 
 .PHONY: all clean
@@ -103,8 +107,17 @@ $(REWRITE_FILE):
 	    http://central.maven.org/maven2/org/tuckey/urlrewritefilter/$(REWRITE_VER)/$(REWRITE_FILE)
 	echo "$(REWRITE_SUM)  $(REWRITE_FILE)" | sha1sum -c -
 
-$(DUO_FILE):
+$(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE)
 	wget -O $(DUO_FILE) \
-		https://github.com/duosecurity/duo_shibboleth/archive/master.zip
-	# echo "$(DUO_SUM)  $(DUO_FILE)" | sha1sum -c -
+		https://dl.bintray.com/uniconiam/maven/com/duosecurity/duo-client/$(DUO_VER)/$(DUO_FILE)
+	echo "$(DUO_SUM)  $(DUO_FILE)" | sha1sum -c -
+
+$(DUOS1_FILE):
+	wget -O $(DUOS1_FILE) \
+		http://repo1.maven.org/maven2/org/json/org.json/$(DUOS1_VER)/$(DUOS1_FILE)
+
+$(DUOS2_FILE):
+	wget -O $(DUOS2_FILE) \
+		http://repo1.maven.org/maven2/com/squareup/okhttp/okhttp/$(DUOS2_VER)/$(DUOS2_FILE)
+
 

@@ -4,8 +4,8 @@ MAINTAINER Charles Brabec <brabec@ncsu.edu>
 # make sure centos is up to date
 RUN yum -y update
 
-ENV JRE_HOME /opt/jre1.8.0_121
-ENV JAVA_HOME /opt/jre1.8.0_121
+ENV JRE_HOME /opt/jre1.8.0_131
+ENV JAVA_HOME /opt/jre1.8.0_131
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
@@ -23,7 +23,7 @@ ADD downloads/ /tmp/
 
 # Install Java
 RUN set -x; \
-    java_version=8u121; \
+    java_version=8u131; \
     tar -zxvf /tmp/jre-$java_version-linux-x64.tar.gz -C /opt
 
 # Base image does not have the JCE Unlimited rules
@@ -36,7 +36,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.3.v20170317; \
+    jetty_version=9.4.5.v20170502; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -56,7 +56,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=3.3.0; \
+    shibidp_version=3.3.1; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain \
@@ -78,11 +78,12 @@ RUN set -x; \
     cp /tmp/jaas-ncsuadloginmodule-1.0.7-1.1.jar \
        /opt/shibboleth-idp/webapp/WEB-INF/lib/
 
-# Unpack Duo plugin but do not configure
+# Place the jars needed for Duo client in MFA
 RUN set -x; \
-    cd /tmp; \
-    unzip -o duo_shibboleth.zip \
-    && mv -f duo_shibboleth-master $DUO_BASE 
+    cp /tmp/duo-client-0.2.1.jar \
+       /tmp/org.json-chargebee-1.0.jar \
+       /tmp/okhttp-2.3.0.jar \
+       /opt/shibboleth-idp/webapp/WEB-INF/lib/
 
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/
