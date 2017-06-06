@@ -1,5 +1,19 @@
 # Changelog
 
+## 2017/Jun/06-10:20 - bld1706061020
+    - docker image renamed to idp33-local-base
+    - centos updates 
+    - update Java to 8u131
+    - update Jetty to 9.4.5.v20170502
+    - deploying IdP 3.3.1 to production
+
+## 2017/May/30-09:21 - bld1705300921
+    - add Duo enrollment blurb to sidebar
+
+## 2017/May/26-
+    - removed duo_shibboleth.zip
+    - added duo-client and support jars
+
 ## 2017/Apr/10-
     - update Jetty to 9.4.3.v20170317
 
