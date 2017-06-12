@@ -1,5 +1,8 @@
 # Changelog
 
+## 2017/Jun/12-09:19 - bld1706120919
+    - update Jetty to 9.4.6.v20170531
+
 ## 2017/Jun/06-10:20 - bld1706061020
     - docker image renamed to idp33-local-base
     - centos updates 
