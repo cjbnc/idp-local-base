@@ -2,7 +2,13 @@ FROM centos:centos7
 MAINTAINER Charles Brabec <brabec@ncsu.edu>
 
 # make sure centos is up to date
-RUN yum -y update
+# build tools: tar unzip
+# standard tools missing from base: which
+# wants cron: cronie
+RUN yum -y update; \
+    yum -y install tar unzip which cronie; \
+    yum clean all; \
+    rm -rf /tmp/*
 
 ENV JRE_HOME /opt/jre1.8.0_131
 ENV JAVA_HOME /opt/jre1.8.0_131
@@ -12,11 +18,6 @@ ENV JETTY_MAX_HEAP 512m
 ENV DUO_BASE /opt/duo_shibboleth
 ENV PATH $PATH:$JRE_HOME/bin:/opt/container-scripts
 ENV TZ   America/New_York
-
-# build tools: tar unzip
-# standard tools missing from base: which
-# wants cron: cronie
-RUN yum -y install tar unzip which cronie
 
 # preloaded install files go to /tmp
 ADD downloads/ /tmp/
