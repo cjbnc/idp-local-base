@@ -1,5 +1,9 @@
 # Changelog
 
+## 2017/Aug/02-07:21 - bld1708020721
+    - add NCSU CA certs to base
+    - adds SHA256 version of NCSU CA cert, and combined file
+
 ## 2017/Jul/14-10:39 - bld1707141039
     - fix messages to re-add hook for AccountDisabled
 
