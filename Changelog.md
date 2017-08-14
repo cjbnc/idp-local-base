@@ -1,5 +1,12 @@
 # Changelog
 
+## 2017/Aug/14-16:29 - bld1708141629
+    - added display of expDate in expiring-password page
+
+## 2017/Aug/07-09:11 - bld1708070911
+    - update to centos7 base
+    - update Java to 8u144
+
 ## 2017/Aug/02-07:21 - bld1708020721
     - add NCSU CA certs to base
     - adds SHA256 version of NCSU CA cert, and combined file
