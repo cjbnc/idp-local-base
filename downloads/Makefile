@@ -12,9 +12,9 @@ POLICY_FILE := jce_policy-$(POLICY_VER).zip
 POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 
 # Jetty
-JETTY_VER  := 9.4.6.v20170531
+JETTY_VER  := 9.4.7.v20170914
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 6d2e4ff9fc97bc00db03464c93540bcfac09c4f8
+JETTY_SUM  := f89aaa694fd2bfda005a788dea1064d666f0e2af
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -22,9 +22,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 3.3.1
+IDP_VER  := 3.3.2
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 99f944c7fc8e0037385b6516b5a384b2ae3b3b5516e3843a6b2b7839c7c7182a
+IDP_SUM  := 26408913a75f2a0228a0f51a42eaffc9dd449f762bc71b54e3a100aa4db013a7
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0

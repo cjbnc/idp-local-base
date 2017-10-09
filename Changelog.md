@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017/Oct/09-10:55 - bld1710091055
+    - update to centos7 base
+    - update to Jetty 9.4.7.v20170914
+    - update to IdP 3.3.2
+    - Java 9 released last month, will not update. still using 8u144
+
 ## 2017/Aug/14-16:29 - bld1708141629
     - added display of expDate in expiring-password page
 
