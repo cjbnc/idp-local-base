@@ -1,5 +1,12 @@
 # Changelog
 
+## 2017/Nov/27-15:58 - bld1711271558
+    - replace Duo blurb with 2FA blurb on sidebar
+
+## 2017/Nov/06-10:05 - bld1711061005
+    - update to centos7 base
+    - update Java to 8u152
+
 ## 2017/Oct/09-10:55 - bld1710091055
     - update to centos7 base
     - update to Jetty 9.4.7.v20170914
