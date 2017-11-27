@@ -2,6 +2,7 @@
 
 ## 2017/Nov/27-15:58 - bld1711271558
     - replace Duo blurb with 2FA blurb on sidebar
+    - cleaned out html link rel duplication on bootstrap
 
 ## 2017/Nov/06-10:05 - bld1711061005
     - update to centos7 base
