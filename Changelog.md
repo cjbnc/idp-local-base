@@ -1,5 +1,9 @@
 # Changelog
 
+## 2017/Dec/11-10:25 - bld1712111025
+    - update to centos7 base
+    - update to Jetty 9.4.8.v20171121
+
 ## 2017/Nov/27-15:58 - bld1711271558
     - replace Duo blurb with 2FA blurb on sidebar
     - cleaned out html link rel duplication on bootstrap
