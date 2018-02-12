@@ -1,10 +1,10 @@
 # pre-download all of the packages needed to build the docker image
 
 # Oracle Java 1.8
-JAVA_VER  := 8u152
-JAVA_PATH := 8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0
+JAVA_VER  := 8u162
+JAVA_PATH := 8u162-b12/0da788060d494f5095bf8624735fa2f1
 JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
-JAVA_SUM  := ed04ffbf8050a69b15f02c51a2cae8e0de9362e7f6fe8995b1c39c613fc20ede
+JAVA_SUM  := dfa25ebd1f90bf74ad7ba2dacb0e08d884594e733c9a522b58256778031341a4
 
 # JCE Policy 
 POLICY_VER  := 8

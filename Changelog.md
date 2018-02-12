@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018/Feb/12-10:24 - bld1802121024
+    - update to centos7 base
+    - update Java to 8u162
+
 ## 2017/Dec/11-10:25 - bld1712111025
     - update to centos7 base
     - update to Jetty 9.4.8.v20171121
