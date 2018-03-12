@@ -8,7 +8,7 @@ MAINTAINER Charles Brabec <brabec@ncsu.edu>
 RUN yum -y update; \
     yum -y install tar unzip which cronie; \
     yum clean all; \
-    rm -rf /tmp/*
+    rm -rf /tmp/* /var/cache/yum
 
 ENV JRE_HOME /opt/jre1.8.0_162
 ENV JAVA_HOME /opt/jre1.8.0_162
@@ -67,20 +67,14 @@ RUN set -x; \
     && rm -r /opt/shibboleth-identity-provider-$shibidp_version/
 
 # Place the library to allow SOAP Endpoints
-RUN set -x; \
-    cp /tmp/jetty9-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/
-
 # Place the URL Rewrite Filter jar
-RUN set -x; \
-    cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/
-
 # Place the NCSU AD login module
-RUN set -x; \
-    cp /tmp/jaas-ncsuadloginmodule-1.0.7-1.1.jar \
-       /opt/shibboleth-idp/webapp/WEB-INF/lib/
-
 # Place the jars needed for Duo client in MFA
 RUN set -x; \
+    cp /tmp/jetty9-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
+    cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
+    cp /tmp/jaas-ncsuadloginmodule-1.0.7-1.1.jar \
+       /opt/shibboleth-idp/webapp/WEB-INF/lib/ && \
     cp /tmp/duo-client-0.2.1.jar \
        /tmp/org.json-chargebee-1.0.jar \
        /tmp/okhttp-2.3.0.jar \
@@ -89,29 +83,26 @@ RUN set -x; \
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/
 ADD shibboleth-idp/ /opt/shibboleth-idp/
+ADD container-scripts/ /opt/container-scripts/
+ADD cron-scripts/ /opt/cron-scripts/
 
 # Clean up the install
 RUN yum -y remove unzip; \
     yum clean all; \
-    rm -rf /tmp/*
+    rm -rf /tmp/* /var/cache/yum
 
 # set container to log in our timezone
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 # set perms, making sure metadata and logs are writable
-RUN useradd jetty -U -s /bin/false \
+# startup script and friends
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
+    && useradd jetty -U -s /bin/false \
     && chown -R jetty:root /opt/jetty \
     && chown -R jetty:root /opt/iam-jetty-base \
     && chown -R jetty:root /opt/shibboleth-idp/logs \
-    && chown -R jetty:root /opt/shibboleth-idp/metadata
-
-# startup script and friends
-ADD container-scripts/ /opt/container-scripts/
-RUN chmod -R +x /opt/container-scripts/
-
-# setup the cron updates
-ADD cron-scripts/ /opt/cron-scripts/
-RUN crontab /opt/cron-scripts/crontab
+    && chown -R jetty:root /opt/shibboleth-idp/metadata \
+    && chmod -R +x /opt/container-scripts/ \
+    && crontab /opt/cron-scripts/crontab
 
 # want external logs
 VOLUME [ "/opt/iam-jetty-base/logs", \
