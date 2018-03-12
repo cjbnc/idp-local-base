@@ -10,6 +10,7 @@
       <Item>TLS_RSA_WITH_3DES_EDE_CBC_SHA</Item>
     </Array>
   </Set>
+  <Set name="renegotiationAllowed">FALSE</Set>
 <!--
   <Call name="setExcludeCipherSuites">
     <Arg>
