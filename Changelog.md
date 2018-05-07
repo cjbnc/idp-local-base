@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018/May/07-09:41 - bld1805070941
+    - update to centos7 base
+    - update Java to 8u172
+
 ## 2018/Feb/12-10:24 - bld1802121024
     - update to centos7 base
     - update Java to 8u162
