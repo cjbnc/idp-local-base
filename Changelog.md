@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018/Jun/01-10:40 - bld1806011040
+    - added code to prevent selective attribute approvals
+    - added error message for MFA required when user is not in duo
+
 ## 2018/May/07-09:41 - bld1805070941
     - update to centos7 base
     - update Java to 8u172

@@ -12,6 +12,11 @@ body {
     background-color:#CCC !IMPORTANT;
 }
 
+.vstrong {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 a {
     text-decoration: underline;
 }
