@@ -118,13 +118,8 @@
             <h2 class="shib-heading">Need Help?</h2>
             <ul>
               <li>
-                Forgot your <a href="https://oit.ncsu.edu/my-it/unity-credentials/">Unity ID or Password?</a>
+                Forgot your <a href="https://go.ncsu.edu/resetpassword">Password?</a>
               </li>
-              <!-- For OIM Later...
-              <li>
-                Need to <a href="#">Reset your password?</a>
-              </li>
-              -->
               <li>
                 For help with password resets or login issues, contact the
                 NC State Help Desk at 919-515-HELP (4357) or

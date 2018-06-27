@@ -1,5 +1,13 @@
 # Changelog
 
+## 2018/Jun/27-09:40 - bld1806270940
+    - fix logout iframe page to load logo correctly
+
+## 2018/Jun/11-08:56 - bld1806110856
+    - update to centos7 base
+    - update to jetty 9.4.11
+    - update to IdP 3.3.3
+
 ## 2018/Jun/01-10:40 - bld1806011040
     - added code to prevent selective attribute approvals
     - added error message for MFA required when user is not in duo

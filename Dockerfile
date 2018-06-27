@@ -37,7 +37,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.9.v20180320; \
+    jetty_version=9.4.11.v20180605; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -57,7 +57,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=3.3.2; \
+    shibidp_version=3.3.3; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain \
