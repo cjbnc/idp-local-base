@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018/Aug/06-09:06 - bld1808060906
+    - update to Java 8u181
+    - added handler for X-Forwarded-For logging
+
 ## 2018/Jun/27-09:40 - bld1806270940
     - fix logout iframe page to load logo correctly
 
