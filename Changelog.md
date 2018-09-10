@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018/Sep/10-08:45 - bld1809100845
+    - update to centos7 base
+    - update to jetty 9.4.12
+
 ## 2018/Aug/06-09:06 - bld1808060906
     - update to Java 8u181
     - added handler for X-Forwarded-For logging
