@@ -11,16 +11,16 @@
     </Array>
   </Set>
   <Set name="renegotiationAllowed">FALSE</Set>
-<!--
   <Call name="setExcludeCipherSuites">
     <Arg>
       <Array type="String">
--->
-        <!-- empty list, removes Jetty defaults -->
-<!--
+        <!-- list replaces Jetty defaults -->
+        <Item>.*_SHA</Item>
+        <Item>.*_SHA1</Item>
       </Array>
     </Arg>
   </Call>
+<!--
   <Call name="addExcludeCipherSuites">
     <Arg>
       <Array type="String">

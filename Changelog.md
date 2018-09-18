@@ -1,5 +1,8 @@
 # Changelog
 
+## 2018/Sep/18-08:36 - bld1809180836
+    - restore RSA ciphers removed by default in jetty 9.4.12
+
 ## 2018/Sep/10-08:45 - bld1809100845
     - update to centos7 base
     - update to jetty 9.4.12
