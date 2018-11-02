@@ -1,5 +1,10 @@
 # Changelog
 
+## 2018/Nov/02-09:46 - bld1811020946
+    - changed image name to idp34-local-base
+    - update to IdP 3.4.1
+    - changed location of added jar files to edit-webapp
+
 ## 2018/Sep/18-08:36 - bld1809180836
     - restore RSA ciphers removed by default in jetty 9.4.12
 

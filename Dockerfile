@@ -57,7 +57,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=3.3.3; \
+    shibidp_version=3.4.1; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain \
@@ -74,11 +74,11 @@ RUN set -x; \
     cp /tmp/jetty9-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/jaas-ncsuadloginmodule-1.0.7-1.1.jar \
-       /opt/shibboleth-idp/webapp/WEB-INF/lib/ && \
+       /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
     cp /tmp/duo-client-0.2.1.jar \
        /tmp/org.json-chargebee-1.0.jar \
        /tmp/okhttp-2.3.0.jar \
-       /opt/shibboleth-idp/webapp/WEB-INF/lib/
+       /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/
 
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/
