@@ -3,7 +3,7 @@ var logger = Java.type("org.slf4j.LoggerFactory").getLogger("net.shibboleth.idp.
 var logPrefix = "ExtractConsentWorkaround :";
 
 // Get the consent context from the profile request context.
-var consentContext = profileContext.getSubcontext("net.shibboleth.idp.consent.context.impl.ConsentContext")
+var consentContext = profileContext.getSubcontext("net.shibboleth.idp.consent.context.ConsentContext")
 logger.debug("{} consent context '{}'", logPrefix, consentContext);
 
 if (consentContext != null) {

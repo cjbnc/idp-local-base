@@ -6,6 +6,7 @@
 ## attributeReleaseContext - context holding consentable attributes
 ## attributeReleaseFlowDescriptor - attribute consent flow descriptor
 ## attributeDisplayNameFunction - function to display attribute name
+## attributeDisplayDescriptionFunction - function to display attribute description
 ## consentContext - context representing the state of a consent flow
 ## encoder - HTMLEncoder class
 ## flowExecutionKey - SWF execution key (this is built into the flowExecutionUrl)
@@ -22,6 +23,7 @@
 #set ($privacyStatementURL = $rpUIContext.privacyStatementURL)
 #set ($rpOrganizationLogo = $rpUIContext.getLogo())
 #set ($rpOrganizationName = $rpUIContext.organizationName)
+#set ($replaceDollarWithNewline = true)
 ##
 <!DOCTYPE html>
 <html lang="en-US">
@@ -107,7 +109,16 @@
                                     <td>$encoder.encodeForHTML($attributeDisplayNameFunction.apply($attribute))</td>
                                     <td>
                                         #foreach ($value in $attribute.values)
-                                            <strong>$encoder.encodeForHTML($value.getDisplayValue())</strong>
+                                            #if ($replaceDollarWithNewline)
+                                                #set ($encodedValue = $encoder.encodeForHTML($value.getDisplayValue()).replaceAll($encoder.encodeForHTML("$"),"<br>"))
+                                            #else
+                                                #set ($encodedValue = $encoder.encodeForHTML($value.getDisplayValue()))
+                                            #end
+##                                            #if ($attributeReleaseFlowDescriptor.perAttributeConsentEnabled)
+##                                                <label for="$attribute.id"><strong>$encodedValue</strong></label>
+##                                            #else
+                                                <strong>$encodedValue</strong>
+##                                            #end
                                             <br>
                                         #end
 ## removing third column of hidden attributes, 

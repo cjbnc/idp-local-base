@@ -1,5 +1,10 @@
 # Changelog
 
+## 2018/Nov/12-14:55 - bld1811121455
+    - update to centos7 base, still 7.5
+    - update to Java 8u192
+    - fix changes to consent flow in 3.4.x
+
 ## 2018/Nov/02-09:46 - bld1811020946
     - changed image name to idp34-local-base
     - update to IdP 3.4.1
