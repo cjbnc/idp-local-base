@@ -1,5 +1,12 @@
 # Changelog
 
+## 2019/Jan/07-09:29 - bld1901070929
+    - update to IdP 3.4.2
+
+## 2018/Dec/10-09:01 - bld1812100901
+    - update to centos 7.6 base
+    - update to Jetty 9.4.14
+
 ## 2018/Nov/12-14:55 - bld1811121455
     - update to centos7 base, still 7.5
     - update to Java 8u192
