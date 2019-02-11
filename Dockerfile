@@ -10,8 +10,8 @@ RUN yum -y update; \
     yum clean all; \
     rm -rf /tmp/* /var/cache/yum
 
-ENV JRE_HOME /opt/jre1.8.0_192
-ENV JAVA_HOME /opt/jre1.8.0_192
+ENV JRE_HOME /opt/jre1.8.0_202
+ENV JAVA_HOME /opt/jre1.8.0_202
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
@@ -24,7 +24,7 @@ ADD downloads/ /tmp/
 
 # Install Java
 RUN set -x; \
-    java_version=8u192; \
+    java_version=8u202; \
     tar -zxvf /tmp/jre-$java_version-linux-x64.tar.gz -C /opt
 
 # Base image does not have the JCE Unlimited rules
@@ -57,7 +57,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=3.4.2; \
+    shibidp_version=3.4.3; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain \

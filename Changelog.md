@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019/Feb/11-08:58 - bld1902110858
+    - update to IdP 3.4.3
+    - update to Java 8u202
+
 ## 2019/Jan/07-09:29 - bld1901070929
     - update to IdP 3.4.2
 

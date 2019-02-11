@@ -1,10 +1,10 @@
 # pre-download all of the packages needed to build the docker image
 
 # Oracle Java 1.8
-JAVA_VER  := 8u192
-JAVA_PATH := 8u192-b12/750e1c8617c5452694857ad95c3ee230
+JAVA_VER  := 8u202
+JAVA_PATH := 8u202-b08/1961070e4c9b4e26a04e7f5a083f551e
 JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
-JAVA_SUM  := f23a3e2b9decef82b74f850157580d929ab35e9f19be5e0a10c779b68be51d43
+JAVA_SUM  := 9efb1493fcf636e39c94f47bacf4f4324821df2d3aeea2dc3ea1bdc86428cb82
 
 # JCE Policy 
 POLICY_VER  := 8
@@ -22,9 +22,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 3.4.2
+IDP_VER  := 3.4.3
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 052f22a4d70af54fe51fbcf94513ed4a90adc1de2a46ae794c2f90dcbffe7592
+IDP_SUM  := 558d3f7f11f2160648d6ef17ebcd8c3b2c034917519414e159a6ea55545be198
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
