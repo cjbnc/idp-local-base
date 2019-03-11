@@ -37,7 +37,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.14.v20181114; \
+    jetty_version=9.4.15.v20190215; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
