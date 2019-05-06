@@ -1,8 +1,8 @@
 # pre-download all of the packages needed to build the docker image
 
 # Oracle Java 1.8
-JAVA_VER  := 8u202
-JAVA_PATH := 8u202-b08/1961070e4c9b4e26a04e7f5a083f551e
+JAVA_VER  := 8u212
+JAVA_PATH := 8u212-b10/59066701cf1a433da9770636fbc4c9aa
 JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
 JAVA_SUM  := 9efb1493fcf636e39c94f47bacf4f4324821df2d3aeea2dc3ea1bdc86428cb82
 
@@ -12,9 +12,9 @@ POLICY_FILE := jce_policy-$(POLICY_VER).zip
 POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 
 # Jetty
-JETTY_VER  := 9.4.15.v20190215
+JETTY_VER  := 9.4.18.v20190429
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := d0bc64d51df1746dd99743958c5c053d3f3c07e3
+JETTY_SUM  := 855c3d503588f5edc1a99e7c0aeda93fa7603d33
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -22,9 +22,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 3.4.3
+IDP_VER  := 3.4.4
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 558d3f7f11f2160648d6ef17ebcd8c3b2c034917519414e159a6ea55545be198
+IDP_SUM  := ba2e27a0bcb8e58a0a2ea0531a76d9113e3dd99f78fbf728422628f48ec9de10
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
@@ -65,10 +65,14 @@ clean:
 		  $(REWRITE_FILE) $(DUO_FILE)
 
 $(JAVA_FILE):
+	echo "Oracle requires logins to download!"
+	echo "Please get https://download.oracle.com/otn/java/jdk/$(JAVA_PATH)/$(JAVA_FILE)"
+
+broken_java:
 	wget -O $(JAVA_FILE) \
 		--no-check-certificate --no-cookies \
 		--header "Cookie: oraclelicense=accept-securebackup-cookie" \
-		http://download.oracle.com/otn-pub/java/jdk/$(JAVA_PATH)/$(JAVA_FILE)
+		https://download.oracle.com/otn/java/jdk/$(JAVA_PATH)/$(JAVA_FILE)
 	echo "$(JAVA_SUM)  $(JAVA_FILE)" | sha256sum -c -
 
 $(POLICY_FILE):

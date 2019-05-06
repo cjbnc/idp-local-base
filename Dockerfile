@@ -10,8 +10,8 @@ RUN yum -y update; \
     yum clean all; \
     rm -rf /tmp/* /var/cache/yum
 
-ENV JRE_HOME /opt/jre1.8.0_202
-ENV JAVA_HOME /opt/jre1.8.0_202
+ENV JRE_HOME /opt/jre1.8.0_212
+ENV JAVA_HOME /opt/jre1.8.0_212
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
@@ -24,7 +24,7 @@ ADD downloads/ /tmp/
 
 # Install Java
 RUN set -x; \
-    java_version=8u202; \
+    java_version=8u212; \
     tar -zxvf /tmp/jre-$java_version-linux-x64.tar.gz -C /opt
 
 # Base image does not have the JCE Unlimited rules
@@ -37,7 +37,7 @@ RUN set -x; \
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.15.v20190215; \
+    jetty_version=9.4.18.v20190429; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -57,7 +57,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=3.4.3; \
+    shibidp_version=3.4.4; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain \
