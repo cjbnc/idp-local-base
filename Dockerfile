@@ -10,8 +10,8 @@ RUN yum -y update; \
     yum clean all; \
     rm -rf /tmp/* /var/cache/yum
 
-ENV JRE_HOME /opt/jre1.8.0_212
-ENV JAVA_HOME /opt/jre1.8.0_212
+ENV JRE_HOME  /usr/lib/jvm/jre-1.8.0
+ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0
 ENV JETTY_HOME /opt/jetty
 ENV JETTY_BASE /opt/iam-jetty-base
 ENV JETTY_MAX_HEAP 512m
@@ -19,25 +19,17 @@ ENV DUO_BASE /opt/duo_shibboleth
 ENV PATH $PATH:$JRE_HOME/bin:/opt/container-scripts
 ENV TZ   America/New_York
 
+# Install Java from RedHat yum repo
+RUN yum -y install java-1.8.0-openjdk; \
+    yum clean all; \
+    rm -rf /tmp/* /var/cache/yum
+    
 # preloaded install files go to /tmp
 ADD downloads/ /tmp/
 
-# Install Java
-RUN set -x; \
-    java_version=8u212; \
-    tar -zxvf /tmp/jre-$java_version-linux-x64.tar.gz -C /opt
-
-# Base image does not have the JCE Unlimited rules
-RUN set -x; \
-    jce_version=8; \
-    cd /tmp; \
-    unzip -o jce_policy-$jce_version.zip \
-    && mv -f UnlimitedJCEPolicyJDK$jce_version/*.jar $JRE_HOME/lib/security/ \
-    && rm -rf UnlimitedJCEPolicyJDK$jce_version
-
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.18.v20190429; \
+    jetty_version=9.4.19.v20190610; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \

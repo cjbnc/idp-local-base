@@ -1,5 +1,10 @@
 # Changelog
 
+## 2019/Jul/08-14:27 - bld1907081427
+    - update to Jetty 9.4.19
+    - removed Oracle Java 8 SE, replaced with RedHat OpenJDK 1.8.0_212
+    - removed JCE policy - already present in latest OpenJDK builds
+
 ## 2019/May/06-08:57 - bld1905060857
     - update to Java 8u212, requires manual login and download
     - update to Jetty 9.4.18
