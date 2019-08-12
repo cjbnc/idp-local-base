@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019/Aug/12-08:42 - bld1908120842
+    - edit Makefile to pass REBUILD flag
+    - update to OpenJDK 1.8.0_222
+
 ## 2019/Jul/08-14:27 - bld1907081427
     - update to Jetty 9.4.19
     - removed Oracle Java 8 SE, replaced with RedHat OpenJDK 1.8.0_212

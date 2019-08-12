@@ -4,12 +4,19 @@ HELPER  := ./dhelper.pl
 DATE    := $(shell date +'%y%m%d%H%M')
 CDATE   := $(shell $(HELPER) stamp $(IMAGE):latest)
 
+ifdef REBUILD
+  BLDFLAG := --no-cache
+else
+  BLDFLAG :=
+endif
+
 all: help
 
 help:
 	@echo "  Make Commands:"
 	@echo "    status       - list images"
 	@echo "    latest       - build $(IMAGE):bld$(DATE) and tag as latest"
+	@echo "       REBUILD=y - add to latest to force rebuild current sources"
 	@echo "    tagsave      - save $(IMAGE):latest to registry"
 	@echo "    tagload      - restore $(IMAGE):latest from registry"
 	@echo "    cleanall     - remove images"
@@ -17,7 +24,7 @@ help:
 
 latest: Dockerfile
 	(cd downloads; make all)
-	docker build -t $(IMAGE):bld$(DATE) .
+	docker build $(BLDFLAG) -t $(IMAGE):bld$(DATE) .
 	docker tag $(IMAGE):bld$(DATE) $(IMAGE):latest
 
 cleanall: 
