@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019/Sep/09-10:50 - bld1909091050
+    - update to CentOS base
+    - update to Jetty 9.4.20
+
 ## 2019/Aug/12-08:42 - bld1908120842
     - edit Makefile to pass REBUILD flag
     - update to OpenJDK 1.8.0_222
