@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019/Oct/07-10:17 - bld1910071017
+    - update to Jetty 9.4.21
+    - update to IdP 3.4.6
+
 ## 2019/Sep/09-10:50 - bld1909091050
     - update to CentOS base
     - update to Jetty 9.4.20
