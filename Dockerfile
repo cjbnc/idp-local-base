@@ -72,6 +72,12 @@ RUN set -x; \
        /tmp/okhttp-2.3.0.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/
 
+# Jolokia war for stats
+RUN set -x; \
+    jolokia_version=1.6.2; \
+    mkdir -p /opt/jolokia; \
+    cp /tmp/jolokia-war-unsecured-$jolokia_version.war /opt/jolokia/jolokia.war
+
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/
 ADD shibboleth-idp/ /opt/shibboleth-idp/

@@ -8,14 +8,14 @@
 
     <!-- do nothing to favicon.ico -->
     <rule>
-       <from>/favicon.ico</from>
-       <to>null</to>
+        <from>/favicon.ico</from>
+        <to>null</to>
     </rule>
 
-    <!-- everything else goes to docs, except /idp -->
+    <!-- everything else goes to docs, except /idp or jolokia -->
     <rule>
-       <from>(^(?!/idp/).*)</from>
-       <to type="redirect">https://docs.shib.ncsu.edu$1</to>
+        <from>(^(?!/idp/|/jolokia).*)</from>
+        <to type="redirect">https://docs.shib.ncsu.edu$1</to>
     </rule>
 
 </urlrewrite>

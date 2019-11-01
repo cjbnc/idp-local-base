@@ -41,6 +41,13 @@ REWRITE_VER  := 4.0.3
 REWRITE_FILE := urlrewritefilter-$(REWRITE_VER).jar
 REWRITE_SUM  := 1a4b56629cacf3ec8d530405af2db018a679575e
 
+# Jolokia JMX connector
+JOLOKIA_VER  := 1.6.2
+#JOLOKIA_FILE := jolokia-war-$(JOLOKIA_VER).war
+#JOLOKIA_SUM  := 493d8bcde429c15a94c7bedcc4d9fc33cddc899243dcf0f19692348af6583c4d
+JOLOKIA_FILE := jolokia-war-unsecured-$(JOLOKIA_VER).war
+JOLOKIA_SUM  := 8cc4a6260b1a2ec72cf184a3447cc040a0436ad8602b5644da95884ed03426c2
+
 # Duo Client Plugin
 DUO_VER  := 0.2.1
 DUO_FILE := duo-client-$(DUO_VER).jar
@@ -55,12 +62,12 @@ DUOS2_FILE := okhttp-$(DUOS2_VER).jar
 
 all: $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-	 $(REWRITE_FILE) $(DUO_FILE)
+	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
 clean:
 	rm -f $(JETTY_FILE) $(LIBSETUID_FILE) \
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-		  $(REWRITE_FILE) $(DUO_FILE)
+		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
 $(JAVA_FILE):
 	echo "Oracle requires logins to download!"
@@ -108,6 +115,11 @@ $(REWRITE_FILE):
 	wget -O $(REWRITE_FILE) \
 	    http://central.maven.org/maven2/org/tuckey/urlrewritefilter/$(REWRITE_VER)/$(REWRITE_FILE)
 	echo "$(REWRITE_SUM)  $(REWRITE_FILE)" | sha1sum -c -
+
+$(JOLOKIA_FILE):
+	wget -O $(JOLOKIA_FILE) \
+	    http://central.maven.org/maven2/org/jolokia/jolokia-war-unsecured/$(JOLOKIA_VER)/$(JOLOKIA_FILE)
+	echo "$(JOLOKIA_SUM)  $(JOLOKIA_FILE)" | sha256sum -c -
 
 $(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE)
 	wget -O $(DUO_FILE) \
