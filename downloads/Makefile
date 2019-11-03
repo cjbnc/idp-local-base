@@ -121,6 +121,9 @@ $(JOLOKIA_FILE):
 	    http://central.maven.org/maven2/org/jolokia/jolokia-war-unsecured/$(JOLOKIA_VER)/$(JOLOKIA_FILE)
 	echo "$(JOLOKIA_SUM)  $(JOLOKIA_FILE)" | sha256sum -c -
 
+jolokia-localhost.war: $(JOLOKIA_FILE)
+	(cd jolokia; sh repackage.sh)
+
 $(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE)
 	wget -O $(DUO_FILE) \
 		https://dl.bintray.com/uniconiam/maven/com/duosecurity/duo-client/$(DUO_VER)/$(DUO_FILE)

@@ -74,9 +74,8 @@ RUN set -x; \
 
 # Jolokia war for stats
 RUN set -x; \
-    jolokia_version=1.6.2; \
     mkdir -p /opt/jolokia; \
-    cp /tmp/jolokia-war-unsecured-$jolokia_version.war /opt/jolokia/jolokia.war
+    cp /tmp/jolokia-localhost.war /opt/jolokia/jolokia.war
 
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/

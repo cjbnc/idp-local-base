@@ -42,3 +42,6 @@ tagsave: latest
 tagload:
 	$(HELPER) -l load $(IMAGE):latest
 
+runshell:
+	docker run -it --rm -v $(shell pwd)/downloads:/tmp $(IMAGE):latest /bin/bash
+
