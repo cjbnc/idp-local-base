@@ -1,7 +1,11 @@
 # Changelog
 
+## 2019/Nov/11-09:41 - bld1911110941
+    - update to Jetty 9.4.22
+
 ## 2019/Nov/01-13:10 - bld1911011310
     - add jolokia-war-unsecured to kit
+    - update to OpenJDK 1.8.0_232
 
 ## 2019/Oct/07-10:17 - bld1910071017
     - update to Jetty 9.4.21
