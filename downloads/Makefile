@@ -12,9 +12,9 @@ POLICY_FILE := jce_policy-$(POLICY_VER).zip
 POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 
 # Jetty
-JETTY_VER  := 9.4.22.v20191022
+JETTY_VER  := 9.4.24.v20191120
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 81f9852ffd9831931bed1271f71bb15ce62dd87f
+JETTY_SUM  := 6b64d05e3ef6e858a742feac9c26635089ff5fedee0e4f945143c1e11fff5de8
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -90,7 +90,7 @@ $(POLICY_FILE):
 $(JETTY_FILE):
 	wget -O $(JETTY_FILE) \
 		http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$(JETTY_VER)/$(JETTY_FILE)
-	echo "$(JETTY_SUM)  $(JETTY_FILE)" | sha1sum -c -
+	echo "$(JETTY_SUM)  $(JETTY_FILE)" | sha256sum -c -
 
 $(LIBSETUID_FILE):
 	wget -O $(LIBSETUID_FILE) \

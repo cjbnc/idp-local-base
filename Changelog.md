@@ -1,5 +1,8 @@
 # Changelog
 
+## 2019/Dec/09-13:22 - bld1912091322
+    - update to Jetty 9.4.24
+
 ## 2019/Nov/11-09:41 - bld1911110941
     - update to Jetty 9.4.22
 
