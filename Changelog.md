@@ -1,5 +1,8 @@
 # Changelog
 
+## 2020/Mar/09-09:56 - bld2003090956
+    - update to Jetty 9.4.27
+
 ## 2020/Feb/10-13:31 - bld2002101331
     - update to OpenJDK 1.8.0_242
     - update to Jetty 9.4.26
