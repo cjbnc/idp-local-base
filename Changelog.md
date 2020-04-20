@@ -11,6 +11,11 @@
 ## 2020/Apr/30-12:58 - bld2004301258
     - update default views to unity/brickyard theme
 
+## 2020/Apr/20-14:21 - bld2004201421
+    - started conversion to IdP 4.0
+    - installed Amazon Corretto Java 11
+    - installed and successfully ran IdP 4.0.0 w/no configs
+
 ## 2020/Mar/09-09:56 - bld2003090956
     - update to Jetty 9.4.27
 

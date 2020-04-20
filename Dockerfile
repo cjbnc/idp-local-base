@@ -26,7 +26,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
 ADD downloads/ /tmp/
 
 # Install Amazon Corretto Java 
-RUN rpm -i /tmp/amazon-corretto-11-x64-linux-jdk.rpm
+RUN rpm --import /tmp/corretto-signing-key.pub \
+    && rpm -i /tmp/amazon-corretto-11-x64-linux-jdk.rpm
     
 # Install Jetty and initialize a new base
 RUN set -x; \
@@ -50,10 +51,11 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=3.4.6; \
+    shibidp_version=4.0.0; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
-    && bin/install.sh -Didp.keystore.password=CHANGEME -Didp.sealer.password=CHANGEME -Didp.host.name=localhost.localdomain \
+    && bin/install.sh -Didp.noprompt=true \
+         -Didp.property.file=/tmp/idp/idp.installer.properties \
     && cd / \
     && chmod -R +r /opt/shibboleth-idp/ \
     && sed -i 's/ password/CHANGEME/g' /opt/shibboleth-idp/conf/idp.properties \
@@ -105,6 +107,10 @@ VOLUME [ "/opt/iam-jetty-base/logs", \
 
 ## Opening 80 (for local checks only), 443 (browser TLS), 8443 (SOAP/mutual TLS auth)
 EXPOSE 80 443 8443
+
+#establish a healthcheck command so that docker might know the container's true state
+HEALTHCHECK --interval=2m --timeout=30s \
+  CMD curl -kfs https://127.0.0.1/idp/status || exit 1
 
 CMD ["run-shibboleth.sh"]
 

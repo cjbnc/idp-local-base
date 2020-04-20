@@ -1,7 +1,7 @@
 #!/bin/sh
 set -x
 
-export JAVA_HOME=/opt/jre1.8.0_65
+# JAVA_HOME already set in docker environment
 export JETTY_HOME=/opt/jetty/
 export JETTY_BASE=/opt/iam-jetty-base/
 export PATH=$PATH:$JAVA_HOME/bin

@@ -4,11 +4,6 @@
 JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
-# JCE Policy 
-POLICY_VER  := 8
-POLICY_FILE := jce_policy-$(POLICY_VER).zip
-POLICY_SUM  := f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
-
 # Jetty
 JETTY_VER  := 9.4.29.v20200521
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
@@ -20,9 +15,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 3.4.6
+IDP_VER  := 4.0.0
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 5ffe65f35d7c84df2d353c8694760ea0933bae5731b682923198e8e5c5ea286a
+IDP_SUM  := 7b5727444b1e8381f38488cf3bc1faefebbe4031c1e3e9e79261e3fb14dafb2d
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
@@ -63,7 +58,7 @@ all: $(JAVA_FILE) $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
 clean:
-	rm -f $(JETTY_FILE) $(LIBSETUID_FILE) \
+	rm -f $(JAVA_FILE) $(JETTY_FILE) $(LIBSETUID_FILE) \
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
@@ -71,13 +66,6 @@ $(JAVA_FILE):
 	wget -O $(JAVA_FILE) \
 	    https://corretto.aws/downloads/latest/$(JAVA_FILE)
 	rpm -K $(JAVA_FILE)
-
-$(POLICY_FILE):
-	wget -O $(POLICY_FILE) \
-		--no-check-certificate --no-cookies \
-		--header "Cookie: oraclelicense=accept-securebackup-cookie" \
-		http://download.oracle.com/otn-pub/java/jce/$(POLICY_VER)/$(POLICY_FILE)
-	echo "$(POLICY_SUM)  $(POLICY_FILE)" | sha256sum -c -
 
 $(JETTY_FILE):
 	wget -O $(JETTY_FILE) \

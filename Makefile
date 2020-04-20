@@ -20,6 +20,7 @@ help:
 	@echo "    tagsave      - save $(IMAGE):latest to registry"
 	@echo "    tagload      - restore $(IMAGE):latest from registry"
 	@echo "    cleanall     - remove images"
+	@echo "    runshell     - run bash on $(IMAGE):latest image"
 	@echo
 
 latest: Dockerfile
@@ -43,5 +44,5 @@ tagload:
 	$(HELPER) -l load $(IMAGE):latest
 
 runshell:
-	docker run -it --rm -v $(shell pwd)/downloads:/tmp $(IMAGE):latest /bin/bash
+	docker run -it --rm -p 443:443 -v /tmp:/tmp $(IMAGE):latest /bin/bash
 
