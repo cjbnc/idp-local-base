@@ -1,32 +1,33 @@
 FROM centos:centos7
 MAINTAINER Charles Brabec <brabec@ncsu.edu>
 
+# all the envs in one layer
+ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto \
+    JETTY_HOME=/opt/jetty \
+    JETTY_BASE=/opt/iam-jetty-base \
+    JETTY_MAX_HEAP=512m \
+    DUO_BASE=/opt/duo_shibboleth \
+    PATH=$PATH:$JRE_HOME/bin:/opt/container-scripts \
+    TZ=America/New_York
+
 # make sure centos is up to date
 # build tools: tar unzip
 # standard tools missing from base: which
 # wants cron: cronie
-RUN yum -y update; \
-    yum -y install tar unzip which cronie; \
-    yum clean all; \
-    rm -rf /tmp/* /var/cache/yum
+# set our timezone
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
+    && yum -y update \
+    && yum -y install tar unzip which cronie \
+    && yum clean all \
+    && rm -rf /tmp/* /var/cache/yum
 
-ENV JRE_HOME  /usr/lib/jvm/jre-1.8.0
-ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0
-ENV JETTY_HOME /opt/jetty
-ENV JETTY_BASE /opt/iam-jetty-base
-ENV JETTY_MAX_HEAP 512m
-ENV DUO_BASE /opt/duo_shibboleth
-ENV PATH $PATH:$JRE_HOME/bin:/opt/container-scripts
-ENV TZ   America/New_York
-
-# Install Java from RedHat yum repo
-RUN yum -y install java-1.8.0-openjdk; \
-    yum clean all; \
-    rm -rf /tmp/* /var/cache/yum
-    
 # preloaded install files go to /tmp
 ADD downloads/ /tmp/
 
+# Install Amazon Corretto Java 
+RUN rpm -i /tmp/amazon-corretto-11-x64-linux-jdk.rpm
+    
 # Install Jetty and initialize a new base
 RUN set -x; \
     jetty_version=9.4.29.v20200521; \
@@ -88,12 +89,9 @@ RUN yum -y remove unzip; \
     yum clean all; \
     rm -rf /tmp/* /var/cache/yum
 
-# set container to log in our timezone
 # set perms, making sure metadata and logs are writable
 # startup script and friends
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
-    && useradd jetty -U -s /bin/false \
+RUN useradd jetty -U -s /bin/false \
     && chown -R jetty:root /opt/jetty \
     && chown -R jetty:root /opt/iam-jetty-base \
     && chown -R jetty:root /opt/shibboleth-idp/logs \

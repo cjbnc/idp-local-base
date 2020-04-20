@@ -1,5 +1,6 @@
 downloads/*.gz
 downloads/*.jar
+downloads/*.rpm
 downloads/*.so
 downloads/*.war
 downloads/*.zip

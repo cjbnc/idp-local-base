@@ -1,10 +1,8 @@
 # pre-download all of the packages needed to build the docker image
 
-# Oracle Java 1.8
-JAVA_VER  := 8u212
-JAVA_PATH := 8u212-b10/59066701cf1a433da9770636fbc4c9aa
-JAVA_FILE := jre-$(JAVA_VER)-linux-x64.tar.gz
-JAVA_SUM  := 9efb1493fcf636e39c94f47bacf4f4324821df2d3aeea2dc3ea1bdc86428cb82
+# Corretto Java JDK
+JAVA_VER  := 11
+JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # JCE Policy 
 POLICY_VER  := 8
@@ -60,7 +58,7 @@ DUOS2_FILE := okhttp-$(DUOS2_VER).jar
 
 .PHONY: all clean
 
-all: $(JETTY_FILE) $(LIBSETUID_FILE) \
+all: $(JAVA_FILE) $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
@@ -70,15 +68,9 @@ clean:
 		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
 $(JAVA_FILE):
-	echo "Oracle requires logins to download!"
-	echo "Please get https://download.oracle.com/otn/java/jdk/$(JAVA_PATH)/$(JAVA_FILE)"
-
-broken_java:
 	wget -O $(JAVA_FILE) \
-		--no-check-certificate --no-cookies \
-		--header "Cookie: oraclelicense=accept-securebackup-cookie" \
-		https://download.oracle.com/otn/java/jdk/$(JAVA_PATH)/$(JAVA_FILE)
-	echo "$(JAVA_SUM)  $(JAVA_FILE)" | sha256sum -c -
+	    https://corretto.aws/downloads/latest/$(JAVA_FILE)
+	rpm -K $(JAVA_FILE)
 
 $(POLICY_FILE):
 	wget -O $(POLICY_FILE) \
@@ -113,12 +105,12 @@ $(NCSUAD_FILE): /afs/unity/web/s/shib/src/$(NCSUAD_FILE)
 
 $(REWRITE_FILE):
 	wget -O $(REWRITE_FILE) \
-	    http://central.maven.org/maven2/org/tuckey/urlrewritefilter/$(REWRITE_VER)/$(REWRITE_FILE)
+	    https://repo1.maven.org/maven2/org/tuckey/urlrewritefilter/$(REWRITE_VER)/$(REWRITE_FILE)
 	echo "$(REWRITE_SUM)  $(REWRITE_FILE)" | sha1sum -c -
 
 $(JOLOKIA_FILE):
 	wget -O $(JOLOKIA_FILE) \
-	    http://central.maven.org/maven2/org/jolokia/jolokia-war-unsecured/$(JOLOKIA_VER)/$(JOLOKIA_FILE)
+	    https://repo1.maven.org/maven2/org/jolokia/jolokia-war-unsecured/$(JOLOKIA_VER)/$(JOLOKIA_FILE)
 	echo "$(JOLOKIA_SUM)  $(JOLOKIA_FILE)" | sha256sum -c -
 
 jolokia-localhost.war: $(JOLOKIA_FILE)
@@ -131,10 +123,10 @@ $(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE)
 
 $(DUOS1_FILE):
 	wget -O $(DUOS1_FILE) \
-		http://repo1.maven.org/maven2/org/json/org.json/$(DUOS1_VER)/$(DUOS1_FILE)
+		https://repo1.maven.org/maven2/org/json/org.json/$(DUOS1_VER)/$(DUOS1_FILE)
 
 $(DUOS2_FILE):
 	wget -O $(DUOS2_FILE) \
-		http://repo1.maven.org/maven2/com/squareup/okhttp/okhttp/$(DUOS2_VER)/$(DUOS2_FILE)
+		https://repo1.maven.org/maven2/com/squareup/okhttp/okhttp/$(DUOS2_VER)/$(DUOS2_FILE)
 
 
