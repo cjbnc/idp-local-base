@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>#springMessageText("idp.title", "Web Login Service")</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="$request.getContextPath()/css/style_301.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/shibboleth/css/style_401.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -68,22 +68,28 @@
             <div class="shib-form" role="form" aria-label="login form">
 
               <form name="loginform" action="$flowExecutionUrl" 
-                    method="post" class="form-signin" role="form">
+                    method="post" class="form-signin" role="form"
+                    onsubmit="document.getElementById('formSubmit').innerText='Logging in, please wait...';">
 
                 #if ($passwordEnabled)
-                  <h2 class="shib-heading">Enter your Unity ID 
-                    and Password</h2>
+                  <h2 class="shib-heading unity">
+                    <img src="https://cdn.ncsu.edu/shibboleth/block-S-150ppi.png" alt="" />
+                    Unity ID Login <br>
+                    <em>NC State Students/Faculty/Staff</em>
+                  </h2>
 
                   <label for="username">#springMessageText("idp.login.username", "Username") <span class="required-red">*</span></label>
                   <input class="form-control" 
                     id="username" name="j_username" type="text" 
                     value="#if($username)$encoder.encodeForHTML($username)#end"
-                    required="">
+                    required="" 
+                    autocomplete="off">
 
                   <label for="password">#springMessageText("idp.login.password", "Password") <span class="required-red">*</span></label>
                   <input class="form-control" 
                     id="password" name="j_password" type="password" 
-                    value="" required="">
+                    value="" required="" 
+                    autocomplete="off">
 
                   ##<label class="checkbox">
                   ##  <input type="checkbox" id="donotcache" name="donotcache" value="1"> 
@@ -99,7 +105,6 @@
                 #if ($passwordEnabled)
                   <button id="formSubmit" class="btn btn-red" 
                     type="submit" name="_eventId_proceed"
-                    onClick="this.childNodes[0].nodeValue='#springMessageText("idp.login.pleasewait", "Logging in, please wait...")'"
                     >#springMessageText("idp.login.login", "Login") <span class="glyphicon glyphicon-thin-arrow" aria-hidden="true"></span></button>
                 #end
 

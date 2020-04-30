@@ -1,5 +1,8 @@
 # Changelog
 
+## 2020/Apr/30-12:58 - bld2004301258
+    - update default views to unity/brickyard theme
+
 ## 2020/Mar/09-09:56 - bld2003090956
     - update to Jetty 9.4.27
 
