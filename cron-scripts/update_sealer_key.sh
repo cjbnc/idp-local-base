@@ -19,7 +19,7 @@ KEYPASS=$(grep '^idp.sealer.storePassword' $IDPHOME/conf/idp.properties | \
   && [ -s "$KEYDIR/sealer.kver" ] ) \
   || exit
 
-java -cp "$IDPHOME/webapp/WEB-INF/lib/*" \
+$IDPHOME/bin/runclass.sh \
   net.shibboleth.utilities.java.support.security.BasicKeystoreKeyStrategyTool \
   --storefile $KEYDIR/sealer.jks \
   --versionfile $KEYDIR/sealer.kver \
