@@ -4,3 +4,4 @@ downloads/*.rpm
 downloads/*.so
 downloads/*.war
 downloads/*.zip
+downloads/.last*
