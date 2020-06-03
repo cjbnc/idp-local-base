@@ -4,6 +4,11 @@
     - update CentOS 7.8 base
     - update Jetty to 9.4.29
 
+## 2020/Jun/03-14:01 - bld2006031401
+    - update to IdP 4.0.1
+    - fix audit.xml logging
+    - fix sealer key script
+
 ## 2020/May/08-09:27 - bld2005080927
     - update Jetty to 9.4.28
     - update to OpenJDK 1.8.0_252
