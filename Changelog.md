@@ -11,6 +11,10 @@
 ## 2020/Apr/30-12:58 - bld2004301258
     - update default views to unity/brickyard theme
 
+## 2020/Apr/27-12:50 - bld2004271250
+    - fixed some deprecation warnings
+    - updated jaas-ncsuadloginmodule-1.3.0-1.0.jar
+
 ## 2020/Apr/20-14:21 - bld2004201421
     - started conversion to IdP 4.0
     - installed Amazon Corretto Java 11
