@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020/Jul/01-13:04 - bld2007011304
+    - update to Jetty 9.4.30
+    - added downloads / make java_version (not really needed)
+
 ## 2020/Jun/08-10:51 - bld2006081051
     - update CentOS 7.8 base
     - update Jetty to 9.4.29
