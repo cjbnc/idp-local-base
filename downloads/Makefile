@@ -61,6 +61,9 @@ clean:
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
+java_version:
+	curl -v https://corretto.aws/downloads/latest/$(JAVA_FILE) 2>&1 | grep -i location:
+
 $(JAVA_FILE):
 	wget -O $(JAVA_FILE) \
 	    https://corretto.aws/downloads/latest/$(JAVA_FILE)
