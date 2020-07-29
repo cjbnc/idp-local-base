@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020/Jul/29 - bld2007291143
+    - duo link changes
+    - footer changes
+
 ## 2020/Jul/01-13:04 - bld2007011304
     - update to Jetty 9.4.30
     - added downloads / make java_version (not really needed)

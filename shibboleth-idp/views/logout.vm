@@ -24,7 +24,7 @@
     #end
     <title>#springMessageText("idp.title", "Web Login Service")</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/shibboleth/css/style_401.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/shibboleth/css/style_402.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
