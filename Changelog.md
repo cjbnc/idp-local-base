@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020/Aug/10 - bld2008101324
+    - updated Java 11 from Amazon
+    - updated Jetty to 9.4.31
+
 ## 2020/Jul/29 - bld2007291143
     - duo link changes
     - footer changes
