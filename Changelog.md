@@ -1,5 +1,8 @@
 # Changelog
 
+## 2020/Sep/14 - bld2009141049
+    - replace sysnews urls for password changes
+
 ## 2020/Aug/10 - bld2008101324
     - updated Java 11 from Amazon
     - updated Jetty to 9.4.31
