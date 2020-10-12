@@ -1,5 +1,10 @@
 # Changelog
 
+## 2020/Oct/12 - bld2010121020
+    - fix footer links to use https:
+    - updated Jetty to 9.4.32
+    - removed old copy of etc/jetty.xml
+
 ## 2020/Sep/14 - bld2009141049
     - replace sysnews urls for password changes
 
