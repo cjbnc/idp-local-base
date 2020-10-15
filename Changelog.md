@@ -1,5 +1,8 @@
 # Changelog
 
+## 2020/Oct/15 - bld2010151042
+    - re-added new etc/jetty.xml to add XFF handler customization
+
 ## 2020/Oct/12 - bld2010121020
     - fix footer links to use https:
     - updated Jetty to 9.4.32
