@@ -31,7 +31,7 @@ RUN rpm --import /tmp/corretto-signing-key.pub \
     
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.32.v20200930; \
+    jetty_version=9.4.34.v20201102; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \

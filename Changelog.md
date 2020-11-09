@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020/Nov/09 - bld2011090938
+    - update Java to 11.0.9
+    - updated Jetty to 9.4.34 with XFF fixes
+
 ## 2020/Oct/15 - bld2010151042
     - re-added new etc/jetty.xml to add XFF handler customization
 
