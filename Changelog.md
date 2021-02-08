@@ -1,5 +1,11 @@
 # Changelog
 
+## 2021/Feb/08 - bld2102081123
+    - update java to 11.0.10.9 and switch to yum repo source
+    - update jetty to 9.4.36
+    - switch unity logo file from cdn to generic name
+    - switch to multi-stage build, image smaller by 30%
+
 ## 2020/Nov/09 - bld2011090938
     - update Java to 11.0.9
     - updated Jetty to 9.4.34 with XFF fixes

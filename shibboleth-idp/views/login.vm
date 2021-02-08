@@ -73,7 +73,7 @@
 
                 #if ($passwordEnabled)
                   <h2 class="shib-heading unity">
-                    <img src="https://cdn.ncsu.edu/shibboleth/block-S-150ppi.png" alt="" />
+                    <img src="https://cdn.ncsu.edu/shibboleth/unity-150ppi.png" alt="" />
                     Unity ID Login <br>
                     <em>NC State Students/Faculty/Staff</em>
                   </h2>

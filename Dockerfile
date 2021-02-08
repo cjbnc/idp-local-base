@@ -1,7 +1,6 @@
-FROM centos:centos7
-MAINTAINER Charles Brabec <brabec@ncsu.edu>
+FROM centos:centos7 as javabase
 
-# all the envs in one layer
+# all the envs 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto \
     JETTY_HOME=/opt/jetty \
     JETTY_BASE=/opt/iam-jetty-base \
@@ -11,24 +10,24 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto \
     TZ=America/New_York
 
 # make sure centos is up to date
-# build tools: tar unzip
-# standard tools missing from base: which
-# wants cron: cronie
+# build tools: unzip
+# wants: cronie which
 # set our timezone
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
     && yum -y update \
-    && yum -y install tar unzip which cronie \
+    && rpm --import https://yum.corretto.aws/corretto.key \
+    && curl -L -o /etc/yum.repos.d/corretto.repo https://yum.corretto.aws/corretto.repo \
+    && yum -y install java-11-amazon-corretto-devel unzip cronie which \
     && yum clean all \
     && rm -rf /tmp/* /var/cache/yum
+
+# need the same java env to build out /opt
+FROM javabase as build
 
 # preloaded install files go to /tmp
 ADD downloads/ /tmp/
 
-# Install Amazon Corretto Java 
-RUN rpm --import /tmp/corretto-signing-key.pub \
-    && rpm -i /tmp/amazon-corretto-11-x64-linux-jdk.rpm
-    
 # Install Jetty and initialize a new base
 RUN set -x; \
     jetty_version=9.4.36.v20210114; \
@@ -86,10 +85,13 @@ ADD shibboleth-idp/ /opt/shibboleth-idp/
 ADD container-scripts/ /opt/container-scripts/
 ADD cron-scripts/ /opt/cron-scripts/
 
-# Clean up the install
-RUN yum -y remove unzip; \
-    yum clean all; \
-    rm -rf /tmp/* /var/cache/yum
+# start the real container
+FROM javabase
+MAINTAINER Charles Brabec <brabec@ncsu.edu>
+
+# just grab the installed pieces without all the source
+COPY --from=build /opt /opt
+COPY --from=build /etc/init.d/jetty /etc/init.d/jetty
 
 # set perms, making sure metadata and logs are writable
 # startup script and friends

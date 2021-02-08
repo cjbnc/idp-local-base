@@ -52,22 +52,14 @@ DUOS2_FILE := okhttp-$(DUOS2_VER).jar
 
 .PHONY: all clean
 
-all: $(JAVA_FILE) $(JETTY_FILE) $(LIBSETUID_FILE) \
+all: $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
 
 clean:
-	rm -f $(JAVA_FILE) $(JETTY_FILE) $(LIBSETUID_FILE) \
+	rm -f $(JETTY_FILE) $(LIBSETUID_FILE) \
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
-
-java_version:
-	curl -v https://corretto.aws/downloads/latest/$(JAVA_FILE) 2>&1 | grep -i location:
-
-$(JAVA_FILE):
-	wget -O $(JAVA_FILE) \
-	    https://corretto.aws/downloads/latest/$(JAVA_FILE)
-	rpm -K $(JAVA_FILE)
 
 $(JETTY_FILE):
 	wget -O $(JETTY_FILE) \

@@ -9,7 +9,8 @@ oldver=$(cat $hfile)
 
 if [ "$oldver" != "$newver" ]; then
   echo $newver > $hfile
-  rm -f $fname
-  make
-  echo "Downloaded $newver"
+  #rm -f $fname
+  #make
+  echo "Build will download:"
+  echo "  $newver"
 fi
