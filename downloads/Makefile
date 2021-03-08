@@ -5,9 +5,9 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 9.4.36.v20210114
+JETTY_VER  := 9.4.38.v20210224
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 8fba1c4660c3c3991c2068a0614941e903ee821165f4c638edf41362a29fb05d
+JETTY_SUM  := f79f1ac9b7b06e6a79e39d54b5583cc58e1d436a386d3ad67fb8d7dfc6385812
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131

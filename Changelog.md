@@ -1,5 +1,8 @@
 # Changelog
 
+## 2021/Mar/08 - bld2103081232
+    - update jetty to 9.4.38
+
 ## 2021/Feb/08 - bld2102081123
     - update java to 11.0.10.9 and switch to yum repo source
     - update jetty to 9.4.36
