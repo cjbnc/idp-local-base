@@ -1,4 +1,4 @@
-IDPHOST := idp40-local-base
+IDPHOST := idp41-local-base
 IMAGE   := ncsuoit/$(IDPHOST)
 HELPER  := ./dhelper.pl
 DATE    := $(shell date +'%y%m%d%H%M')
