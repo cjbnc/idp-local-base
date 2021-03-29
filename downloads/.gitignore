@@ -1,0 +1,8 @@
+*.asc
+*.gz
+*.jar
+*.rpm
+*.so
+*.war
+*.zip
+.last*

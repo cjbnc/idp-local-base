@@ -49,17 +49,25 @@ DUOS1_FILE := org.json-$(DUOS1_VER).jar
 DUOS2_VER  := 2.3.0
 DUOS2_FILE := okhttp-$(DUOS2_VER).jar
 
+# IdP Plugins, will grab the .asc files as well
+PLUG1_VER  := 1.0.0
+PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
+PLUG2_VER  := 1.0.0
+PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG1_VER).tar.gz
 
 .PHONY: all clean
 
 all: $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
+	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
+	 $(PLUG1_FILE) $(PLUG2_FILE)
 
 clean:
 	rm -f $(JETTY_FILE) $(LIBSETUID_FILE) \
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE)
+		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
+		  $(PLUG1_FILE) $(PLUG1_FILE).asc \
+		  $(PLUG2_FILE) $(PLUG2_FILE).asc
 
 $(JETTY_FILE):
 	wget -O $(JETTY_FILE) \
@@ -110,4 +118,15 @@ $(DUOS2_FILE):
 	wget -O $(DUOS2_FILE) \
 		https://repo1.maven.org/maven2/com/squareup/okhttp/okhttp/$(DUOS2_VER)/$(DUOS2_FILE)
 
+$(PLUG1_FILE):
+	wget -O $(PLUG1_FILE) \
+	    https://shibboleth.net/downloads/identity-provider/plugins/oidc-common/$(PLUG1_VER)/$(PLUG1_FILE)
+	wget -O $(PLUG1_FILE).asc \
+	    https://shibboleth.net/downloads/identity-provider/plugins/oidc-common/$(PLUG1_VER)/$(PLUG1_FILE).asc
+
+$(PLUG2_FILE):
+	wget -O $(PLUG2_FILE) \
+	    https://shibboleth.net/downloads/identity-provider/plugins/duo-oidc/$(PLUG2_VER)/$(PLUG2_FILE)
+	wget -O $(PLUG2_FILE).asc \
+	    https://shibboleth.net/downloads/identity-provider/plugins/duo-oidc/$(PLUG2_VER)/$(PLUG2_FILE).asc
 

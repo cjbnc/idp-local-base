@@ -60,6 +60,13 @@ RUN set -x; \
     && sed -i 's/ password/CHANGEME/g' /opt/shibboleth-idp/conf/idp.properties \
     && rm -r /opt/shibboleth-identity-provider-$shibidp_version/
 
+# Install IdP Plugins 
+RUN set -x; \
+    /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-oidc-common.txt -i \
+        /tmp/oidc-common-dist-1.0.0.tar.gz \
+    && /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-duo-sdk.txt -i \
+        /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz
+
 # Place the library to allow SOAP Endpoints
 # Place the URL Rewrite Filter jar
 # Place the NCSU AD login module
