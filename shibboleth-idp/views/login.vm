@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>#springMessageText("idp.title", "Web Login Service")</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/shibboleth/css/style_402.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ncsu.edu/shibboleth/css/style_403.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -73,9 +73,12 @@
 
                 #if ($passwordEnabled)
                   <h2 class="shib-heading unity">
-                    <img src="https://cdn.ncsu.edu/shibboleth/unity-150ppi.png" alt="" />
-                    Unity ID Login <br>
-                    <em>NC State Students/Faculty/Staff</em>
+                    <img src="https://cdn.ncsu.edu/shibboleth/tower-150ppi.png" alt="" />
+                    <span class="header-divider"></span>
+                    <div class="shib-text">
+                      Unity ID Login <br>
+                      <em>NC State Students/Faculty/Staff</em>
+                    </div>
                   </h2>
 
                   <label for="username">#springMessageText("idp.login.username", "Username") <span class="required-red">*</span></label>
