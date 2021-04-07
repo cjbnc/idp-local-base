@@ -94,6 +94,11 @@
                     value="" required="" 
                     autocomplete="off">
 
+                  ## need to remove large bottom margin from previous element
+                  <label for="showPassword">Show password</label>
+                  <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                  <br>
+
                   ##<label class="checkbox">
                   ##  <input type="checkbox" id="donotcache" name="donotcache" value="1"> 
                   ##  #springMessageText("idp.login.donotcache", "Don't Remember Login")
@@ -191,6 +196,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below) -->
     <script src="https://cdn.ncsu.edu/brand-assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://docs.shib.ncsu.edu/inc/toggle.js"></script>
     
   </body>
 </html>
