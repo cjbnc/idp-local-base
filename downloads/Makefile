@@ -41,9 +41,9 @@ JOLOKIA_FILE := jolokia-war-unsecured-$(JOLOKIA_VER).war
 JOLOKIA_SUM  := 8cc4a6260b1a2ec72cf184a3447cc040a0436ad8602b5644da95884ed03426c2
 
 # Duo Client Plugin
-DUO_VER  := 0.2.1
+DUO_VER  := 0.3.0
 DUO_FILE := duo-client-$(DUO_VER).jar
-DUO_SUM  := 2d1b8939f3f00b1655127ec4764bd05753448bb4
+DUO_SUM  := 2c71c5e8b9993c8f605974321c228ac6d3e0c999
 DUOS1_VER  := chargebee-1.0
 DUOS1_FILE := org.json-$(DUOS1_VER).jar
 DUOS2_VER  := 2.3.0
@@ -107,7 +107,7 @@ jolokia-localhost.war: $(JOLOKIA_FILE)
 
 $(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE)
 	wget -O $(DUO_FILE) \
-		https://dl.bintray.com/uniconiam/maven/com/duosecurity/duo-client/$(DUO_VER)/$(DUO_FILE)
+		https://repo1.maven.org/maven2/com/duosecurity/duo-client/$(DUO_VER)/$(DUO_FILE)
 	echo "$(DUO_SUM)  $(DUO_FILE)" | sha1sum -c -
 
 $(DUOS1_FILE):

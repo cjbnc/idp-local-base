@@ -60,12 +60,23 @@ RUN set -x; \
     && sed -i 's/ password/CHANGEME/g' /opt/shibboleth-idp/conf/idp.properties \
     && rm -r /opt/shibboleth-identity-provider-$shibidp_version/
 
-# Install IdP Plugins 
+# copy IdP Plugins so they can be installed later
 RUN set -x; \
-    /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-oidc-common.txt -i \
-        /tmp/oidc-common-dist-1.0.0.tar.gz \
-    && /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-duo-sdk.txt -i \
-        /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz
+    mkdir -p /opt/idp-plugins; \
+    cp /tmp/oidc-common-dist-1.0.0.tar.gz \
+       /tmp/oidc-common-dist-1.0.0.tar.gz.asc \
+       /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz \
+       /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz.asc \
+       /tmp/trust-duo-sdk.txt \
+       /tmp/trust-oidc-common.txt \
+       /opt/idp-plugins
+
+# Install IdP Plugins 
+#RUN set -x; \
+#    /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-oidc-common.txt -i \
+#        /tmp/oidc-common-dist-1.0.0.tar.gz \
+#    && /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-duo-sdk.txt -i \
+#        /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz
 
 # Place the library to allow SOAP Endpoints
 # Place the URL Rewrite Filter jar
@@ -76,7 +87,7 @@ RUN set -x; \
     cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/jaas-ncsuadloginmodule-1.3.0-1.0.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
-    cp /tmp/duo-client-0.2.1.jar \
+    cp /tmp/duo-client-0.3.0.jar \
        /tmp/org.json-chargebee-1.0.jar \
        /tmp/okhttp-2.3.0.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/
