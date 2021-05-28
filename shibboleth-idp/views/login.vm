@@ -89,14 +89,13 @@
                     autocomplete="off">
 
                   <label for="password">#springMessageText("idp.login.password", "Password") <span class="required-red">*</span></label>
-                  <input class="form-control" 
+                  <input class="form-control-pw form-control" 
                     id="password" name="j_password" type="password" 
                     value="" required="" 
                     autocomplete="off">
 
-                  ## need to remove large bottom margin from previous element
                   <label for="showPassword">Show password</label>
-                  <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                  <input type="checkbox" id="showPassword" class="show-pass" onclick="togglePassword()">
                   <br>
 
                   ##<label class="checkbox">
@@ -135,7 +134,7 @@
               </li>
               <li>
                 For help with password resets or login issues, contact the
-                NC State Help Desk at 919-515-HELP (4357) or
+                NC State Help Desk at 919.515.HELP (4357) or
                 <a href="https://help.ncsu.edu/">help.ncsu.edu</a>.
               </li>
             </ul>
