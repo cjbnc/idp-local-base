@@ -48,6 +48,8 @@ DUOS1_VER  := chargebee-1.0
 DUOS1_FILE := org.json-$(DUOS1_VER).jar
 DUOS2_VER  := 2.3.0
 DUOS2_FILE := okhttp-$(DUOS2_VER).jar
+DUOS3_VER  := 1.15.0
+DUOS3_FILE := okio-$(DUOS3_VER).jar
 
 # IdP Plugins, will grab the .asc files as well
 PLUG1_VER  := 1.0.0
@@ -105,7 +107,7 @@ $(JOLOKIA_FILE):
 jolokia-localhost.war: $(JOLOKIA_FILE)
 	(cd jolokia; sh repackage.sh)
 
-$(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE)
+$(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE) $(DUOS3_FILE)
 	wget -O $(DUO_FILE) \
 		https://repo1.maven.org/maven2/com/duosecurity/duo-client/$(DUO_VER)/$(DUO_FILE)
 	echo "$(DUO_SUM)  $(DUO_FILE)" | sha1sum -c -
@@ -117,6 +119,10 @@ $(DUOS1_FILE):
 $(DUOS2_FILE):
 	wget -O $(DUOS2_FILE) \
 		https://repo1.maven.org/maven2/com/squareup/okhttp/okhttp/$(DUOS2_VER)/$(DUOS2_FILE)
+
+$(DUOS3_FILE):
+	wget -O $(DUOS3_FILE) \
+		https://repo1.maven.org/maven2/com/squareup/okio/okio/$(DUOS3_VER)/$(DUOS3_FILE)
 
 $(PLUG1_FILE):
 	wget -O $(PLUG1_FILE) \

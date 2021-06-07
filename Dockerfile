@@ -89,6 +89,7 @@ RUN set -x; \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
     cp /tmp/duo-client-0.3.0.jar \
        /tmp/org.json-chargebee-1.0.jar \
+       /tmp/okio-1.15.0.jar \
        /tmp/okhttp-2.3.0.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/
 
