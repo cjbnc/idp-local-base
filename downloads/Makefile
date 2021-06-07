@@ -5,9 +5,9 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 9.4.40.v20210413
+JETTY_VER  := 9.4.41.v20210516
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 2d5c33afa33922a374acbec3a74eab6cf54ef937b3842005bfba1c855a23b280
+JETTY_SUM  := 233b8ec23e5b6d6ed812a687a8c41d8cf6fa6c30e9f1e742c4aba59643e9522f
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -15,9 +15,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 4.1.0
+IDP_VER  := 4.1.2
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := e17baa5dfb62eb726cb17aae67157aef93dd208db7e7752ef8e8a60d5aa477b1
+IDP_SUM  := 17f192dd8082cd4b527080224406e1e88a1679155860f8f09aa66b8e22f42178
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
