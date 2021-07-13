@@ -1,5 +1,8 @@
 # Changelog
 
+## 2021/Jul/13 - bld2107130807
+    - update jetty to 9.4.43
+
 ## 2021/Jun/07 - bld2106071327
     - update idp to 4.1.2
     - re-add okio jar no longer provided by the idp
