@@ -1,5 +1,9 @@
 # Changelog
 
+## 2021/Aug/09 - bld2108091116
+    - update IdP to 4.1.4
+    - update Java to 11.0.12.7
+
 ## 2021/Jul/13 - bld2107130807
     - update jetty to 9.4.43
 
