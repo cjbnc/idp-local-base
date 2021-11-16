@@ -25,7 +25,7 @@ DTA_FILE := jetty9-dta-ssl-$(DTA_VER).jar
 DTA_SUM  := 2f547074b06952b94c35631398f36746820a7697
 
 # NCSU custom LoginHandler
-NCSUAD_VER  := 1.3.0-1.0
+NCSUAD_VER  := 1.3.0-1.1
 NCSUAD_FILE := jaas-ncsuadloginmodule-$(NCSUAD_VER).jar 
 
 # URL Rewrite Lib
@@ -91,8 +91,8 @@ $(DTA_FILE):
 		https://build.shibboleth.net/nexus/content/repositories/releases/net/shibboleth/utilities/jetty9/jetty9-dta-ssl/$(DTA_VER)/$(DTA_FILE)
 	echo "$(DTA_SUM)  $(DTA_FILE)" | sha1sum -c -
 
-$(NCSUAD_FILE): /afs/unity/web/s/shib/src/$(NCSUAD_FILE)
-	cp -f /afs/unity/web/s/shib/src/$(NCSUAD_FILE) $(NCSUAD_FILE)
+$(NCSUAD_FILE): /mnt/shib/src/$(NCSUAD_FILE)
+	cp -f /mnt/shib/src/$(NCSUAD_FILE) $(NCSUAD_FILE)
 
 $(REWRITE_FILE):
 	wget -O $(REWRITE_FILE) \
