@@ -1,5 +1,11 @@
 # Changelog
 
+## 2022/Jan/10 - bld2201101053
+    - loads NCSU AD module 1.2 with password expiration turned off
+
+## 2021/Dec/15 - bld2112151454
+    - disable auto-loading logback.xml changes to protect against JNDI exploit
+
 ## 2021/Nov/16 - bld2111161042
     - moved main repo to github
 
