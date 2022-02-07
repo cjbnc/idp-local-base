@@ -5,9 +5,9 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 9.4.44.v20210927
+JETTY_VER  := 9.4.45.v20220203
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 2a5e650dc8e7241a9bf962dae9a14ba56672eb0acf2c3e4f0b65e0cc9b7e0e6c
+JETTY_SUM  := d59f2f985da5824193d588d3439bd3080b7b08b444cd459146599a64f97207d6
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -15,9 +15,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 4.1.4
+IDP_VER  := 4.1.5
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := cac7f6410a12e0b9711e17cd9dba027b4151a268d048729b10ae730ed4f33009
+IDP_SUM  := ef5d4b4c6f8dacebed2cd6feeb6d82ddec7898ccdee38547c380a74474b29988
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
@@ -25,7 +25,7 @@ DTA_FILE := jetty9-dta-ssl-$(DTA_VER).jar
 DTA_SUM  := 2f547074b06952b94c35631398f36746820a7697
 
 # NCSU custom LoginHandler
-NCSUAD_VER  := 1.3.0-1.2
+NCSUAD_VER  := 1.3.0-1.1
 NCSUAD_FILE := jaas-ncsuadloginmodule-$(NCSUAD_VER).jar 
 
 # URL Rewrite Lib

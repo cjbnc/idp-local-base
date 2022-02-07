@@ -30,7 +30,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.44.v20210927; \
+    jetty_version=9.4.45.v20220203; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -50,7 +50,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=4.1.4; \
+    shibidp_version=4.1.5; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.noprompt=true \
@@ -85,7 +85,7 @@ RUN set -x; \
 RUN set -x; \
     cp /tmp/jetty9-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
-    cp /tmp/jaas-ncsuadloginmodule-1.3.0-1.2.jar \
+    cp /tmp/jaas-ncsuadloginmodule-1.3.0-1.1.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
     cp /tmp/duo-client-0.3.0.jar \
        /tmp/org.json-chargebee-1.0.jar \

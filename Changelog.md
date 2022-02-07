@@ -1,5 +1,10 @@
 # Changelog
 
+## 2022/Feb/07 - bld2202071252
+    - jetty 9.4.45
+    - java 11.0.14.9
+    - idp 4.1.5
+
 ## 2022/Jan/10 - bld2201101053
     - loads NCSU AD module 1.2 with password expiration turned off
 
