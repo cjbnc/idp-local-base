@@ -63,20 +63,14 @@ RUN set -x; \
 # copy IdP Plugins so they can be installed later
 RUN set -x; \
     mkdir -p /opt/idp-plugins; \
-    cp /tmp/oidc-common-dist-1.0.0.tar.gz \
-       /tmp/oidc-common-dist-1.0.0.tar.gz.asc \
-       /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz \
-       /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz.asc \
+    cp /tmp/oidc-common-dist-1.1.0.tar.gz \
+       /tmp/oidc-common-dist-1.1.0.tar.gz.asc \
+       /tmp/idp-plugin-duo-sdk-dist-1.1.1.tar.gz \
+       /tmp/idp-plugin-duo-sdk-dist-1.1.1.tar.gz.asc \
        /tmp/trust-duo-sdk.txt \
        /tmp/trust-oidc-common.txt \
+       /tmp/add_duo_plugins.sh \
        /opt/idp-plugins
-
-# Install IdP Plugins 
-#RUN set -x; \
-#    /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-oidc-common.txt -i \
-#        /tmp/oidc-common-dist-1.0.0.tar.gz \
-#    && /opt/shibboleth-idp/bin/plugin.sh --noPrompt --truststore /tmp/trust-duo-sdk.txt -i \
-#        /tmp/idp-plugin-duo-sdk-dist-1.0.0.tar.gz
 
 # Place the library to allow SOAP Endpoints
 # Place the URL Rewrite Filter jar

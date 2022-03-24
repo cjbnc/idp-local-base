@@ -2,6 +2,7 @@
 *.gz
 *.jar
 *.rpm
+*.sh
 *.so
 *.war
 *.zip

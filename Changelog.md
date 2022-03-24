@@ -1,5 +1,9 @@
 # Changelog
 
+## 2022/Mar/24 - bld2203241252
+    - update versions on oidc/duo plugins
+    - improve handling to add plugins
+
 ## 2022/Feb/07 - bld2202071252
     - jetty 9.4.45
     - java 11.0.14.9

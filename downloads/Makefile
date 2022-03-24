@@ -52,24 +52,26 @@ DUOS3_VER  := 1.15.0
 DUOS3_FILE := okio-$(DUOS3_VER).jar
 
 # IdP Plugins, will grab the .asc files as well
-PLUG1_VER  := 1.0.0
+PLUG1_VER  := 1.1.0
 PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
-PLUG2_VER  := 1.0.0
-PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG1_VER).tar.gz
+PLUG2_VER  := 1.1.1
+PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG2_VER).tar.gz
+ADD_PLUGS  := add_duo_plugins.sh
 
 .PHONY: all clean
 
 all: $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
-	 $(PLUG1_FILE) $(PLUG2_FILE)
+	 $(PLUG1_FILE) $(PLUG2_FILE) $(ADD_PLUGS)
 
 clean:
 	rm -f $(JETTY_FILE) $(LIBSETUID_FILE) \
 		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
 		  $(PLUG1_FILE) $(PLUG1_FILE).asc \
-		  $(PLUG2_FILE) $(PLUG2_FILE).asc
+		  $(PLUG2_FILE) $(PLUG2_FILE).asc \
+		  $(ADD_PLUGS)
 
 $(JETTY_FILE):
 	wget -O $(JETTY_FILE) \
@@ -135,4 +137,14 @@ $(PLUG2_FILE):
 	    https://shibboleth.net/downloads/identity-provider/plugins/duo-oidc/$(PLUG2_VER)/$(PLUG2_FILE)
 	wget -O $(PLUG2_FILE).asc \
 	    https://shibboleth.net/downloads/identity-provider/plugins/duo-oidc/$(PLUG2_VER)/$(PLUG2_FILE).asc
+
+$(ADD_PLUGS): $(ADD_PLUGS).template
+	cat $(ADD_PLUGS).template | \
+	    sed -e s/PLUG1VER/$(PLUG1_VER)/ | \
+	    sed -e s/PLUG2VER/$(PLUG2_VER)/ \
+		> $(ADD_PLUGS)
+	chmod +x $(ADD_PLUGS)
+
+	
+
 
