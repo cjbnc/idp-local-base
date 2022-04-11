@@ -1,5 +1,9 @@
 # Changelog
 
+## 2022/Apr/11 - bld2204111222
+    - idp 4.1.6
+    - jetty 9.4.46
+
 ## 2022/Mar/24 - bld2203241252
     - update versions on oidc/duo plugins
     - improve handling to add plugins

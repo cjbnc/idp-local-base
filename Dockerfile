@@ -30,7 +30,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.45.v20220203; \
+    jetty_version=9.4.46.v20220331; \
     unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
     && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -50,7 +50,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=4.1.5; \
+    shibidp_version=4.1.6; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.noprompt=true \
