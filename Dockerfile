@@ -50,7 +50,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=4.1.6; \
+    shibidp_version=4.2.0; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.noprompt=true \
@@ -63,10 +63,10 @@ RUN set -x; \
 # copy IdP Plugins so they can be installed later
 RUN set -x; \
     mkdir -p /opt/idp-plugins; \
-    cp /tmp/oidc-common-dist-1.1.0.tar.gz \
-       /tmp/oidc-common-dist-1.1.0.tar.gz.asc \
-       /tmp/idp-plugin-duo-sdk-dist-1.1.1.tar.gz \
-       /tmp/idp-plugin-duo-sdk-dist-1.1.1.tar.gz.asc \
+    cp /tmp/oidc-common-dist-2.0.0.tar.gz \
+       /tmp/oidc-common-dist-2.0.0.tar.gz.asc \
+       /tmp/idp-plugin-duo-sdk-dist-1.2.0.tar.gz \
+       /tmp/idp-plugin-duo-sdk-dist-1.2.0.tar.gz.asc \
        /tmp/trust-duo-sdk.txt \
        /tmp/trust-oidc-common.txt \
        /tmp/add_duo_plugins.sh \

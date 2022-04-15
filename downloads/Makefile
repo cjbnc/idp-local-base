@@ -15,9 +15,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 4.1.6
+IDP_VER  := 4.2.0
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 26d3fab2de28f4166a7c6970030cf394c7e20a8ff5b18f4ab7db984b3b94ef4c
+IDP_SUM  := 087fc2632da99f046d2570f320277de5dd5293a102edceb539f2b9a94522b8cf
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
@@ -52,9 +52,9 @@ DUOS3_VER  := 1.15.0
 DUOS3_FILE := okio-$(DUOS3_VER).jar
 
 # IdP Plugins, will grab the .asc files as well
-PLUG1_VER  := 1.1.0
+PLUG1_VER  := 2.0.0
 PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
-PLUG2_VER  := 1.1.1
+PLUG2_VER  := 1.2.0
 PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG2_VER).tar.gz
 ADD_PLUGS  := add_duo_plugins.sh
 

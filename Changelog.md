@@ -1,5 +1,11 @@
 # Changelog
 
+## 2022/Apr/15 - bld2204151339
+    - rename to idp42-local-base
+    - idp 4.2.0
+    - oidc-common plugin 2.0.0
+    - duo-oidc plugin 1.2.0
+
 ## 2022/Apr/11 - bld2204111222
     - idp 4.1.6
     - jetty 9.4.46
