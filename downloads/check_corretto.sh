@@ -13,4 +13,6 @@ if [ "$oldver" != "$newver" ]; then
   #make
   echo "Build will download:"
   echo "  $newver"
+else
+  echo "Current   $newver"
 fi
