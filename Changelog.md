@@ -1,5 +1,8 @@
 # Changelog
 
+## 2022/May/03 - bld2205030919
+    - final build for Duo OIDC release
+
 ## 2022/Apr/20 - bld2204200942
     - idp 4.2.1
     - java 11.0.15.9
