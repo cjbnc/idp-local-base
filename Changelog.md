@@ -1,5 +1,8 @@
 # Changelog
 
+## 2022/Jun/06 - bld2206061129
+    - update to NCSU AD Login 1.2 (and 1.2n)
+
 ## 2022/May/03 - bld2205030919
     - final build for Duo OIDC release
 

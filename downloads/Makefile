@@ -25,7 +25,7 @@ DTA_FILE := jetty9-dta-ssl-$(DTA_VER).jar
 DTA_SUM  := 2f547074b06952b94c35631398f36746820a7697
 
 # NCSU custom LoginHandler
-NCSUAD_VER  := 1.3.0-1.1
+NCSUAD_VER  := 1.3.0-1.2
 NCSUAD_FILE := jaas-ncsuadloginmodule-$(NCSUAD_VER).jar 
 
 # URL Rewrite Lib
