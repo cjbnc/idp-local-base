@@ -5,9 +5,9 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 9.4.46.v20220331
+JETTY_VER  := 9.4.48.v20220622
 JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 5dd492197db583d129efa380cfec741bbc2777c5390075a0b8ef710ce8e1c6e5
+JETTY_SUM  := 3c554eeaffaa22840f7e321693748a2b717f94d8f3c3602c7db9ac0938a94f3b
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -52,7 +52,7 @@ DUOS3_VER  := 1.15.0
 DUOS3_FILE := okio-$(DUOS3_VER).jar
 
 # IdP Plugins, will grab the .asc files as well
-PLUG1_VER  := 2.0.0
+PLUG1_VER  := 2.1.0
 PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
 PLUG2_VER  := 1.2.0
 PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG2_VER).tar.gz

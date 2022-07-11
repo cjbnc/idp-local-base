@@ -1,5 +1,9 @@
 # Changelog
 
+## 2022/Jul/11 - bld2207111244
+    - jetty 9.4.48
+    - oidc-common 2.1.0
+
 ## 2022/Jun/06 - bld2206061129
     - update to NCSU AD Login 1.2 (and 1.2n)
 
