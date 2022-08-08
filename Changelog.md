@@ -1,5 +1,8 @@
 # Changelog
 
+## 2022/Aug/08 - bld2208081321
+    - java 11.0.16.8
+
 ## 2022/Jul/11 - bld2207111244
     - jetty 9.4.48
     - oidc-common 2.1.0
