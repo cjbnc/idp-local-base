@@ -17,6 +17,15 @@ while [[ $# > 0 ]]; do
   shift
 done
 
+dirs=$(find /opt/idp-config-src/shibboleth-idp -type d)
+for src in $dirs; do
+  dst=${src/idp-config-src?/}
+  if [ ! -d "$dst" ]; then
+    [ $VERBOSE == 1 ] && echo "Make missing dir: $dst"
+    mkdir -p "$dst"
+  fi
+done
+
 files=$(find /opt/idp-config-src/shibboleth-idp -type f)
 for src in $files; do
   dst=${src/idp-config-src?/}
