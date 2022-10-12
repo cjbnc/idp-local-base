@@ -79,7 +79,7 @@ RUN set -x; \
 RUN set -x; \
     cp /tmp/jetty9-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
-    cp /tmp/jaas-ncsuadloginmodule-1.3.0-1.2.jar \
+    cp /tmp/jaas-ncsuadloginmodule-1.3.0-1.2n.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
     cp /tmp/duo-client-0.3.0.jar \
        /tmp/org.json-chargebee-1.0.jar \
