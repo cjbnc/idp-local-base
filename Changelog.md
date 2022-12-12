@@ -1,5 +1,10 @@
 # Changelog
 
+## 2022/Dec/12 - bld2212121150
+    - duo-sdk plugin 1.3.0, with more logging
+    - jetty 9.4.50
+    - java 11.0.17.8 (previously updated)
+
 ## 2022/Aug/08 - bld2208081321
     - java 11.0.16.8
 
