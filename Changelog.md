@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023/Jan/19 -
+    - jetty 10.0.13
+    - add fix to doubleclick LOG ON button
+
 ## 2022/Dec/12 - bld2212121150
     - duo-sdk plugin 1.3.0, with more logging
     - jetty 9.4.50
