@@ -50,7 +50,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=4.2.1; \
+    shibidp_version=4.3.0; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.noprompt=true \
@@ -125,7 +125,7 @@ EXPOSE 80 443 8443
 
 #establish a healthcheck command so that docker might know the container's true state
 HEALTHCHECK --interval=2m --timeout=30s \
-  CMD curl -kfs https://127.0.0.1/idp/status || exit 1
+  CMD curl -fs http://127.0.0.1/idp/status || exit 1
 
 CMD ["run-shibboleth.sh"]
 
