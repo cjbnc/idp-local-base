@@ -5,9 +5,9 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 9.4.50.v20221201
-JETTY_FILE := jetty-distribution-$(JETTY_VER).zip
-JETTY_SUM  := 0b6c211444c77fdc1b3e95d8eeb038aeb8755182ead68cb1348ced6d89ff8db5
+JETTY_VER  := 10.0.13
+JETTY_FILE := jetty-home-$(JETTY_VER).zip
+JETTY_SUM  := b98fd4b1f2643857a0b57eda96ea8529cb5d0cfc310f31d86101e7775e4f67f7
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -15,14 +15,14 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 4.2.1
+IDP_VER  := 4.3.0
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 689fe98fcd5267086e852eb163913b56fa3becbfc0f5df687aa90706bf82ad92
+IDP_SUM  := 172afd0882abbbd97830971298eae679941ead58c4758d60f4eeed4da6a7dd7e
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
-DTA_FILE := jetty9-dta-ssl-$(DTA_VER).jar
-DTA_SUM  := 2f547074b06952b94c35631398f36746820a7697
+DTA_FILE := jetty94-dta-ssl-$(DTA_VER).jar
+DTA_SUM  := 5e5de66e3517d30ff19ef66cf7a4aa5443b861d83e36a75e85845b007a03afbf
 
 # NCSU custom LoginHandler
 NCSUAD_VER  := 1.3.0-1.2
@@ -75,7 +75,7 @@ clean:
 
 $(JETTY_FILE):
 	wget -O $(JETTY_FILE) \
-		https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$(JETTY_VER)/$(JETTY_FILE)
+		https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/$(JETTY_VER)/$(JETTY_FILE)
 	echo "$(JETTY_SUM)  $(JETTY_FILE)" | sha256sum -c -
 
 $(LIBSETUID_FILE):
@@ -90,8 +90,8 @@ $(IDP_FILE):
 
 $(DTA_FILE):
 	wget -O $(DTA_FILE) \
-		https://build.shibboleth.net/nexus/content/repositories/releases/net/shibboleth/utilities/jetty9/jetty9-dta-ssl/$(DTA_VER)/$(DTA_FILE)
-	echo "$(DTA_SUM)  $(DTA_FILE)" | sha1sum -c -
+		https://build.shibboleth.net/nexus/content/repositories/releases/net/shibboleth/utilities/jetty9/jetty94-dta-ssl/$(DTA_VER)/$(DTA_FILE)
+	echo "$(DTA_SUM)  $(DTA_FILE)" | sha256sum -c -
 
 $(NCSUAD_FILE): /mnt/shib/src/$(NCSUAD_FILE)
 	cp -f /mnt/shib/src/$(NCSUAD_FILE) $(NCSUAD_FILE)

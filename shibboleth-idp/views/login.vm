@@ -39,6 +39,17 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="icon" type="image/x-icon" href="https://www.ncsu.edu/favicon.ico">
+    <script type="text/javascript">
+        function oneClickSubmit() {
+            var el=document.getElementById('formSubmit');
+            el.innerText='Logging in, please wait...';
+            el.disabled=true;
+            setTimeout(function(){
+                el.disabled=false; 
+                el.innerText='LOG IN';
+            }, 5000);
+        }
+    </script>
   </head>
   <body>
     <a class="sr-only" href="#content">Skip to main content</a>
@@ -69,7 +80,7 @@
 
               <form name="loginform" action="$flowExecutionUrl" 
                     method="post" class="form-signin" role="form"
-                    onsubmit="document.getElementById('formSubmit').innerText='Logging in, please wait...';">
+                    onsubmit="oneClickSubmit();">
 
                 #if ($passwordEnabled)
                   <h2 class="shib-heading unity">
@@ -110,8 +121,9 @@
                 ##</label>
 
                 #if ($passwordEnabled)
+                  <input type="hidden" name="_eventId_proceed" value="LOG IN" />
                   <button id="formSubmit" class="btn btn-red" 
-                    type="submit" name="_eventId_proceed"
+                    type="submit" name="not_eventId_proceed"
                     >#springMessageText("idp.login.login", "Login") <span class="glyphicon glyphicon-thin-arrow" aria-hidden="true"></span></button>
                 #end
 

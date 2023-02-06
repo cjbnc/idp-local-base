@@ -30,9 +30,9 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=9.4.50.v20221201; \
-    unzip /tmp/jetty-distribution-$jetty_version.zip -d /opt \
-    && mv /opt/jetty-distribution-$jetty_version /opt/jetty \
+    jetty_version=10.0.13; \
+    unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
+    && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
     && mkdir -p /opt/iam-jetty-base/modules \
     && mkdir -p /opt/iam-jetty-base/lib/ext \
@@ -50,7 +50,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=4.2.1; \
+    shibidp_version=4.3.0; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh -Didp.noprompt=true \
@@ -77,7 +77,7 @@ RUN set -x; \
 # Place the NCSU AD login module
 # Place the jars needed for Duo client in MFA
 RUN set -x; \
-    cp /tmp/jetty9-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
+    cp /tmp/jetty94-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/jaas-ncsuadloginmodule-1.3.0-1.2.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
@@ -88,9 +88,9 @@ RUN set -x; \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/
 
 # Jolokia war for stats
-RUN set -x; \
-    mkdir -p /opt/jolokia; \
-    cp /tmp/jolokia-localhost.war /opt/jolokia/jolokia.war
+#RUN set -x; \
+#    mkdir -p /opt/jolokia; \
+#    cp /tmp/jolokia-localhost.war /opt/jolokia/jolokia.war
 
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/
@@ -125,7 +125,7 @@ EXPOSE 80 443 8443
 
 #establish a healthcheck command so that docker might know the container's true state
 HEALTHCHECK --interval=2m --timeout=30s \
-  CMD curl -kfs https://127.0.0.1/idp/status || exit 1
+  CMD curl -fs http://127.0.0.1/idp/status || exit 1
 
 CMD ["run-shibboleth.sh"]
 
