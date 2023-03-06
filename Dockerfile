@@ -30,7 +30,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=10.0.13; \
+    jetty_version=10.0.14; \
     unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
     && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -125,7 +125,7 @@ EXPOSE 80 443 8443
 
 #establish a healthcheck command so that docker might know the container's true state
 HEALTHCHECK --interval=2m --timeout=30s \
-  CMD curl -fs http://127.0.0.1/idp/status || exit 1
+  CMD curl -fs --ipv4 http://localhost/idp/status || exit 1
 
 CMD ["run-shibboleth.sh"]
 
