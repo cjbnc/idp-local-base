@@ -19,6 +19,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && rpm --import https://yum.corretto.aws/corretto.key \
     && curl -L -o /etc/yum.repos.d/corretto.repo https://yum.corretto.aws/corretto.repo \
     && dnf -y install java-11-amazon-corretto-devel unzip cronie which \
+       findutils procps-ng psmisc \
     && dnf clean all \
     && rm -rf /tmp/* /var/cache/dnf
 
@@ -34,6 +35,7 @@ RUN set -x; \
     unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
     && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
+    && sed -i "s/\(xargs.*\)&/\1/" /etc/init.d/jetty \
     && mkdir -p /opt/iam-jetty-base/modules \
     && mkdir -p /opt/iam-jetty-base/lib/ext \
     && mkdir -p /opt/iam-jetty-base/resources \
