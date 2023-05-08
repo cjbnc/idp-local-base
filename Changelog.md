@@ -1,5 +1,10 @@
 # Changelog
 
+## 2023/May/08 - bld2305080930
+    - re-imaged to RockyLinux 8 base
+    - Java 11.0.19.10
+    - Jetty 10.0.15
+
 ## 2023/Mar/06 - bld2303061227
     - Java 11.0.18.10
     - Jetty 10.0.14

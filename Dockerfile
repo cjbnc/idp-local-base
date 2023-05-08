@@ -1,4 +1,4 @@
-FROM centos:centos7 as javabase
+FROM rockylinux:8 as javabase
 
 # all the envs 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto \
@@ -15,12 +15,12 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto \
 # set our timezone
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
-    && yum -y update \
+    && dnf -y update \
     && rpm --import https://yum.corretto.aws/corretto.key \
     && curl -L -o /etc/yum.repos.d/corretto.repo https://yum.corretto.aws/corretto.repo \
-    && yum -y install java-11-amazon-corretto-devel unzip cronie which \
-    && yum clean all \
-    && rm -rf /tmp/* /var/cache/yum
+    && dnf -y install java-11-amazon-corretto-devel unzip cronie which \
+    && dnf clean all \
+    && rm -rf /tmp/* /var/cache/dnf
 
 # need the same java env to build out /opt
 FROM javabase as build
@@ -30,7 +30,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=10.0.14; \
+    jetty_version=10.0.15; \
     unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
     && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
