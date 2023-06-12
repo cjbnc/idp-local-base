@@ -65,10 +65,10 @@ RUN set -x; \
 # copy IdP Plugins so they can be installed later
 RUN set -x; \
     mkdir -p /opt/idp-plugins; \
-    cp /tmp/oidc-common-dist-2.1.0.tar.gz \
-       /tmp/oidc-common-dist-2.1.0.tar.gz.asc \
-       /tmp/idp-plugin-duo-sdk-dist-1.3.0.tar.gz \
-       /tmp/idp-plugin-duo-sdk-dist-1.3.0.tar.gz.asc \
+    cp /tmp/oidc-common-dist-2.2.0.tar.gz \
+       /tmp/oidc-common-dist-2.2.0.tar.gz.asc \
+       /tmp/idp-plugin-duo-sdk-dist-1.4.0.tar.gz \
+       /tmp/idp-plugin-duo-sdk-dist-1.4.0.tar.gz.asc \
        /tmp/trust-duo-sdk.txt \
        /tmp/trust-oidc-common.txt \
        /tmp/add_duo_plugins.sh \

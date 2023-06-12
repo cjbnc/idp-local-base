@@ -1,6 +1,10 @@
 # Changelog
 
-@@ 2023/May/26 - bld2305261235
+## 2023/Jun/12 - bld2306121132
+    - OIDC common 2.2.0
+    - Duo OIDC 1.4.0
+
+## 2023/May/26 - bld2305261235
     - increment to style_405.css
     - replaces Univers fonts with Roboto
 
