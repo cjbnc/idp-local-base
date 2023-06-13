@@ -52,7 +52,7 @@ DUOS3_VER  := 1.15.0
 DUOS3_FILE := okio-$(DUOS3_VER).jar
 
 # IdP Plugins, will grab the .asc files as well
-PLUG1_VER  := 2.2.0
+PLUG1_VER  := 2.2.1
 PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
 PLUG2_VER  := 1.4.0
 PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG2_VER).tar.gz

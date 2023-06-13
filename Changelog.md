@@ -1,5 +1,8 @@
 # Changelog
 
+## 2023/Jun/13 - bld2306131235
+    - OIDC common 2.2.1
+
 ## 2023/Jun/12 - bld2306121132
     - OIDC common 2.2.0
     - Duo OIDC 1.4.0

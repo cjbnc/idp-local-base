@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-OIDCVER=2.2.0
+OIDCVER=2.2.1
 DUOVER=1.4.0
 
 cd /opt/shibboleth-idp
