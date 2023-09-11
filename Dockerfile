@@ -31,7 +31,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=10.0.15; \
+    jetty_version=10.0.16; \
     unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
     && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -67,8 +67,8 @@ RUN set -x; \
     mkdir -p /opt/idp-plugins; \
     cp /tmp/oidc-common-dist-2.2.1.tar.gz \
        /tmp/oidc-common-dist-2.2.1.tar.gz.asc \
-       /tmp/idp-plugin-duo-sdk-dist-1.4.0.tar.gz \
-       /tmp/idp-plugin-duo-sdk-dist-1.4.0.tar.gz.asc \
+       /tmp/idp-plugin-duo-sdk-dist-1.4.1.tar.gz \
+       /tmp/idp-plugin-duo-sdk-dist-1.4.1.tar.gz.asc \
        /tmp/trust-duo-sdk.txt \
        /tmp/trust-oidc-common.txt \
        /tmp/add_duo_plugins.sh \

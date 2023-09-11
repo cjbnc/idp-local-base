@@ -1,5 +1,10 @@
 # Changelog
 
+## 2023/Sep/11 - bld2309111422
+    - Java 11.0.20.9
+    - Jetty 10.0.16
+    - Duo OIDC Plugin 1.4.1
+
 ## 2023/Jun/13 - bld2306131235
     - OIDC common 2.2.1
 
