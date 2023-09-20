@@ -1,5 +1,12 @@
 # Changelog
 
+## 2023/Sep/20 -
+    - Java 17
+    - Jetty 11.0.16
+    - IdP 5.0.0
+    - updated duo plugins
+    - added Nashorn plugin
+
 ## 2023/Sep/11 - bld2309111422
     - Java 11.0.20.9
     - Jetty 10.0.16

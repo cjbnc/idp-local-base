@@ -1,8 +1,8 @@
 #!/bin/bash -x
 
-OIDCVER=2.2.1
-DUOVER=1.4.1
-JSVER=1.1.0
+OIDCVER=3.0.0
+DUOVER=2.0.0
+JSVER=2.0.0
 
 cd /opt/shibboleth-idp
 bin/plugin.sh --noPrompt \

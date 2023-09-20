@@ -5,9 +5,9 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 10.0.16
+JETTY_VER  := 11.0.16
 JETTY_FILE := jetty-home-$(JETTY_VER).zip
-JETTY_SUM  := 899ac7f57fdf2c01fb8af5acf12253e0c92c4dcd4b5b6048a7acf2d91602cabd
+JETTY_SUM  := 219eaa68ad24c311e79911d3c587eb437c42ffc619d0b162ffd0fcd3316a6873
 
 # libsetuid for Jetty
 LIBSETUID_VER  := 8.1.9.v20130131
@@ -15,9 +15,9 @@ LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
 LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
 
 # Shibboleth IdP
-IDP_VER  := 4.3.1
+IDP_VER  := 5.0.0
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := e7b1c14fe2dcb36b683885934cb8c2f0ca247003edf439034799f92339b5cb2b
+IDP_SUM  := 4664ace32162aaeebee1cf54d84c4173d9a4382497dad2323caccbafed6b0c6c
 
 # library to allow SOAP Endpoints
 DTA_VER  := 1.0.0
@@ -25,7 +25,7 @@ DTA_FILE := jetty94-dta-ssl-$(DTA_VER).jar
 DTA_SUM  := 5e5de66e3517d30ff19ef66cf7a4aa5443b861d83e36a75e85845b007a03afbf
 
 # NCSU custom LoginHandler
-NCSUAD_VER  := 1.3.0-1.2
+NCSUAD_VER  := 2.2.0-1.0
 NCSUAD_FILE := jaas-ncsuadloginmodule-$(NCSUAD_VER).jar 
 
 # URL Rewrite Lib
@@ -52,11 +52,11 @@ DUOS3_VER  := 1.15.0
 DUOS3_FILE := okio-$(DUOS3_VER).jar
 
 # IdP Plugins, will grab the .asc files as well
-PLUG1_VER  := 2.2.1
+PLUG1_VER  := 3.0.0
 PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
-PLUG2_VER  := 1.4.1
+PLUG2_VER  := 2.0.0
 PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG2_VER).tar.gz
-PLUG3_VER  := 1.1.0
+PLUG3_VER  := 2.0.0
 PLUG3_FILE := idp-plugin-nashorn-jdk-dist-$(PLUG3_VER).tar.gz
 ADD_PLUGS  := add_duo_plugins.sh
 

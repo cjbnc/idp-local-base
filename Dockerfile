@@ -31,7 +31,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=10.0.16; \
+    jetty_version=11.0.16; \
     unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
     && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -52,11 +52,11 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=4.3.1; \
+    shibidp_version=5.0.0; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
-    && bin/install.sh -Didp.noprompt=true \
-         -Didp.property.file=/tmp/idp/idp.installer.properties \
+    && bin/install.sh --noPrompt \
+         --propertyFile /tmp/idp/idp.installer.properties \
     && cd / \
     && chmod -R +r /opt/shibboleth-idp/ \
     && sed -i 's/ password/CHANGEME/g' /opt/shibboleth-idp/conf/idp.properties \
@@ -65,12 +65,12 @@ RUN set -x; \
 # copy IdP Plugins so they can be installed later
 RUN set -x; \
     mkdir -p /opt/idp-plugins; \
-    cp /tmp/oidc-common-dist-2.2.1.tar.gz \
-       /tmp/oidc-common-dist-2.2.1.tar.gz.asc \
-       /tmp/idp-plugin-duo-sdk-dist-1.4.1.tar.gz \
-       /tmp/idp-plugin-duo-sdk-dist-1.4.1.tar.gz.asc \
-       /tmp/idp-plugin-nashorn-jdk-dist-1.1.0.tar.gz \
-       /tmp/idp-plugin-nashorn-jdk-dist-1.1.0.tar.gz.asc \
+    cp /tmp/oidc-common-dist-3.0.0.tar.gz \
+       /tmp/oidc-common-dist-3.0.0.tar.gz.asc \
+       /tmp/idp-plugin-duo-sdk-dist-2.0.0.tar.gz \
+       /tmp/idp-plugin-duo-sdk-dist-2.0.0.tar.gz.asc \
+       /tmp/idp-plugin-nashorn-jdk-dist-2.0.0.tar.gz \
+       /tmp/idp-plugin-nashorn-jdk-dist-2.0.0.tar.gz.asc \
        /tmp/trust-duo-sdk.txt \
        /tmp/trust-oidc-common.txt \
        /tmp/trust-nashorn.txt \
@@ -84,7 +84,8 @@ RUN set -x; \
 RUN set -x; \
     cp /tmp/jetty94-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
     cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
-    cp /tmp/jaas-ncsuadloginmodule-1.3.0-1.2.jar \
+    mkdir -p /opt/shibboleth-idp/edit-webapp/WEB-INF/lib && \
+    cp /tmp/jaas-ncsuadloginmodule-2.2.0-1.0.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
     cp /tmp/duo-client-0.3.0.jar \
        /tmp/org.json-chargebee-1.0.jar \
