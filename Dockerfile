@@ -1,7 +1,7 @@
 FROM rockylinux:8 as javabase
 
 # all the envs 
-ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto \
+ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto \
     JETTY_HOME=/opt/jetty \
     JETTY_BASE=/opt/iam-jetty-base \
     JETTY_MAX_HEAP=512m \
@@ -18,7 +18,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && dnf -y update \
     && rpm --import https://yum.corretto.aws/corretto.key \
     && curl -L -o /etc/yum.repos.d/corretto.repo https://yum.corretto.aws/corretto.repo \
-    && dnf -y install java-11-amazon-corretto-devel unzip cronie which \
+    && dnf -y install java-17-amazon-corretto-devel unzip cronie which \
        findutils procps-ng psmisc \
     && dnf clean all \
     && rm -rf /tmp/* /var/cache/dnf
@@ -69,8 +69,11 @@ RUN set -x; \
        /tmp/oidc-common-dist-2.2.1.tar.gz.asc \
        /tmp/idp-plugin-duo-sdk-dist-1.4.1.tar.gz \
        /tmp/idp-plugin-duo-sdk-dist-1.4.1.tar.gz.asc \
+       /tmp/idp-plugin-nashorn-jdk-dist-1.1.0.tar.gz \
+       /tmp/idp-plugin-nashorn-jdk-dist-1.1.0.tar.gz.asc \
        /tmp/trust-duo-sdk.txt \
        /tmp/trust-oidc-common.txt \
+       /tmp/trust-nashorn.txt \
        /tmp/add_duo_plugins.sh \
        /opt/idp-plugins
 

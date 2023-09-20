@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fname=amazon-corretto-11-x64-linux-jdk.rpm
+fname=amazon-corretto-17-x64-linux-jdk.rpm
 url=https://corretto.aws/downloads/latest/$fname
 hfile=./.last_coretto
 

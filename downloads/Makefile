@@ -56,6 +56,8 @@ PLUG1_VER  := 2.2.1
 PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
 PLUG2_VER  := 1.4.1
 PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG2_VER).tar.gz
+PLUG3_VER  := 1.1.0
+PLUG3_FILE := idp-plugin-nashorn-jdk-dist-$(PLUG3_VER).tar.gz
 ADD_PLUGS  := add_duo_plugins.sh
 
 .PHONY: all clean
@@ -63,7 +65,8 @@ ADD_PLUGS  := add_duo_plugins.sh
 all: $(JETTY_FILE) $(LIBSETUID_FILE) \
 	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
 	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
-	 $(PLUG1_FILE) $(PLUG2_FILE) $(ADD_PLUGS)
+	 $(PLUG1_FILE) $(PLUG2_FILE) $(PLUG3_FILE) \
+	 $(ADD_PLUGS)
 
 clean:
 	rm -f $(JETTY_FILE) $(LIBSETUID_FILE) \
@@ -71,6 +74,7 @@ clean:
 		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
 		  $(PLUG1_FILE) $(PLUG1_FILE).asc \
 		  $(PLUG2_FILE) $(PLUG2_FILE).asc \
+		  $(PLUG3_FILE) $(PLUG3_FILE).asc \
 		  $(ADD_PLUGS)
 
 $(JETTY_FILE):
@@ -138,10 +142,17 @@ $(PLUG2_FILE):
 	wget -O $(PLUG2_FILE).asc \
 	    https://shibboleth.net/downloads/identity-provider/plugins/duo-oidc/$(PLUG2_VER)/$(PLUG2_FILE).asc
 
+$(PLUG3_FILE):
+	wget -O $(PLUG3_FILE) \
+	    https://shibboleth.net/downloads/identity-provider/plugins/scripting/$(PLUG3_VER)/$(PLUG3_FILE)
+	wget -O $(PLUG3_FILE).asc \
+	    https://shibboleth.net/downloads/identity-provider/plugins/scripting/$(PLUG3_VER)/$(PLUG3_FILE).asc
+
 $(ADD_PLUGS): $(ADD_PLUGS).template
 	cat $(ADD_PLUGS).template | \
 	    sed -e s/PLUG1VER/$(PLUG1_VER)/ | \
-	    sed -e s/PLUG2VER/$(PLUG2_VER)/ \
+	    sed -e s/PLUG2VER/$(PLUG2_VER)/ | \
+	    sed -e s/PLUG3VER/$(PLUG3_VER)/ \
 		> $(ADD_PLUGS)
 	chmod +x $(ADD_PLUGS)
 
