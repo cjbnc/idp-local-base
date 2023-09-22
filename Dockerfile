@@ -40,11 +40,9 @@ RUN set -x; \
     && mkdir -p /opt/iam-jetty-base/lib/ext \
     && mkdir -p /opt/iam-jetty-base/resources \
     && cd /opt/iam-jetty-base \
-    && touch start.ini \
-    && $JRE_HOME/bin/java -jar ../jetty/start.jar --create-startd --add-to-start=http,https,ssl,deploy,ext,annotations,jstl,console-capture,setuid \
+    && $JRE_HOME/bin/java -jar ../jetty/start.jar --create-startd --add-to-start=server,http,https,ssl,deploy,annotations,resources,console-capture,setuid,requestlog,servlets,jsp,jstl,ext,plus \
     && sed -i 's/# jetty.http.port=8080/jetty.http.port=80/g' /opt/iam-jetty-base/start.d/http.ini \
-    && sed -i 's/# jetty.ssl.port=8443/jetty.ssl.port=443/g' /opt/iam-jetty-base/start.d/ssl.ini \
-    && sed -i 's/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"\/>/<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler"><Set name="showContexts">false<\/Set><\/New>/g' /opt/jetty/etc/jetty.xml 
+    && sed -i 's/# jetty.ssl.port=8443/jetty.ssl.port=443/g' /opt/iam-jetty-base/start.d/ssl.ini 
 
 # Place libsetuid
 RUN set -x; \

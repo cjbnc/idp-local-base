@@ -13,7 +13,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 [ -x /opt/cron-scripts/update_configs.sh ] \
   && /opt/cron-scripts/update_configs.sh
 
-sed -i "s/^-Xmx.*$/-Xmx$JETTY_MAX_HEAP/g" /opt/iam-jetty-base/start.ini
+sed -i "s/^-Xmx.*$/-Xmx$JETTY_MAX_HEAP/g" /opt/iam-jetty-base/start.d/oldstart.ini
 
 /etc/init.d/jetty run
 
