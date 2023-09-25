@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "https://www.eclipse.org/jetty/configure_10_0.dtd">
+<Configure id="MovedContext" class="org.eclipse.jetty.server.handler.MovedContextHandler">
+  <!-- Simple handler to redirect from old path to new -->
+  <Set name="contextPath">/ds</Set>
+  <Set name="newContextURL">https://docs.shib.ncsu.edu/ds</Set>
+  <Set name="permanent">true</Set>
+  <Set name="discardPathInfo">false</Set>
+  <Set name="discardQuery">false</Set>
+  <Set name="expires">-1</Set>
+</Configure>
+

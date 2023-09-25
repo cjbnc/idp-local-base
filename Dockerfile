@@ -40,13 +40,9 @@ RUN set -x; \
     && mkdir -p /opt/iam-jetty-base/lib/ext \
     && mkdir -p /opt/iam-jetty-base/resources \
     && cd /opt/iam-jetty-base \
-    && $JRE_HOME/bin/java -jar ../jetty/start.jar --create-startd --add-to-start=server,http,https,ssl,deploy,annotations,resources,console-capture,setuid,requestlog,servlets,jsp,jstl,ext,plus \
+    && $JRE_HOME/bin/java -jar ../jetty/start.jar --create-startd --add-to-start=server,http,https,ssl,deploy,annotations,resources,console-capture,setuid,rewrite,requestlog,servlets,jsp,jstl,ext,plus \
     && sed -i 's/# jetty.http.port=8080/jetty.http.port=80/g' /opt/iam-jetty-base/start.d/http.ini \
     && sed -i 's/# jetty.ssl.port=8443/jetty.ssl.port=443/g' /opt/iam-jetty-base/start.d/ssl.ini 
-
-# Place libsetuid
-RUN set -x; \
-    cp /tmp/libsetuid-8.1.9.v20130131.so /opt/iam-jetty-base/lib/ext/
 
 # Install Shibboleth IdP
 RUN set -x; \
@@ -80,8 +76,6 @@ RUN set -x; \
 # Place the NCSU AD login module
 # Place the jars needed for Duo client in MFA
 RUN set -x; \
-    cp /tmp/jetty94-dta-ssl-1.0.0.jar /opt/iam-jetty-base/lib/ext/ && \
-    cp /tmp/urlrewritefilter-4.0.3.jar /opt/iam-jetty-base/lib/ext/ && \
     mkdir -p /opt/shibboleth-idp/edit-webapp/WEB-INF/lib && \
     cp /tmp/jaas-ncsuadloginmodule-2.2.0-1.0.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ && \
@@ -90,11 +84,6 @@ RUN set -x; \
        /tmp/okio-1.15.0.jar \
        /tmp/okhttp-2.3.0.jar \
        /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/
-
-# Jolokia war for stats
-#RUN set -x; \
-#    mkdir -p /opt/jolokia; \
-#    cp /tmp/jolokia-localhost.war /opt/jolokia/jolokia.war
 
 # extra config files
 ADD iam-jetty-base/ /opt/iam-jetty-base/

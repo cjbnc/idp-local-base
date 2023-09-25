@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "https://www.eclipse.org/jetty/configure_10_0.dtd">
+<Configure id="Rewrite" class="org.eclipse.jetty.rewrite.handler.RuleContainer">
+
+  <!-- protect favicon handling -->
+  <Call name="addRule">
+    <Arg>
+      <New class="org.eclipse.jetty.rewrite.handler.HeaderPatternRule">
+        <Set name="pattern">/favicon.ico</Set>
+        <Set name="name">Cache-Control</Set>
+        <Set name="value">Max-Age=3600,public</Set>
+        <Set name="terminating">true</Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <!-- stop processing if its a /idp url -->
+  <Call name="addRule">
+    <Arg>
+      <New class="org.eclipse.jetty.rewrite.handler.TerminatingPatternRule">
+        <Set name="pattern">/idp/*</Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <!-- stop processing if its a /ds url - uses moved-context -->
+  <Call name="addRule">
+    <Arg>
+      <New class="org.eclipse.jetty.rewrite.handler.TerminatingPatternRule">
+        <Set name="pattern">/ds/*</Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <!-- redirect eveything else -->
+  <Call name="addRule">
+    <Arg>
+      <New class="org.eclipse.jetty.rewrite.handler.RedirectRegexRule">
+        <Set name="regex">^(.*)$</Set>
+        <Set name="location">https://docs.shib.ncsu.edu$1</Set>
+      </New>
+    </Arg>
+  </Call>
+
+</Configure>
+

@@ -9,36 +9,14 @@ JETTY_VER  := 11.0.16
 JETTY_FILE := jetty-home-$(JETTY_VER).zip
 JETTY_SUM  := 219eaa68ad24c311e79911d3c587eb437c42ffc619d0b162ffd0fcd3316a6873
 
-# libsetuid for Jetty
-LIBSETUID_VER  := 8.1.9.v20130131
-LIBSETUID_FILE := libsetuid-$(LIBSETUID_VER).so
-LIBSETUID_SUM  := 7286c7cb836126a403eb1c2c792bde9ce6018226
-
 # Shibboleth IdP
 IDP_VER  := 5.0.0
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
 IDP_SUM  := 4664ace32162aaeebee1cf54d84c4173d9a4382497dad2323caccbafed6b0c6c
 
-# library to allow SOAP Endpoints
-DTA_VER  := 1.0.0
-DTA_FILE := jetty94-dta-ssl-$(DTA_VER).jar
-DTA_SUM  := 5e5de66e3517d30ff19ef66cf7a4aa5443b861d83e36a75e85845b007a03afbf
-
 # NCSU custom LoginHandler
 NCSUAD_VER  := 2.2.0-1.0
 NCSUAD_FILE := jaas-ncsuadloginmodule-$(NCSUAD_VER).jar 
-
-# URL Rewrite Lib
-REWRITE_VER  := 4.0.3
-REWRITE_FILE := urlrewritefilter-$(REWRITE_VER).jar
-REWRITE_SUM  := 1a4b56629cacf3ec8d530405af2db018a679575e
-
-# Jolokia JMX connector
-JOLOKIA_VER  := 1.6.2
-#JOLOKIA_FILE := jolokia-war-$(JOLOKIA_VER).war
-#JOLOKIA_SUM  := 493d8bcde429c15a94c7bedcc4d9fc33cddc899243dcf0f19692348af6583c4d
-JOLOKIA_FILE := jolokia-war-unsecured-$(JOLOKIA_VER).war
-JOLOKIA_SUM  := 8cc4a6260b1a2ec72cf184a3447cc040a0436ad8602b5644da95884ed03426c2
 
 # Duo Client Plugin
 DUO_VER  := 0.3.0
@@ -62,16 +40,12 @@ ADD_PLUGS  := add_duo_plugins.sh
 
 .PHONY: all clean
 
-all: $(JETTY_FILE) $(LIBSETUID_FILE) \
-	 $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-	 $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
+all: $(JETTY_FILE) $(IDP_FILE) $(NCSUAD_FILE) $(DUO_FILE) \
 	 $(PLUG1_FILE) $(PLUG2_FILE) $(PLUG3_FILE) \
 	 $(ADD_PLUGS)
 
 clean:
-	rm -f $(JETTY_FILE) $(LIBSETUID_FILE) \
-		  $(IDP_FILE) $(DTA_FILE) $(NCSUAD_FILE) \
-		  $(REWRITE_FILE) $(JOLOKIA_FILE) $(DUO_FILE) \
+	rm -f $(JETTY_FILE) $(IDP_FILE) $(NCSUAD_FILE) $(DUO_FILE) \
 		  $(PLUG1_FILE) $(PLUG1_FILE).asc \
 		  $(PLUG2_FILE) $(PLUG2_FILE).asc \
 		  $(PLUG3_FILE) $(PLUG3_FILE).asc \
@@ -82,36 +56,13 @@ $(JETTY_FILE):
 		https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/$(JETTY_VER)/$(JETTY_FILE)
 	echo "$(JETTY_SUM)  $(JETTY_FILE)" | sha256sum -c -
 
-$(LIBSETUID_FILE):
-	wget -O $(LIBSETUID_FILE) \
-		https://repo1.maven.org/maven2/org/mortbay/jetty/libsetuid/$(LIBSETUID_VER)/$(LIBSETUID_FILE)
-	echo "$(LIBSETUID_SUM)  $(LIBSETUID_FILE)" | sha1sum -c -
-
 $(IDP_FILE):
 	wget -O $(IDP_FILE) \
 		https://shibboleth.net/downloads/identity-provider/$(IDP_VER)/$(IDP_FILE)
 	echo "$(IDP_SUM)  $(IDP_FILE)" | sha256sum -c -
 
-$(DTA_FILE):
-	wget -O $(DTA_FILE) \
-		https://build.shibboleth.net/nexus/content/repositories/releases/net/shibboleth/utilities/jetty9/jetty94-dta-ssl/$(DTA_VER)/$(DTA_FILE)
-	echo "$(DTA_SUM)  $(DTA_FILE)" | sha256sum -c -
-
 $(NCSUAD_FILE): /mnt/shib/src/$(NCSUAD_FILE)
 	cp -f /mnt/shib/src/$(NCSUAD_FILE) $(NCSUAD_FILE)
-
-$(REWRITE_FILE):
-	wget -O $(REWRITE_FILE) \
-	    https://repo1.maven.org/maven2/org/tuckey/urlrewritefilter/$(REWRITE_VER)/$(REWRITE_FILE)
-	echo "$(REWRITE_SUM)  $(REWRITE_FILE)" | sha1sum -c -
-
-$(JOLOKIA_FILE):
-	wget -O $(JOLOKIA_FILE) \
-	    https://repo1.maven.org/maven2/org/jolokia/jolokia-war-unsecured/$(JOLOKIA_VER)/$(JOLOKIA_FILE)
-	echo "$(JOLOKIA_SUM)  $(JOLOKIA_FILE)" | sha256sum -c -
-
-jolokia-localhost.war: $(JOLOKIA_FILE)
-	(cd jolokia; sh repackage.sh)
 
 $(DUO_FILE): $(DUOS1_FILE) $(DUOS2_FILE) $(DUOS3_FILE)
 	wget -O $(DUO_FILE) \
@@ -155,7 +106,4 @@ $(ADD_PLUGS): $(ADD_PLUGS).template
 	    sed -e s/PLUG3VER/$(PLUG3_VER)/ \
 		> $(ADD_PLUGS)
 	chmod +x $(ADD_PLUGS)
-
-	
-
 
