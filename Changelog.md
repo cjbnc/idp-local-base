@@ -6,6 +6,9 @@
     - IdP 5.0.0
     - updated duo plugins
     - added Nashorn plugin
+    - rebuild jetty11 start.d
+    - fix logging using logging-logback as suggested
+    - rebuild the NCSU AD Login module for latest ldaptive
 
 ## 2023/Sep/11 - bld2309111422
     - Java 11.0.20.9
