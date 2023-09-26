@@ -4,7 +4,7 @@ Shibboleth IdP
 [depend]
 annotations
 deploy
-ext
+http
 https
 jsp
 jstl

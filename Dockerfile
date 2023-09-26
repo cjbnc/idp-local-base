@@ -40,7 +40,7 @@ RUN set -x; \
     && mkdir -p /opt/iam-jetty-base/lib/ext \
     && mkdir -p /opt/iam-jetty-base/resources \
     && cd /opt/iam-jetty-base \
-    && $JRE_HOME/bin/java -jar ../jetty/start.jar --create-startd --add-to-start=server,http,https,ssl,deploy,annotations,resources,console-capture,setuid,rewrite,requestlog,servlets,jsp,jstl,ext,plus \
+    && $JRE_HOME/bin/java -jar ../jetty/start.jar --create-startd --add-module=server,http,https,ssl,deploy,annotations,resources,console-capture,setuid,rewrite,logging-logback,servlets,jsp,jstl,ext,plus --approve-all-licenses \
     && sed -i 's/# jetty.http.port=8080/jetty.http.port=80/g' /opt/iam-jetty-base/start.d/http.ini \
     && sed -i 's/# jetty.ssl.port=8443/jetty.ssl.port=443/g' /opt/iam-jetty-base/start.d/ssl.ini 
 
