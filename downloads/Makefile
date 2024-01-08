@@ -5,9 +5,9 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 11.0.16
+JETTY_VER  := 11.0.19
 JETTY_FILE := jetty-home-$(JETTY_VER).zip
-JETTY_SUM  := 219eaa68ad24c311e79911d3c587eb437c42ffc619d0b162ffd0fcd3316a6873
+JETTY_SUM  := 77c3c7168f042e9dbc0e4149923e561788c1bd067c1d2e7cb6edaace6d54a26b
 
 # Shibboleth IdP
 IDP_VER  := 5.0.0

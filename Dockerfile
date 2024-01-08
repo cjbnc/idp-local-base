@@ -31,7 +31,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=11.0.16; \
+    jetty_version=11.0.19; \
     unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
     && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \

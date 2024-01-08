@@ -1,5 +1,8 @@
 # Changelog
 
+## 2024/Jan/08 -
+    - Jetty 11.0.19
+
 ## 2023/Sep/20 -
     - Java 17
     - Jetty 11.0.16
