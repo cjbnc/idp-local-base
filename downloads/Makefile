@@ -10,9 +10,9 @@ JETTY_FILE := jetty-home-$(JETTY_VER).zip
 JETTY_SUM  := 77c3c7168f042e9dbc0e4149923e561788c1bd067c1d2e7cb6edaace6d54a26b
 
 # Shibboleth IdP
-IDP_VER  := 5.0.0
+IDP_VER  := 5.1.0
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 4664ace32162aaeebee1cf54d84c4173d9a4382497dad2323caccbafed6b0c6c
+IDP_SUM  := 7877525c0f6d75684f86dd3203c0a147cb41937d3fb2e5361b3f3c76e8170208
 
 # NCSU custom LoginHandler
 NCSUAD_VER  := 2.2.0-1.0

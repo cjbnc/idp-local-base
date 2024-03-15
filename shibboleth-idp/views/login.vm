@@ -81,6 +81,7 @@
               <form name="loginform" action="$flowExecutionUrl" 
                     method="post" class="form-signin" role="form"
                     onsubmit="oneClickSubmit();">
+                #parse("csrf/csrf.vm")
 
                 #if ($passwordEnabled)
                   <h2 class="shib-heading unity">
@@ -204,5 +205,18 @@
     <script src="https://cdn.ncsu.edu/brand-assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.ncsu.edu/shibboleth/inc/toggle.js"></script>
     
+    <!-- Shibboleth code to focus on first empty box -->
+    <script #if ($nonce)nonce="$nonce"#end>
+    <!--
+    const ufield = document.getElementById('username');
+    const pfield = document.getElementById('password');
+    if (ufield.value.trim().length == 0) {
+        ufield.focus();
+    } else {
+        pfield.focus();
+    }
+    // -->
+    </script>
+
   </body>
 </html>
