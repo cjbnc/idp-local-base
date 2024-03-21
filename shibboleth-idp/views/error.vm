@@ -39,6 +39,7 @@
     #set ($message = $springMacroRequestContext.getMessage("idp.message", "An unidentified error occurred."))
 #end
 ##
+$response.addHeader("Content-Security-Policy", "script-src-elem https://cdn.ncsu.edu https://ajax.googleapis.com")
 <!DOCTYPE html>
 <html lang="en-US">
   <head>

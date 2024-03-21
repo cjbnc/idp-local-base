@@ -10,22 +10,27 @@
 ## authenticationErrorContext - context with login error state
 ## authenticationWarningContext - context with login warning state
 ## ldapResponseContext - context with LDAP state (if using native LDAP)
+## username - username from previous rendering of form
+## errorMessageFunction - function to produce error message for form
+## rpContext - the context with information about the relying party (SP)
 ## rpUIContext - the context with SP UI information from the metadata
-## extendedAuthenticationFlows - collection of "extended" AuthenticationFlowDescriptor objects
-## passwordPrincipals - contents of the shibboleth.authn.Password.PrincipalOverride bean
 ## encoder - HTMLEncoder class
+## cspDigester - Calculates base64-encoded SHA-2 hashes (call apply)
+## cspNonce - Calculates secure nonces (call generateIdentifier)
 ## request - HttpServletRequest
 ## response - HttpServletResponse
 ## environment - Spring Environment object for property resolution
 ## custom - arbitrary object injected by deployer
 ##
-#set ($rpContext = $profileRequestContext.getSubcontext('net.shibboleth.profile.context.RelyingPartyContext'))
-#set ($username = $authenticationContext.getSubcontext('net.shibboleth.idp.authn.context.UsernamePasswordContext', true).getUsername())
 #set ($passwordEnabled = false)
 #if (!$passwordPrincipals or $passwordPrincipals.isEmpty() or $authenticationContext.isAcceptable($passwordPrincipals))
   #set ($passwordEnabled = true)
 #end
 ##
+#set ($nonce = $cspNonce.generateIdentifier())
+$response.addHeader("Content-Security-Policy", "script-src-elem 'nonce-$nonce' https://cdn.ncsu.edu https://ajax.googleapis.com")
+## #set ($onClick = "this.childNodes[0].nodeValue='#springMessageText('idp.login.pleasewait', 'Logging in, please wait...')'")
+## $response.addHeader("Content-Security-Policy", "script-src-attr 'unsafe-hashes' 'sha256-$cspDigester.apply($onClick)'")
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -39,7 +44,8 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="icon" type="image/x-icon" href="https://www.ncsu.edu/favicon.ico">
-    <script type="text/javascript">
+    <script src="https://cdn.ncsu.edu/shibboleth/inc/toggle.js"></script>
+    <script type="text/javascript" #if ($nonce)nonce="$nonce"#end>
         function oneClickSubmit() {
             var el=document.getElementById('formSubmit');
             el.innerText='Logging in, please wait...';
@@ -107,13 +113,14 @@
                     autocomplete="off">
 
                   <label for="showPassword">Show password</label>
-                  <input type="checkbox" id="showPassword" class="show-pass" onclick="togglePassword()">
+                  <input type="checkbox" id="showPassword">
                   <br>
 
-                  ##<label class="checkbox">
-                  ##  <input type="checkbox" id="donotcache" name="donotcache" value="1"> 
-                  ##  #springMessageText("idp.login.donotcache", "Don't Remember Login")
-                  ##</label>
+                  <label for="donotcache">
+                    #springMessageText("idp.login.donotcache", "Don't Remember Login")
+                  </label>
+                  <input type="checkbox" id="donotcache" class="show-pass" name="donotcache" value="1"> 
+                  <br>
                 #end
 
                 #if ($passwordEnabled)
@@ -203,7 +210,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below) -->
     <script src="https://cdn.ncsu.edu/brand-assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.ncsu.edu/shibboleth/inc/toggle.js"></script>
     
     <!-- Shibboleth code to focus on first empty box -->
     <script #if ($nonce)nonce="$nonce"#end>
@@ -215,6 +221,13 @@
     } else {
         pfield.focus();
     }
+    // -->
+    </script>
+
+    <script #if ($nonce)nonce="$nonce"#end>
+    <!--
+      document.getElementById("showPassword").addEventListener("click", togglePassword);
+      document.getElementById("showPassword").addEventListener("click", togglePassword);
     // -->
     </script>
 
