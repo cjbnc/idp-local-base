@@ -227,7 +227,6 @@ $response.addHeader("Content-Security-Policy", "script-src-elem 'nonce-$nonce' h
     <script #if ($nonce)nonce="$nonce"#end>
     <!--
       document.getElementById("showPassword").addEventListener("click", togglePassword);
-      document.getElementById("showPassword").addEventListener("click", togglePassword);
     // -->
     </script>
 
