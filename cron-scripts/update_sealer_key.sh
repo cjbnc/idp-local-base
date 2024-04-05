@@ -19,10 +19,9 @@ KEYPASS=$(grep '^idp.sealer.storePassword' $IDPHOME/conf/idp.properties | \
   && [ -s "$KEYDIR/sealer.kver" ] ) \
   || exit
 
-$IDPHOME/bin/runclass.sh \
-  net.shibboleth.utilities.java.support.security.BasicKeystoreKeyStrategyTool \
+$IDPHOME/bin/seckeygen.sh \
   --storefile $KEYDIR/sealer.jks \
   --versionfile $KEYDIR/sealer.kver \
   --alias secret \
-  --count 90 \
+  --count 6 \
   --storepass $KEYPASS
