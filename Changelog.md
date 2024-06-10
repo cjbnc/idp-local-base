@@ -1,7 +1,14 @@
 # Changelog
 
-## 2024/Mar/21 -
+## 2024/Jun/10 -
+    - Jetty 11.0.21 (end of support!)
+    - OIDC common 3.1.0
+    - Duo OIDC Plugin 2.1.0
+
+## 2024/Apr/08 -
     - IdP 5.1.1
+    - Jetty 11.0.20
+    - OIDC common 3.0.1
 
 ## 2024/Jan/08 -
     - Jetty 11.0.19

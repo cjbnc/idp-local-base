@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
-OIDCVER=3.0.0
-DUOVER=2.0.0
+OIDCVER=3.1.0
+DUOVER=2.1.0
 JSVER=2.0.0
 
 cd /opt/shibboleth-idp

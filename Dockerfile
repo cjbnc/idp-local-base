@@ -31,7 +31,7 @@ ADD downloads/ /tmp/
 
 # Install Jetty and initialize a new base
 RUN set -x; \
-    jetty_version=11.0.19; \
+    jetty_version=11.0.21; \
     unzip /tmp/jetty-home-$jetty_version.zip -d /opt \
     && mv /opt/jetty-home-$jetty_version /opt/jetty \
     && cp /opt/jetty/bin/jetty.sh /etc/init.d/jetty \
@@ -46,7 +46,7 @@ RUN set -x; \
 
 # Install Shibboleth IdP
 RUN set -x; \
-    shibidp_version=5.1.1; \
+    shibidp_version=5.1.2; \
     unzip /tmp/shibboleth-identity-provider-$shibidp_version.zip -d /opt \
     && cd /opt/shibboleth-identity-provider-$shibidp_version/ \
     && bin/install.sh --noPrompt \
@@ -59,10 +59,10 @@ RUN set -x; \
 # copy IdP Plugins so they can be installed later
 RUN set -x; \
     mkdir -p /opt/idp-plugins; \
-    cp /tmp/oidc-common-dist-3.0.0.tar.gz \
-       /tmp/oidc-common-dist-3.0.0.tar.gz.asc \
-       /tmp/idp-plugin-duo-sdk-dist-2.0.0.tar.gz \
-       /tmp/idp-plugin-duo-sdk-dist-2.0.0.tar.gz.asc \
+    cp /tmp/oidc-common-dist-3.1.0.tar.gz \
+       /tmp/oidc-common-dist-3.1.0.tar.gz.asc \
+       /tmp/idp-plugin-duo-sdk-dist-2.1.0.tar.gz \
+       /tmp/idp-plugin-duo-sdk-dist-2.1.0.tar.gz.asc \
        /tmp/idp-plugin-nashorn-jdk-dist-2.0.0.tar.gz \
        /tmp/idp-plugin-nashorn-jdk-dist-2.0.0.tar.gz.asc \
        /tmp/trust-duo-sdk.txt \

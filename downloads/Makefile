@@ -5,14 +5,14 @@ JAVA_VER  := 11
 JAVA_FILE := amazon-corretto-$(JAVA_VER)-x64-linux-jdk.rpm
 
 # Jetty
-JETTY_VER  := 11.0.19
+JETTY_VER  := 11.0.21
 JETTY_FILE := jetty-home-$(JETTY_VER).zip
-JETTY_SUM  := 77c3c7168f042e9dbc0e4149923e561788c1bd067c1d2e7cb6edaace6d54a26b
+JETTY_SUM  := f2667ff40253f1dd7a3cb1de1fdd813e95547eae9c91d0b5cbda9bbcc797fbe7
 
 # Shibboleth IdP
-IDP_VER  := 5.1.1
+IDP_VER  := 5.1.2
 IDP_FILE := shibboleth-identity-provider-$(IDP_VER).zip
-IDP_SUM  := 57d7ca7436843845c0e46ebed5b8982e10fed8c292b8fa8502c9a84878ad35a0
+IDP_SUM  := a88c5b0fb7a1f608d4586cf5ae2e6bfd22c59107a4ffc66cebbe7c7bc9d44d92
 
 # NCSU custom LoginHandler
 NCSUAD_VER  := 2.2.0-1.0
@@ -30,9 +30,9 @@ DUOS3_VER  := 1.15.0
 DUOS3_FILE := okio-$(DUOS3_VER).jar
 
 # IdP Plugins, will grab the .asc files as well
-PLUG1_VER  := 3.0.0
+PLUG1_VER  := 3.1.0
 PLUG1_FILE := oidc-common-dist-$(PLUG1_VER).tar.gz
-PLUG2_VER  := 2.0.0
+PLUG2_VER  := 2.1.0
 PLUG2_FILE := idp-plugin-duo-sdk-dist-$(PLUG2_VER).tar.gz
 PLUG3_VER  := 2.0.0
 PLUG3_FILE := idp-plugin-nashorn-jdk-dist-$(PLUG3_VER).tar.gz
